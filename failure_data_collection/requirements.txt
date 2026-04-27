@@ -1,0 +1,9 @@
+# Required for AST-based Java method extraction (custom fork with start/end position).
+# The standard 'javalang' package on PyPI does NOT support end_position.
+# If this fails to install, step4_extract.py falls back to brace-counting regex.
+git+https://github.com/jose/javalang.git@start_position_and_end_position
+
+# Required for Surefire XML report parsing in step4_extract.py.
+# If unavailable, error extraction falls back to stdout regex.
+beautifulsoup4
+lxml
