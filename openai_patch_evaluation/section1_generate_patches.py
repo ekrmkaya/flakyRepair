@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Section 1: Patch Generation
-Prompts GPT-4 for each entry in flaky_test_data_no_suspect.json and writes
+Prompts GPT-4 for each target from the stage-1 manifest and writes
 raw responses to section1_patches/.
 """
 
@@ -205,8 +205,8 @@ def parse_args():
         help="1-based start row (used with --limit, default: 1)."
     )
     parser.add_argument(
-        "--ablation", action="store_true",
-        help="Exclude REPRODUCTION STEPS from the prompt (ablation study)."
+        "--no-repro", action="store_true",
+        help="Exclude REPRODUCTION STEPS from the prompt (no-repro variant)."
     )
     return parser.parse_args()
 
@@ -227,8 +227,8 @@ def parse_rows_arg(s):
 def main():
     args = parse_args()
     global PATCHES_DIR, METRICS_FILE
-    if args.ablation:
-        PATCHES_DIR  = os.path.join(os.path.dirname(__file__), "section1_patches_ablation")
+    if args.no_repro:
+        PATCHES_DIR  = os.path.join(os.path.dirname(__file__), "section1_patches_no_repro")
         METRICS_FILE = os.path.join(PATCHES_DIR, "metrics.json")
     os.makedirs(PATCHES_DIR, exist_ok=True)
     metrics = load_metrics()
@@ -249,7 +249,7 @@ def main():
     row_nums = [r for r in row_nums if r in target_map]
     total = len(row_nums)
 
-    variant_tag = " [ABLATION]" if args.ablation else ""
+    variant_tag = " [NO-REPRO]" if args.no_repro else ""
     print(f"Generating patches for {total} entries{variant_tag}...\n")
 
     for idx, row_num in enumerate(row_nums):
@@ -266,7 +266,7 @@ def main():
 
         print(f"[{idx + 1}/{total}] Prompting GPT-4 for: {entry['victim_test_name']}", flush=True)
         try:
-            result = prompt_gpt4(entry, include_repro=not args.ablation)
+            result = prompt_gpt4(entry, include_repro=not args.no_repro)
             write_patch_file(filepath, entry, result["response"])
             with open(make_prompt_filename(row_num), "w", encoding="utf-8") as pf:
                 pf.write(result["prompt"])

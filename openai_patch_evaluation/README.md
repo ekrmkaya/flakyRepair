@@ -1,79 +1,79 @@
-# openai_patch_evaluation — Pipeline README
+# Stage 2: GPT-4 Patch Evaluation
 
-## Purpose
-Parallel evaluation pipeline using GPT-4 (instead of Claude) to generate and assess
-patches for order-dependent (OD) flaky tests. Mirrors the structure of `../patch_evaluation/`
-but uses the OpenAI API and may introduce different prompting strategies.
+Generates GPT-4 patches for OD flaky tests, compiles them, runs OD reproduction tests, and categorizes the outcomes. Runs two variants: **with_repro** (reproduction steps included in prompt) and **no_repro** (excluded).
 
----
+## Prerequisites
 
-## Input Data
-| File | Description |
-|------|-------------|
-| `flaky_test_data_no_suspect.json` | 50 unique OD flaky test entries — all fields from `../flaky_test_data.json` except `suspect_lines` |
+- Python 3.9+, Java 8+, Maven 3.5+
+- `pip install -r requirements.txt`
+- `export OPENAI_API_KEY="sk-..."`
+- Stage 1 must be completed first (`failure_data_collection/pipeline.py`)
 
-### Entry fields
-`od_or_id`, `source`, `reproduction_steps`, `victim_test_name`, `polluter_test_name`,
-`error_messages`, `failing_lines`, `global_variables`, `helper_methods`, `full_test_code`
+## Usage
 
-> `global_variables` and `helper_methods` may be empty strings — that is expected.
-> Entry 44 (`Slf4JLoggerTest.testLogger`) has an intentionally empty `error_messages`.
+```bash
+# Run full pipeline for all 50 rows (both variants)
+bash run_experiment.sh
 
----
+# Run specific rows
+bash run_experiment.sh 1 5 10 23
 
-## Directory Layout
-```
-openai_patch_evaluation/
-├── README.md                        ← this file
-├── flaky_test_data_no_suspect.json  ← 50-entry input dataset
-├── logs/                            ← runtime logs
-├── section1_generate_patches.py     ← GPT-4 prompting → section1_patches/
-├── section1_patches/                ← raw GPT-4 responses (one file per entry)
-├── section2_parsed/                 ← parsed fix/import/pom blocks
-├── section3_baseline/               ← baseline OD reproduction results
-├── section4_compilation/            ← apply + compile results (PASS/FAIL/NA)
-├── section5_test_runs/              ← OD test run results (PASSED/FAILED/etc.)
-├── section6_categories/             ← patch categorization
-└── section7_results/                ← final assembled CSV/summary
+# Run individual sections manually
+python3.9 section1_generate_patches.py --rows 1-10
+python3.9 section2_parse_patches.py --only row01
+python3.9 section4_compilation.py --only row01
+python3.9 section5_test_runs.py --only row01
+python3.9 section6_categorize.py --only row01
+python3.9 section7_assemble_csv.py
+
+# Run the no-repro variant for a section
+python3.9 section1_generate_patches.py --rows 1-10 --no-repro
 ```
 
----
+## Input
 
-## Sections
+Reads from Stage 1 output:
+- `../failure_data_collection/output/manifest.json` -- target metadata (repos, commits, Java versions)
+- `../failure_data_collection/output/flaky_test_data.json` -- test code, error messages, reproduction steps
 
-### Section 1 — Patch Generation (`section1_generate_patches.py`)
-- Reads `flaky_test_data_no_suspect.json`
-- Builds a single user-role prompt per entry using `PROMPT_TEMPLATE`
-- Calls `gpt-4`, `temperature=0.2`, single user message (no system role)
-- Returns raw response text
-- **Key function**: `prompt_gpt4(entry: dict) -> str`
-- API key: reads `OPENAI_API_KEY` env var; falls back to `input()` prompt if missing
-- Output dir: `section1_patches/`
+## Pipeline Sections
 
-### Sections 2–7 — Not yet implemented
-Intended to mirror `../patch_evaluation/section2_parse_patches.py` through
-`../patch_evaluation/section7_assemble_csv.py` with any OpenAI-specific adaptations.
+### Section 1 -- Patch Generation (`section1_generate_patches.py`)
+Prompts GPT-4 (`temperature=0.2`) with test metadata, error info, and code context. Writes raw responses to `section1_patches/`.
 
----
+### Section 2 -- Parse Patches (`section2_parse_patches.py`)
+Extracts structured blocks from GPT-4 output: fix code (`//<fix start>`), imports (`//<import start>`), and pom dependencies. Writes to `section2_parsed/row{N}/`.
 
-## Prompt Format (Section 1)
-The full prompt is one user message combining system context + task instructions.
-Structure:
-1. Role preamble (testing expert)
-2. Test metadata (type, victim, polluter)
-3. Flakiness description
-4. Reproduction steps
-5. Error info (messages + failing lines)
-6. Code context (global vars, helper methods, full test code)
-7. Output format instructions:
-   - Fix code between `//<fix start>` ... `//<fix end>`
-   - pom.xml deps between `<!-- <pom.xml start> -->` ... `<!-- <pom.xml end> -->`
-   - Imports between `//<import start>` ... `//<import end>`
+### Section 4 -- Compilation + Stitching (`section4_compilation.py`)
+Applies parsed patches to the original test file, compiles with Maven. On failure, calls GPT-4 to "stitch" the fix into the full file context. Writes to `section4_compilation/row{N}/`.
 
----
+### Section 5 -- Test Execution (`section5_test_runs.py`)
+Runs the patched OD test (polluter then victim) with up to 5 retry attempts. On compile failure, asks GPT-4 for a corrected patch with the compiler errors included. On test failure, asks GPT-4 for an alternative fix with the test output included. Writes to `section5_test_runs/row{N}/`.
 
-## Key Decisions / Notes
-- `suspect_lines` deliberately excluded from prompts (ablated variant)
-- Source dataset (`../flaky_test_data.json`) had a duplicate entry for
-  `ElectionListenerManagerTest.assertLeaderElectionWhenRemoveLeaderInstancePathWithAvailableServerButJobInstanceIsShutdown` — removed, now confirmed 50 unique entries
-- Repos live in `../repos/`; baseline reproduction logic should reuse `../patch_evaluation/section3_baseline.py` patterns
+### Section 6 -- Categorization (`section6_categorize.py`)
+Categorizes each row's outcome: "Fixed flakiness", "Compilation error", "Did not address flakiness", etc. Writes to `section6_categories/`.
+
+### Section 7 -- Results Assembly (`section7_assemble_csv.py`)
+Aggregates all sections into `section7_results/results.csv` (one row per test x condition) and `section7_results/summary.csv` (side-by-side comparison of with_repro vs no_repro).
+
+## Output Structure
+
+```
+section1_patches/           Raw GPT-4 responses + metrics.json
+section2_parsed/row{N}/     fix_code.java, imports.txt, pom_snippet.xml
+section4_compilation/row{N}/ patched_test.java, compile.log, stitched_test.java
+section5_test_runs/row{N}/  row_result.json, attempt{N}/attempt.json
+section6_categories/        category.txt, passed.txt per row x condition
+section7_results/           results.csv, summary.csv
+```
+
+All output directories are gitignored and regenerated by running the pipeline.
+
+## Variants
+
+| Variant | CLI Flag | Description |
+|---------|----------|-------------|
+| **with_repro** | *(default)* | Prompt includes reproduction steps |
+| **no_repro** | `--no-repro` | Prompt excludes reproduction steps |
+
+The `run_experiment.sh` script runs both variants sequentially, then categorizes and assembles results.

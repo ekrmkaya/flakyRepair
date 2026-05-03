@@ -65,7 +65,7 @@ MAX_ATTEMPTS     = 5
 SAME_ERROR_LIMIT = 3
 
 # Base path for resolving relative paths in targets
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 
 
 # -- prompt suffixes -----------------------------------------------------------
@@ -205,7 +205,7 @@ def compile_status_from_output(rc, output, test_src_rel):
 def extract_compiler_errors(output, test_src_rel, max_errors=15, source_content=None):
     filename  = os.path.basename(test_src_rel)
     error_re  = re.compile(
-        r'\[ERROR\]\s+\S+?' + re.escape(filename) + r':\[(\d+),\d+\]\s+(error:.+)'
+        r'\[ERROR\]\s+\S+?' + re.escape(filename) + r':\[(\d+),\d+\]\s+(.+)'
     )
     src_lines = source_content.splitlines() if source_content else None
 
@@ -230,7 +230,7 @@ def extract_compiler_errors(output, test_src_rel, max_errors=15, source_content=
                 "re-run Maven", "For more information", "[Help 1]", "COMPILATION ERROR")
         for line in output.splitlines():
             s = line.strip()
-            if (s.startswith("[ERROR]") and "error:" in s.lower()
+            if (s.startswith("[ERROR]")
                     and not any(p in s for p in skip)):
                 results.append(re.sub(r'^\[ERROR\]\s*', '', s))
     return "\n".join(results)
@@ -354,7 +354,7 @@ def s4_last_compile_errors(row_key, test_src_rel):
             errors = extract_compiler_errors(output, test_src_rel, source_content=src_content)
             if errors:
                 return errors
-    return "(no compile log found in section4)"
+    return "(compile log exists but no errors could be extracted)"
 
 
 # -- GPT-4 integration --------------------------------------------------------
@@ -432,6 +432,11 @@ def insert_imports(content, imports_text):
     return _ii(content, imports_text)
 
 
+def extract_imports_from_fix_code(fix_code, imports):
+    from section4_compilation import extract_imports_from_fix_code as _eifc
+    return _eifc(fix_code, imports)
+
+
 # -- compile + stitch sub-steps ------------------------------------------------
 
 def do_compile(patched_content, test_src_abs, maven_mod_abs, test_src_rel, attempt_dir):
@@ -481,6 +486,7 @@ def do_stitch(original_prompt, fix_code, imports, compile_errors,
         s_fix, s_imports, s_parse = parse_gpt4_response(text)
 
         if s_parse == "OK":
+            s_fix, s_imports = extract_imports_from_fix_code(s_fix, s_imports)
             s_base = build_patched_content(original_text, s_fix, victim_meth, polluter_meth)
             if s_base:
                 s_content = insert_imports(s_base, s_imports)
@@ -691,6 +697,7 @@ def process_row_loop(row_key, target, global_metrics, include_repro=True):
                         break
                     continue
 
+                fix_code, imports = extract_imports_from_fix_code(fix_code, imports)
                 base = build_patched_content(original_text, fix_code, victim_meth, polluter_meth)
                 if base is None:
                     am["attempt_result"] = "COMPILE_ERROR"
@@ -903,8 +910,8 @@ def parse_args():
     )
     parser.add_argument("--rows", help="Rows to process, e.g. '1,5,10' or '1-10'")
     parser.add_argument("--only", help="Process only this row key, e.g. row01")
-    parser.add_argument("--ablation", action="store_true",
-                        help="Read from ablation dirs and exclude repro steps from prompts.")
+    parser.add_argument("--no-repro", action="store_true",
+                        help="Read from no-repro dirs and exclude repro steps from prompts.")
     return parser.parse_args()
 
 
@@ -912,11 +919,11 @@ def main():
     args = parse_args()
     global METRICS_S1, COMP_DIR, PARSED_DIR, OUT_DIR, METRICS_FILE
 
-    if args.ablation:
-        METRICS_S1   = os.path.join(OAI_DIR, "section1_patches_ablation", "metrics.json")
-        COMP_DIR     = os.path.join(OAI_DIR, "section4_compilation_ablation")
-        PARSED_DIR   = os.path.join(OAI_DIR, "section2_parsed_ablation")
-        OUT_DIR      = os.path.join(OAI_DIR, "section5_test_runs_ablation")
+    if args.no_repro:
+        METRICS_S1   = os.path.join(OAI_DIR, "section1_patches_no_repro", "metrics.json")
+        COMP_DIR     = os.path.join(OAI_DIR, "section4_compilation_no_repro")
+        PARSED_DIR   = os.path.join(OAI_DIR, "section2_parsed_no_repro")
+        OUT_DIR      = os.path.join(OAI_DIR, "section5_test_runs_no_repro")
         METRICS_FILE = os.path.join(OUT_DIR, "metrics.json")
     os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -939,7 +946,7 @@ def main():
         requested = parse_rows_arg(args.rows)
         row_keys = [f"row{n:02d}" for n in requested if f"row{n:02d}" in row_keys]
 
-    variant_tag = " [ABLATION]" if args.ablation else ""
+    variant_tag = " [NO-REPRO]" if args.no_repro else ""
     print("=" * 65)
     print(f"SECTION 5: TEST EXECUTION WITH RETRY LOOP{variant_tag}")
     print(f"  MAX_ATTEMPTS={MAX_ATTEMPTS}  SAME_ERROR_LIMIT={SAME_ERROR_LIMIT}")
@@ -1015,7 +1022,7 @@ def main():
         print(f"  {row_key} ({target['test_id']})  [s4_compile={s4_final}]", flush=True)
 
         final_status, ams = process_row_loop(row_key, target, g_metrics,
-                                              include_repro=not args.ablation)
+                                              include_repro=not args.no_repro)
         save_global_metrics(g_metrics)
 
         n_att    = len(ams)

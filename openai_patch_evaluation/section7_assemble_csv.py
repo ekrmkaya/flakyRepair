@@ -8,7 +8,7 @@ Joins section 1–6 data into two CSVs:
    Columns: metadata + outcome + full timing/token breakdown
 
 2. summary.csv  (one row per test_id, both conditions side-by-side)
-   Columns: metadata + [with_repro] outcome/tokens/time + [ablation] outcome/tokens/time
+   Columns: metadata + [with_repro] outcome/tokens/time + [no_repro] outcome/tokens/time
 
 Timing breakdown (all in seconds):
   s1_api_sec               — initial GPT-4 patch generation
@@ -40,7 +40,7 @@ import os
 import subprocess
 import sys
 
-BASE_DIR     = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 OAI_DIR      = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR      = os.path.join(OAI_DIR, "section7_results")
 
@@ -50,9 +50,9 @@ CONDITIONS = {
         "s5_dir": os.path.join(OAI_DIR, "section5_test_runs"),
         "s6_dir": os.path.join(OAI_DIR, "section6_categories"),
     },
-    "ablation": {
-        "s1_dir": os.path.join(OAI_DIR, "section1_patches_ablation"),
-        "s5_dir": os.path.join(OAI_DIR, "section5_test_runs_ablation"),
+    "no_repro": {
+        "s1_dir": os.path.join(OAI_DIR, "section1_patches_no_repro"),
+        "s5_dir": os.path.join(OAI_DIR, "section5_test_runs_no_repro"),
         "s6_dir": os.path.join(OAI_DIR, "section6_categories"),
     },
 }
@@ -351,7 +351,7 @@ def write_results_csv(all_rows, path):
 
 
 def write_summary_csv(all_rows, path):
-    """One row per test_id, with_repro and ablation columns side-by-side."""
+    """One row per test_id, with_repro and no_repro columns side-by-side."""
     by_row = {}
     for r in all_rows:
         by_row.setdefault(r["row_num"], {})[r["condition"]] = r
@@ -361,7 +361,7 @@ def write_summary_csv(all_rows, path):
                      if f not in ("test_id","row_num","condition","victim","polluter","repo_url","commit")]
 
     fieldnames = ["test_id","row_num","victim","polluter","repo_url","commit"]
-    for cond in ("with_repro", "ablation"):
+    for cond in ("with_repro", "no_repro"):
         for f in METRIC_FIELDS:
             fieldnames.append(f"{cond}__{f}")
 
@@ -371,7 +371,7 @@ def write_summary_csv(all_rows, path):
         for row_num in sorted(by_row.keys()):
             cond_data = by_row[row_num]
             # Use whichever condition is available for metadata
-            ref = cond_data.get("with_repro") or cond_data.get("ablation")
+            ref = cond_data.get("with_repro") or cond_data.get("no_repro")
             out = {
                 "test_id":   ref["test_id"],
                 "row_num":   ref["row_num"],
@@ -380,7 +380,7 @@ def write_summary_csv(all_rows, path):
                 "repo_url":  ref["repo_url"],
                 "commit":    ref["commit"],
             }
-            for cond in ("with_repro", "ablation"):
+            for cond in ("with_repro", "no_repro"):
                 d = cond_data.get(cond, {})
                 for mf in METRIC_FIELDS:
                     out[f"{cond}__{mf}"] = d.get(mf, "")
@@ -401,7 +401,7 @@ def print_summary(all_rows):
               f"{cat_short:<28} {str(tok):>7} {elap:>8}")
 
     print("=" * 85)
-    for cond in ("with_repro", "ablation"):
+    for cond in ("with_repro", "no_repro"):
         rows = [r for r in all_rows if r["condition"] == cond]
         if not rows:
             continue

@@ -18,7 +18,7 @@ import json
 import os
 import re
 
-BASE_DIR   = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 OAI_DIR    = os.path.dirname(os.path.abspath(__file__))
 PATCHES_DIR = os.path.join(OAI_DIR, "section1_patches")
 METRICS_FILE = os.path.join(PATCHES_DIR, "metrics.json")
@@ -122,18 +122,18 @@ def load_metrics():
 def parse_args():
     parser = argparse.ArgumentParser(description="Parse GPT-4 patch files.")
     parser.add_argument("--only", help="Process only this row key, e.g. row01")
-    parser.add_argument("--ablation", action="store_true",
-                        help="Read from section1_patches_ablation/ (ablation study).")
+    parser.add_argument("--no-repro", action="store_true",
+                        help="Read from section1_patches_no_repro/ (no-repro variant).")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     global PATCHES_DIR, METRICS_FILE, OUT_DIR
-    if args.ablation:
-        PATCHES_DIR  = os.path.join(OAI_DIR, "section1_patches_ablation")
+    if args.no_repro:
+        PATCHES_DIR  = os.path.join(OAI_DIR, "section1_patches_no_repro")
         METRICS_FILE = os.path.join(PATCHES_DIR, "metrics.json")
-        OUT_DIR      = os.path.join(OAI_DIR, "section2_parsed_ablation")
+        OUT_DIR      = os.path.join(OAI_DIR, "section2_parsed_no_repro")
     os.makedirs(OUT_DIR, exist_ok=True)
 
     metrics = load_metrics()
@@ -144,7 +144,7 @@ def main():
             exit(1)
         row_keys = [args.only]
 
-    variant_tag = " [ABLATION]" if args.ablation else ""
+    variant_tag = " [NO-REPRO]" if args.no_repro else ""
     print("=" * 60)
     print(f"SECTION 2: PATCH PARSING{variant_tag}")
     print("=" * 60)

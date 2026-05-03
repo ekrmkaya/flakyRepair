@@ -59,7 +59,7 @@ import subprocess
 import sys
 import time
 
-BASE_DIR     = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 OAI_DIR      = os.path.dirname(os.path.abspath(__file__))
 METRICS_S1   = os.path.join(OAI_DIR, "section1_patches", "metrics.json")
 PARSED_DIR   = os.path.join(OAI_DIR, "section2_parsed")
@@ -88,7 +88,8 @@ SKIP_FLAGS = (
     "-DtrimStackTrace=false "
 )
 
-JAVA8_HOME = "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+JAVA8_HOME = os.environ.get("JAVA8_HOME",
+             "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
 
 # ── stitch prompt ─────────────────────────────────────────────────────────────
 #
@@ -232,7 +233,7 @@ def extract_compiler_errors(output, test_src_rel, max_errors=15, source_content=
     """
     filename  = os.path.basename(test_src_rel)
     error_re  = re.compile(
-        r'\[ERROR\]\s+\S+?' + re.escape(filename) + r':\[(\d+),\d+\]\s+(error:.+)'
+        r'\[ERROR\]\s+\S+?' + re.escape(filename) + r':\[(\d+),\d+\]\s+(.+)'
     )
     src_lines = source_content.splitlines() if source_content else None
 
@@ -258,7 +259,7 @@ def extract_compiler_errors(output, test_src_rel, max_errors=15, source_content=
                 "re-run Maven", "For more information", "[Help 1]", "COMPILATION ERROR")
         for line in output.splitlines():
             s = line.strip()
-            if (s.startswith("[ERROR]") and "error:" in s.lower()
+            if (s.startswith("[ERROR]")
                     and not any(p in s for p in skip)):
                 results.append(re.sub(r'^\[ERROR\]\s*', '', s))
     return "\n".join(results)
@@ -358,6 +359,28 @@ def find_method_fuzzy(fix_lines, method_name):
         return None, ""
     text = text.replace(found, method_name, 1)
     return found, text
+
+
+def extract_imports_from_fix_code(fix_code, imports):
+    """
+    GPT-4 sometimes embeds import statements inside the //<fix start> block
+    instead of putting them in a separate //<import start> block.  Pull any
+    such lines out of fix_code, merge them into imports, and return the
+    cleaned (fix_code, imports) pair.
+    """
+    fix_lines = []
+    embedded = []
+    for line in fix_code.splitlines(keepends=True):
+        if line.strip().startswith("import "):
+            embedded.append(line.strip())
+        else:
+            fix_lines.append(line)
+    if embedded:
+        existing = {l.strip() for l in imports.splitlines() if l.strip()} if imports else set()
+        to_add = [imp for imp in embedded if imp not in existing]
+        if to_add:
+            imports = (imports.rstrip("\n") + "\n" if imports.strip() else "") + "\n".join(to_add)
+    return "".join(fix_lines), imports
 
 
 def build_patched_content(original_text, fix_code, victim_method, polluter_method):
@@ -632,6 +655,7 @@ def process_row(row_key, target, m, include_repro=True):
     original_text = read_file(test_src_abs)
 
     # Task 4.2 — build patched content: fix code + imports always applied together
+    fix_code, imports = extract_imports_from_fix_code(fix_code, imports)
     base_content = build_patched_content(original_text, fix_code, victim_meth, polluter_meth)
     if base_content is None:
         write_skipped(row_key, "METHOD_NOT_FOUND", out)
@@ -765,18 +789,18 @@ def process_row(row_key, target, m, include_repro=True):
 def parse_args():
     parser = argparse.ArgumentParser(description="Apply patches, compile, and stitch if needed.")
     parser.add_argument("--only", help="Process only this row key, e.g. row01")
-    parser.add_argument("--ablation", action="store_true",
-                        help="Read from ablation dirs (ablation study).")
+    parser.add_argument("--no-repro", action="store_true",
+                        help="Read from no-repro dirs (exclude reproduction steps).")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     global METRICS_S1, PARSED_DIR, OUT_DIR, METRICS_FILE
-    if args.ablation:
-        METRICS_S1   = os.path.join(OAI_DIR, "section1_patches_ablation", "metrics.json")
-        PARSED_DIR   = os.path.join(OAI_DIR, "section2_parsed_ablation")
-        OUT_DIR      = os.path.join(OAI_DIR, "section4_compilation_ablation")
+    if args.no_repro:
+        METRICS_S1   = os.path.join(OAI_DIR, "section1_patches_no_repro", "metrics.json")
+        PARSED_DIR   = os.path.join(OAI_DIR, "section2_parsed_no_repro")
+        OUT_DIR      = os.path.join(OAI_DIR, "section4_compilation_no_repro")
         METRICS_FILE = os.path.join(OUT_DIR, "metrics.json")
     os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -796,7 +820,7 @@ def main():
             sys.exit(1)
         row_keys = [args.only]
 
-    variant_tag = " [ABLATION]" if args.ablation else ""
+    variant_tag = " [NO-REPRO]" if args.no_repro else ""
     print("=" * 60)
     print(f"SECTION 4: COMPILATION + STITCHING{variant_tag}")
     print("=" * 60)
@@ -851,7 +875,7 @@ def main():
         print(f"  {row_key} ({target['test_id']}) ...", flush=True)
         m = metrics.get(row_key, {})
         compile_stat, reason, stitched = process_row(row_key, target, m,
-                                                      include_repro=not args.ablation)
+                                                      include_repro=not args.no_repro)
         metrics[row_key] = m
         save_metrics(metrics)
 

@@ -463,11 +463,11 @@ if __name__ == "__main__":
     import argparse
 
     HERE      = os.path.dirname(os.path.abspath(__file__))
-    ROOT      = os.path.dirname(os.path.dirname(HERE))  # dataCollection/
-    _csv      = os.path.join(ROOT, "openai/data/final_OD_flaky_tests.csv")
+    REPO_ROOT = os.path.dirname(HERE)  # repository root
+    _csv      = os.path.join(REPO_ROOT, "data", "final_OD_flaky_tests.csv")
     _out      = os.path.join(HERE, "output")
     _manifest = os.path.join(_out, "manifest.json")
-    _repos    = os.path.join(ROOT, "repos")
+    _repos    = os.path.join(REPO_ROOT, "repos")
     _logs     = os.path.join(_out, "logs")
 
     ap = argparse.ArgumentParser()

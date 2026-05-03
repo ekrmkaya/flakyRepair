@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Section 6: Categorization
-Assigns a category to each row × condition (with_repro, ablation).
+Assigns a category to each row × condition (with_repro, no_repro).
 
 Categories (priority order):
   Did not generate fix        — parse failed
@@ -23,7 +23,7 @@ import re
 import subprocess
 import sys
 
-BASE_DIR     = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 OAI_DIR      = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR      = os.path.join(OAI_DIR, "section6_categories")
 
@@ -34,11 +34,11 @@ CONDITIONS = {
         "s4_dir":  os.path.join(OAI_DIR, "section4_compilation"),
         "s5_dir":  os.path.join(OAI_DIR, "section5_test_runs"),
     },
-    "ablation": {
-        "s1_dir":  os.path.join(OAI_DIR, "section1_patches_ablation"),
-        "s2_dir":  os.path.join(OAI_DIR, "section2_parsed_ablation"),
-        "s4_dir":  os.path.join(OAI_DIR, "section4_compilation_ablation"),
-        "s5_dir":  os.path.join(OAI_DIR, "section5_test_runs_ablation"),
+    "no_repro": {
+        "s1_dir":  os.path.join(OAI_DIR, "section1_patches_no_repro"),
+        "s2_dir":  os.path.join(OAI_DIR, "section2_parsed_no_repro"),
+        "s4_dir":  os.path.join(OAI_DIR, "section4_compilation_no_repro"),
+        "s5_dir":  os.path.join(OAI_DIR, "section5_test_runs_no_repro"),
     },
 }
 

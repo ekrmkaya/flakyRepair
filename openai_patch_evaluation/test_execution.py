@@ -13,7 +13,7 @@ Provides:
   - SKIP_FLAGS             Maven skip flags
 
 Adapted from failure_data_collection/step3_reproduce.py and config.py.
-All reads stay within /Users/ekaya/Desktop/dataCollection/openai/.
+All reads stay within the repository root.
 """
 
 import json
@@ -30,9 +30,9 @@ import time
 # =============================================================================
 
 _THIS_DIR     = os.path.dirname(os.path.abspath(__file__))
-_PROJECT_DIR  = os.path.dirname(_THIS_DIR)                    # dataCollection/openai
-_MANIFEST     = os.path.join(_PROJECT_DIR, "failure_data_collection", "output", "manifest.json")
-_REPOS_DIR    = os.path.join(os.path.dirname(_PROJECT_DIR), "repos")
+_REPO_ROOT    = os.path.dirname(_THIS_DIR)                    # repository root
+_MANIFEST     = os.path.join(_REPO_ROOT, "failure_data_collection", "output", "manifest.json")
+_REPOS_DIR    = os.path.join(_REPO_ROOT, "repos")
 
 
 # =============================================================================
@@ -162,7 +162,7 @@ def _build_entry_index():
     The flaky_test_data.json array order may differ from the manifest row
     numbering.  This index allows O(1) lookup by victim name.
     """
-    data_path = os.path.join(_PROJECT_DIR, "failure_data_collection", "output", "flaky_test_data.json")
+    data_path = os.path.join(_REPO_ROOT, "failure_data_collection", "output", "flaky_test_data.json")
     if not os.path.isfile(data_path):
         return {}
     with open(data_path, encoding="utf-8") as f:
@@ -199,7 +199,7 @@ def load_targets():
         package    = pair["package"]
 
         # Derive repo_local_path (relative to the repos parent dir)
-        repo_local_path = os.path.relpath(clone_dir, os.path.dirname(_REPOS_DIR))
+        repo_local_path = os.path.relpath(clone_dir, _REPO_ROOT)
 
         # Derive maven_module_path from resolved_module_path (strip trailing /pom.xml)
         resolved = pair.get("resolved_module_path", "")
@@ -209,7 +209,7 @@ def load_targets():
             maven_module_abs = resolved[:-len("\\pom.xml")]
         else:
             maven_module_abs = os.path.join(clone_dir, package) if package not in (".", "") else clone_dir
-        maven_module_path = os.path.relpath(maven_module_abs, os.path.dirname(_REPOS_DIR))
+        maven_module_path = os.path.relpath(maven_module_abs, _REPO_ROOT)
 
         # Derive test_src_path from victim_class
         victim_class = pair["victim_class"]
@@ -219,7 +219,7 @@ def load_targets():
             test_src_abs = os.path.join(clone_dir, package, test_src_dir, class_rel)
         else:
             test_src_abs = os.path.join(clone_dir, test_src_dir, class_rel)
-        test_src_path = os.path.relpath(test_src_abs, os.path.dirname(_REPOS_DIR))
+        test_src_path = os.path.relpath(test_src_abs, _REPO_ROOT)
 
         same_class = pair.get("same_class", pair["victim_class"] == pair["polluter_class"])
 

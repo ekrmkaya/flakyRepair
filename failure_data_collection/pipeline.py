@@ -30,7 +30,7 @@ import time
 
 # ── Path setup ─────────────────────────────────────────────────────────────────
 HERE     = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = os.path.dirname(os.path.dirname(HERE))  # …/dataCollection/
+REPO_ROOT = os.path.dirname(HERE)  # repository root (flakyRepair/)
 
 sys.path.insert(0, HERE)
 
@@ -151,11 +151,11 @@ def main():
     args = ap.parse_args()
 
     # Defaults
-    csv_path   = args.input   or os.path.join(BASE_DIR, "openai/data/final_OD_flaky_tests.csv")
+    csv_path   = args.input   or os.path.join(REPO_ROOT, "data", "final_OD_flaky_tests.csv")
     output_dir = args.output_dir or os.path.join(HERE, "output")
     manifest_path = os.path.join(output_dir, "manifest.json")
     logs_dir      = os.path.join(output_dir, "logs")
-    repos_dir     = os.path.join(BASE_DIR, "repos")
+    repos_dir     = os.path.join(REPO_ROOT, "repos")
 
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(logs_dir, exist_ok=True)
