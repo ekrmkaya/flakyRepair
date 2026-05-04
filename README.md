@@ -59,7 +59,7 @@ bash install.sh
 # 3. Set your OpenAI API key
 export OPENAI_API_KEY="sk-..."
 
-# 4. Run the demo (rows 6, 19, 23 — takes ~5 minutes)
+# 4. Run the demo (rows 6, 19, 23 — takes less than 5 minutes)
 bash run_demo.sh
 ```
 
