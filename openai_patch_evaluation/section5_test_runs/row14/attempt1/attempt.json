@@ -1,0 +1,7 @@
+{
+  "source": "section4",
+  "compile_status": "FAIL",
+  "attempt_result": "COMPILE_ERROR",
+  "fix_code": "@Before\npublic void resetLogger() {\n    System.clearProperty(\"org.slf4j.simpleLogger.defaultLogLevel\");\n    XRLog.setLoggerImpl(new Slf4jLogger());\n}\n\n@Test\npublic void testLogger() throws IOException {\n    ByteArrayOutputStream baos = new ByteArrayOutputStream();\n    PrintStream ps = new PrintStream(baos, true, \"UTF-8\");\n    PrintStream old = System.err;\n    System.setErr(ps);\n\n    XRLog.setLoggerImpl(new Slf4jLogger());\n    runWithLogOutput();\n\n    ps.flush();\n    String log = baos.toString(\"UTF-8\");\n\n    old.println(log);\n    System.setErr(old);\n\n    Assert.assertThat(log, containsString(\"] [INFO]\"));\n    Assert.assertThat(log, containsString(\"] [WARN]\"));\n}\n\n@Test\npublic void testLoggerWarnLevel() throws IOException {\n    System.setProperty(\"org.slf4j.simpleLogger.defaultLogLevel\", \"warn\");\n    XRLog.setLoggerImpl(new Slf4jLogger());\n\n    runWithLogOutput();\n}",
+  "imports": ""
+}

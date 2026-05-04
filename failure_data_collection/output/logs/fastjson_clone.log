@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/alibaba/fastjson /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson'...

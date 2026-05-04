@@ -1,0 +1,54 @@
+[INFO] No suitable configuration file found, using defaults
+[INFO] Using jgitver-maven-plugin [1.5.1] (sha1: e45d1669b39cedb98720dd33cc14d0185b455ca1)
+[INFO]     version '2.0.7-SNAPSHOT' computed in 1378 ms
+[INFO] 
+[INFO] Scanning for projects...
+[INFO] jgitver-maven-plugin is about to change project(s) version(s)
+[INFO]     com.willwinder.universalgcodesender::ugs-parent::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder.universalgcodesender::ugs-core::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder.universalgcodesender::ugs-pendant::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder.universalgcodesender::ugs-classic::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-parent::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-branding::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-app::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-ugslib::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-ugscore::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-visualizer::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-workflow::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-gcode-editor::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-surfacescanner::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-jog::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-setup-wizard::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ProbeModule::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::DowelModule::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::GcodeTools::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-welcome-page::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-joystick::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-cloud-storage::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder::ugs-platform-plugin-toolbox::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO]     com.willwinder.universalgcodesender::ugs-cli::2.0-SNAPSHOT -> 2.0.7-SNAPSHOT
+[INFO] 
+[INFO] ------------< com.willwinder.universalgcodesender:ugs-core >------------
+[INFO] Building ugs-core 2.0.7-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 3 problems were encountered while building the effective model for com.miglayout:miglayout:jar:3.7.4 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- surefire:3.0.0-M4:test (default-cli) @ ugs-core ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.willwinder.universalgcodesender.GrblControllerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.778 s - in com.willwinder.universalgcodesender.GrblControllerTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.757 s
+[INFO] Finished at: 2026-05-03T00:56:28-04:00
+[INFO] ------------------------------------------------------------------------

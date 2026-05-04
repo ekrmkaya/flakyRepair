@@ -1,0 +1,32 @@
+@Before
+public void setUp() throws Exception {
+    output = new ByteArrayOutputStream();
+    factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));
+    this.oldSysOut = System.out;
+    // This forces auto-flush, which should help with buffering issues
+    this.newSysOut = new PrintStream(this.bos, true, StandardCharsets.UTF_8.name());
+    System.setOut(this.newSysOut);
+}
+
+@After
+public void tearDown() throws Exception {
+    factory.stop();
+    if (this.oldSysOut != null) {
+        System.setOut(this.oldSysOut);
+    }
+
+    if (this.newSysOut != null) {
+        this.newSysOut.close();
+    }
+
+    this.bos.reset();
+}
+
+@Test
+public void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {
+    Field field = StatusPrinter.class.getDeclaredField("ps");
+    field.setAccessible(true);
+
+    PrintStream out = (PrintStream) field.get(null);
+    assertThat(out).isSameAs(System.out);
+}

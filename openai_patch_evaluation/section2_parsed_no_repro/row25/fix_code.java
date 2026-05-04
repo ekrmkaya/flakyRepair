@@ -1,0 +1,24 @@
+    @Test
+    public void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {
+        // Given
+        GrblController instance = new GrblController(mgc);
+        instance.setDistanceModeCode("G90");
+        instance.setUnitsCode("G21");
+        instance.openCommPort(getSettings().getConnectionDriver(), "foo", 2400);
+
+        MessageService messageService = mock(MessageService.class);
+        instance.setMessageService(messageService);
+
+        // Set default locale to ensure consistent message
+        Locale.setDefault(new Locale("en", "US"));
+
+        // When
+        instance.rawResponseHandler("error:1");
+
+        // Then
+        String genericErrorMessage = "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\n";
+        verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+        verify(messageService, times(1)).dispatchMessage(any(), anyString());
+
+        assertFalse(instance.getActiveCommand().isPresent());
+    }

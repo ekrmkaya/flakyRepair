@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void assertWithoutEventTraceRdbConfiguration() {\n    Properties properties = new Properties();\n    ReflectionUtils.setFieldValue(bootstrapEnvironment, \"properties\", properties);\n    assertFalse(bootstrapEnvironment.getTracingConfiguration().isPresent());\n}\n\n@Test\npublic void assertGetEventTraceRdbConfigurationMap() {\n    Properties properties = new Properties();\n    properties.setProperty(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_DRIVER.getKey(), \"org.h2.Driver\");\n    properties.setProperty(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_URL.getKey(), \"jdbc:h2:mem:job_event_trace\");\n    properties.setProperty(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_USERNAME.getKey(), \"sa\");\n    properties.setProperty(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_PASSWORD.getKey(), \"password\");\n    ReflectionUtils.setFieldValue(bootstrapEnvironment, \"properties\", properties);\n    Map<String, String> jobEventRdbConfigurationMap = bootstrapEnvironment.getJobEventRdbConfigurationMap();\n    assertThat(jobEventRdbConfigurationMap.get(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_DRIVER.getKey()), is(\"org.h2.Driver\"));\n    assertThat(jobEventRdbConfigurationMap.get(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_URL.getKey()), is(\"jdbc:h2:mem:job_event_trace\"));\n    assertThat(jobEventRdbConfigurationMap.get(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_USERNAME.getKey()), is(\"sa\"));\n    assertThat(jobEventRdbConfigurationMap.get(BootstrapEnvironment.EnvironmentArgument.EVENT_TRACE_RDB_PASSWORD.getKey()), is(\"password\"));\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

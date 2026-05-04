@@ -1,0 +1,282 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: com.github.kevinsawicki.http.HttpRequestTest.putWithMappedQueryParams
+Polluter Test: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+REPRODUCTION STEPS:
+Steps required to reproduce failure: putWithMappedQueryParams passes when run alone but fails when run immediately after customConnectionFactory in the same JVM process (JDK 8, no restart between them). Same-class pair.
+
+ERROR INFORMATION:
+Error Messages: expected:<user> but was:<null>
+Failing Lines: assertEquals("user", outputParams.get("name"));
+
+CODE CONTEXT:
+Relevant Global Variables: private static String url;
+private static RequestHandler handler;
+Relevant Helper Methods:   @BeforeClass
+  public static void startServer() throws Exception {
+    url = setUp(new RequestHandler() {
+
+      @Override
+      public void handle(String target, Request baseRequest,
+          HttpServletRequest request, HttpServletResponse response)
+          throws IOException, ServletException {
+        if (handler != null)
+          handler.handle(target, baseRequest, request, response);
+      }
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        if (handler != null)
+          handler.handle(request, response);
+      }
+    });
+  }
+// ---
+  @After
+  public void clearHandler() {
+    handler = null;
+  }
+// ---
+// --- SUPERCLASS (ServerTestCase) ---
+  @Before
+  public void clearProxyHitCount() {
+    proxyHitCount.set(0);
+  }
+// ---
+  @AfterClass
+  public static void tearDown() throws Exception {
+    if (server != null)
+      server.stop();
+    if (proxy != null)
+      proxy.stop();
+  }
+Relevant Test Code: // VICTIM: com.github.kevinsawicki.http.HttpRequestTest.putWithMappedQueryParams
+  @Test
+  public void putWithMappedQueryParams() throws Exception {
+    Map<String, String> inputParams = new HashMap<String, String>();
+    inputParams.put("name", "user");
+    inputParams.put("number", "100");
+    final Map<String, String> outputParams = new HashMap<String, String>();
+    final AtomicReference<String> method = new AtomicReference<String>();
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        method.set(request.getMethod());
+        outputParams.put("name", request.getParameter("name"));
+        outputParams.put("number", request.getParameter("number"));
+        response.setStatus(HTTP_OK);
+      }
+    };
+    HttpRequest request = put(url, inputParams, false);
+    assertTrue(request.ok());
+    assertEquals("PUT", method.get());
+    assertEquals("user", outputParams.get("name"));
+    assertEquals("100", outputParams.get("number"));
+  }
+
+// POLLUTER: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+  @Test
+  public void customConnectionFactory() throws Exception {
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        response.setStatus(HTTP_OK);
+      }
+    };
+
+    ConnectionFactory factory = new ConnectionFactory() {
+
+      public HttpURLConnection create(URL otherUrl) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
+      }
+
+      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+        throw new IOException();
+      }
+    };
+
+    HttpRequest.setConnectionFactory(factory);
+    int code = get("http://not/a/real/url").code();
+    assertEquals(200, code);
+  }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT FAILED TO COMPILE
+--------------------------------------------------------------------------------
+
+A fix was generated from the instructions above and applied to the test file,
+but it did NOT compile. Below is the exact state that was compiled and the
+resulting errors so you can identify what needs to change.
+
+Fix code that was applied:
+//<attempted fix start>
+@Test
+public void putWithMappedQueryParams() throws Exception {
+  Map<String, String> inputParams = new HashMap<String, String>();
+  inputParams.put("name", "user");
+  inputParams.put("number", "100");
+  final Map<String, String> outputParams = new HashMap<String, String>();
+  final AtomicReference<String> method = new AtomicReference<String>();
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      method.set(request.getMethod());
+      outputParams.put("name", request.getParameter("name"));
+      outputParams.put("number", request.getParameter("number"));
+      response.setStatus(HTTP_OK);
+    }
+  };
+  HttpRequest request = put(url, inputParams, false);
+  assertTrue(request.ok());
+  assertEquals("PUT", method.get());
+  assertEquals("user", outputParams.get("name"));
+  assertEquals("100", outputParams.get("number"));
+}
+
+@Test
+public void customConnectionFactory() throws Exception {
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      response.setStatus(HTTP_OK);
+    }
+  };
+
+  ConnectionFactory factory = new ConnectionFactory() {
+
+    public HttpURLConnection create(URL otherUrl) throws IOException {
+      return (HttpURLConnection) new URL(url).openConnection();
+    }
+
+    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+      throw new IOException();
+    }
+  };
+
+  HttpRequest.setConnectionFactory(factory);
+  int code = get("http://not/a/real/url").code();
+  assertEquals(200, code);
+  HttpRequest.setConnectionFactory(HttpRequest.DEFAULT_CONNECTION_FACTORY);
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Compiler errors (most relevant lines):
+HttpRequestTest.java:[3480] error: cannot find symbol
+  -> HttpRequest.setConnectionFactory(HttpRequest.DEFAULT_CONNECTION_FACTORY);
+
+Please provide a corrected version that compiles successfully.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Preserve the original fix intent; only change what is necessary to compile.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- If the fix requires different or additional imports, include them in //<import start> ... //<import end>.
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+
+
+=== RESPONSE ===
+//<fix start>
+@Test
+public void putWithMappedQueryParams() throws Exception {
+  Map<String, String> inputParams = new HashMap<String, String>();
+  inputParams.put("name", "user");
+  inputParams.put("number", "100");
+  final Map<String, String> outputParams = new HashMap<String, String>();
+  final AtomicReference<String> method = new AtomicReference<String>();
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      method.set(request.getMethod());
+      outputParams.put("name", request.getParameter("name"));
+      outputParams.put("number", request.getParameter("number"));
+      response.setStatus(HTTP_OK);
+    }
+  };
+  HttpRequest request = put(url, inputParams, false);
+  assertTrue(request.ok());
+  assertEquals("PUT", method.get());
+  assertEquals("user", outputParams.get("name"));
+  assertEquals("100", outputParams.get("number"));
+}
+
+@Test
+public void customConnectionFactory() throws Exception {
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      response.setStatus(HTTP_OK);
+    }
+  };
+
+  ConnectionFactory factory = new ConnectionFactory() {
+
+    public HttpURLConnection create(URL otherUrl) throws IOException {
+      return (HttpURLConnection) new URL(url).openConnection();
+    }
+
+    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+      throw new IOException();
+    }
+  };
+
+  ConnectionFactory originalFactory = HttpRequest.getConnectionFactory();
+  HttpRequest.setConnectionFactory(factory);
+  int code = get("http://not/a/real/url").code();
+  assertEquals(200, code);
+  HttpRequest.setConnectionFactory(originalFactory);
+}
+//<fix end>

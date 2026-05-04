@@ -1,0 +1,28 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.github.jnr:jnr-posix >----------------------
+[INFO] Building jnr-posix 3.1.5-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- surefire:2.18.1:test (default-cli) @ jnr-posix ---
+[INFO] Surefire report directory: /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running jnr.posix.GroupTest
+Successfully loaded native POSIX impl.
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.064 sec - in jnr.posix.GroupTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.117 s
+[INFO] Finished at: 2026-05-03T00:56:57-04:00
+[INFO] ------------------------------------------------------------------------

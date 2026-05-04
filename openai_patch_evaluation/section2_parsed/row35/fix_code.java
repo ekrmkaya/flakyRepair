@@ -1,0 +1,44 @@
+  @Test
+  public void getUrlEncodedWithUnicode() throws Exception {
+    String unencoded = "/\u00DF";
+    final AtomicReference<String> path = new AtomicReference<String>();
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        path.set(request.getPathInfo());
+        response.setStatus(HTTP_OK);
+      }
+    };
+    HttpRequest request = get(encode(url + unencoded));
+    assertTrue(request.ok());
+    assertEquals(unencoded, path.get());
+    HttpRequest.setConnectionFactory(null);
+  }
+
+  @Test
+  public void customConnectionFactory() throws Exception {
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        response.setStatus(HTTP_OK);
+      }
+    };
+
+    ConnectionFactory factory = new ConnectionFactory() {
+
+      public HttpURLConnection create(URL otherUrl) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
+      }
+
+      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+        throw new IOException();
+      }
+    };
+
+    HttpRequest.setConnectionFactory(factory);
+    int code = get("http://not/a/real/url").code();
+    assertEquals(200, code);
+    HttpRequest.setConnectionFactory(null);
+  }

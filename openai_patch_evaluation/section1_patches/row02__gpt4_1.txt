@@ -1,0 +1,60 @@
+victim: com.github.kevinsawicki.http.HttpRequestTest.putWithEscapedMappedQueryParams
+polluter: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+source: https://github.com/kevinsawicki/http-request
+=== OUTPUT ===
+//<fix start>
+@Before
+public void resetConnectionFactory() {
+    HttpRequest.setConnectionFactory(HttpRequest.DEFAULT_CONNECTION_FACTORY);
+}
+
+@Test
+public void putWithEscapedMappedQueryParams() throws Exception {
+    Map<String, String> inputParams = new HashMap<String, String>();
+    inputParams.put("name", "us er");
+    inputParams.put("number", "100");
+    final Map<String, String> outputParams = new HashMap<String, String>();
+    final AtomicReference<String> method = new AtomicReference<String>();
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        method.set(request.getMethod());
+        outputParams.put("name", request.getParameter("name"));
+        outputParams.put("number", request.getParameter("number"));
+        response.setStatus(HTTP_OK);
+      }
+    };
+    HttpRequest request = put(url, inputParams, true);
+    assertTrue(request.ok());
+    assertEquals("PUT", method.get());
+    assertEquals("us er", outputParams.get("name"));
+    assertEquals("100", outputParams.get("number"));
+}
+
+@Test
+public void customConnectionFactory() throws Exception {
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        response.setStatus(HTTP_OK);
+      }
+    };
+
+    ConnectionFactory factory = new ConnectionFactory() {
+
+      public HttpURLConnection create(URL otherUrl) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
+      }
+
+      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+        throw new IOException();
+      }
+    };
+
+    HttpRequest.setConnectionFactory(factory);
+    int code = get("http://not/a/real/url").code();
+    assertEquals(200, code);
+}
+//<fix end>

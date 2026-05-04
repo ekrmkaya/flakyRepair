@@ -1,0 +1,76 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.alibaba:fastjson:jar:1.2.51_preview_09
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-gpg-plugin is missing. @ line 160, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 128, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-source-plugin is missing. @ line 112, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-javadoc-plugin is missing. @ line 138, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------------< com.alibaba:fastjson >------------------------
+[INFO] Building fastjson 1.2.51_preview_09
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Ignoring incompatible plugin version 4.0.0-beta-1: 
+The plugin org.apache.maven.plugins:maven-source-plugin:4.0.0-beta-1 has unmet prerequisites: 
+	Required Java version 17 is not met by current version: 1.8.0_292
+	Required Maven version 4.0.0-beta-3 is not met by current version 3.9.12
+[INFO] Latest version of plugin org.apache.maven.plugins:maven-source-plugin failed compatibility check
+[INFO] Looking for compatible RELEASE version of plugin org.apache.maven.plugins:maven-source-plugin
+[INFO] Selected plugin org.apache.maven.plugins:maven-source-plugin:3.4.0
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ fastjson ---
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ fastjson ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ fastjson ---
+[INFO] Copying 94 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ fastjson ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2496 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/target/test-classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/util/AntiCollisionHashMapTest.java: Some input files use or override a deprecated API.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/util/AntiCollisionHashMapTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/path/JSONPath_list_range.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/path/JSONPath_list_range.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/fastjson/parser/JSONScannerTest.java:[26,25] sun.util.calendar.ZoneInfo is internal proprietary API and may be removed in a future release
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/fastjson/parser/JSONScannerTest.java:[26,25] sun.util.calendar.ZoneInfo is internal proprietary API and may be removed in a future release
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/fastjson/parser/JSONScannerTest.java:[26,25] sun.util.calendar.ZoneInfo is internal proprietary API and may be removed in a future release
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/fastjson/parser/JSONScannerTest.java:[26,25] sun.util.calendar.ZoneInfo is internal proprietary API and may be removed in a future release
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/fastjson/parser/JSONScannerTest.java:[26,25] sun.util.calendar.ZoneInfo is internal proprietary API and may be removed in a future release
+[INFO] 5 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/serializer/MaxBufSizeTest.java:[13,11] cannot find symbol
+  symbol:   method reset()
+  location: variable writer of type com.alibaba.fastjson.serializer.SerializeWriter
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.487 s
+[INFO] Finished at: 2026-05-03T02:38:23-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.5.1:testCompile (default-testCompile) on project fastjson: Compilation failure
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/fastjson/src/test/java/com/alibaba/json/bvt/serializer/MaxBufSizeTest.java:[13,11] cannot find symbol
+[ERROR]   symbol:   method reset()
+[ERROR]   location: variable writer of type com.alibaba.fastjson.serializer.SerializeWriter
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

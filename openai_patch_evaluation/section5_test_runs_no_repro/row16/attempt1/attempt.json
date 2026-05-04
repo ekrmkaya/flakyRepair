@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void assertGetCurrentShardingTotalCountIfNull() {\n    JobRegistry.getInstance().setCurrentShardingTotalCount(\"exist_job_instance\", 0);\n    assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(\"exist_job_instance\"), is(0));\n}\n\n@Test\npublic void assertGetCurrentShardingTotalCountIfNotNull() {\n    JobRegistry.getInstance().setCurrentShardingTotalCount(\"exist_job_instance\", 10);\n    assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(\"exist_job_instance\"), is(10));\n    JobRegistry.getInstance().setCurrentShardingTotalCount(\"exist_job_instance\", 0);\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

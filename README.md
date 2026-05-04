@@ -66,6 +66,7 @@ flakyRepair/
 ├── data/                              Input datasets (CSV)
 │   └── final_OD_flaky_tests.csv       50 OD flaky test pairs
 ├── failure_data_collection/           Stage 1: reproduce and extract
+│   ├── README.md                      Stage 1 documentation
 │   ├── pipeline.py                    Orchestrator (steps 1-5)
 │   ├── config.py                      Java paths, timeouts, strategies
 │   ├── step1_setup.py                 Clone, checkout, Java detection
@@ -74,8 +75,10 @@ flakyRepair/
 │   ├── step4_extract.py               Code + error extraction
 │   ├── step5_assemble.py              JSON assembly
 │   ├── repro_strategies.py            Repo-specific reproduction logic
+│   ├── requirements.txt               Python dependencies for Stage 1
 │   └── output/                        Generated (gitignored)
 ├── openai_patch_evaluation/           Stage 2: GPT-4 patch evaluation
+│   ├── README.md                      Stage 2 documentation
 │   ├── run_experiment.sh              Full pipeline runner
 │   ├── section1_generate_patches.py   GPT-4 prompting
 │   ├── section2_parse_patches.py      Parse fix/import/pom blocks
@@ -84,6 +87,8 @@ flakyRepair/
 │   ├── section6_categorize.py         Outcome categorization
 │   ├── section7_assemble_csv.py       Final CSV assembly
 │   ├── test_execution.py              Shared test execution utilities
+│   ├── requirements.txt               Python dependencies for Stage 2
+│   ├── logs/                          Pipeline execution logs (gitignored)
 │   └── section7_results/              Generated (gitignored)
 └── repos/                             Cloned Java projects (gitignored)
 ```

@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": "PASS",
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "@Test\npublic void testGenericsListenerDefaultConstructorThrows() {\n    try {\n        SentenceFactory.getInstance().reset();\n        GenericsListener<Integer, AISMessage01> gl = new GenericsListener<>();\n        fail(\"exception not thrown, resolved to \" + gl.messageType);\n    } catch (IllegalStateException ise) {\n        assertEquals(\"Cannot resolve generic type <T>, use constructor with Class<T> param.\", ise.getMessage());\n    } catch (Exception e) {\n        fail(\"unexpected exception thrown: \" + e.getMessage());\n    }\n}\n\n@Test\npublic void testRegisterParserWithAlternativeBeginChar() {\n    try {\n        SentenceFactory.getInstance().registerParser(\"VDM\", VDMParser.class);\n        assertTrue(SentenceFactory.getInstance().hasParser(\"VDM\"));\n    } catch (Exception e) {\n        fail(\"parser registering failed\");\n    }\n\n    Sentence s = SentenceFactory.getInstance().createParser(\"!AIVDM,1,2,3\");\n    assertNotNull(s);\n    assertTrue(s instanceof Sentence);\n    assertTrue(s instanceof SentenceParser);\n    assertTrue(s instanceof VDMParser);\n    SentenceFactory.getInstance().unregisterParser(VDMParser.class);\n    assertFalse(SentenceFactory.getInstance().hasParser(\"VDM\"));\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

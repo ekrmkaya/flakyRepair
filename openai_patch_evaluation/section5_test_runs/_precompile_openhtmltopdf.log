@@ -1,0 +1,689 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Openhtmltopdf                                                      [pom]
+[INFO] Openhtmltopdf Core Renderer                                        [jar]
+[INFO] Openhtmltopdf PDF Rendering (Apache PDF-BOX 2)                     [jar]
+[INFO] Openhtmltopdf slf4j Support                                        [jar]
+[INFO] Openhtmltopdf RTL Support                                          [jar]
+[INFO] Openhtmltopdf SVG Support                                          [jar]
+[INFO] Openhtmltopdf MathML Support                                       [jar]
+[INFO] Openhtmltopdf Image Rendering (Java2D)                             [jar]
+[INFO] Openhtmltopdf PDF Rendering (Apache PDF-BOX 2)                     [jar]
+[INFO] Openhtmltopdf Latex Math Support                                   [jar]
+[INFO] Openhtmltopdf Examples                                             [jar]
+[INFO] Openhtmltopdf PDF/A Testing                                        [jar]
+[INFO] Openhtmltopdf Templates                                            [jar]
+[INFO] 
+[INFO] ---------------< com.openhtmltopdf:openhtmltopdf-parent >---------------
+[INFO] Building Openhtmltopdf 1.0.5-SNAPSHOT                             [1/13]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ----------------< com.openhtmltopdf:openhtmltopdf-core >----------------
+[INFO] Building Openhtmltopdf Core Renderer 1.0.5-SNAPSHOT               [2/13]
+[INFO]   from openhtmltopdf-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-core ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-core ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-core ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-core/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] ---------------< com.openhtmltopdf:openhtmltopdf-pdfbox >---------------
+[INFO] Building Openhtmltopdf PDF Rendering (Apache PDF-BOX 2) 1.0.5-SNAPSHOT [3/13]
+[INFO]   from openhtmltopdf-pdfbox/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-pdfbox ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-pdfbox ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-pdfbox ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-pdfbox ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-pdfbox/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-pdfbox ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] ---------------< com.openhtmltopdf:openhtmltopdf-slf4j >----------------
+[INFO] Building Openhtmltopdf slf4j Support 1.0.5-SNAPSHOT               [4/13]
+[INFO]   from openhtmltopdf-slf4j/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-slf4j ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-slf4j ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-slf4j ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-slf4j ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-slf4j/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-slf4j ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-slf4j/target/test-classes
+[INFO] 
+[INFO] ------------< com.openhtmltopdf:openhtmltopdf-rtl-support >-------------
+[INFO] Building Openhtmltopdf RTL Support 1.0.5-SNAPSHOT                 [5/13]
+[INFO]   from openhtmltopdf-rtl-support/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.pom (5.0 kB at 10 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar (12 MB at 26 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-rtl-support ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-rtl-support ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-rtl-support/target/classes
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-rtl-support ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-rtl-support ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-rtl-support/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-rtl-support ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] ------------< com.openhtmltopdf:openhtmltopdf-svg-support >-------------
+[INFO] Building Openhtmltopdf SVG Support 1.0.5-SNAPSHOT                 [6/13]
+[INFO]   from openhtmltopdf-svg-support/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.12/batik-transcoder-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.12/batik-transcoder-1.12.pom (3.3 kB at 58 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik/1.12/batik-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik/1.12/batik-1.12.pom (6.6 kB at 147 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.12/batik-anim-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.12/batik-anim-1.12.pom (3.1 kB at 86 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.12/batik-awt-util-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.12/batik-awt-util-1.12.pom (2.1 kB at 59 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.12/batik-util-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.12/batik-util-1.12.pom (3.3 kB at 86 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.12/batik-constants-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.12/batik-constants-1.12.pom (1.8 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.12/batik-i18n-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.12/batik-i18n-1.12.pom (1.7 kB at 19 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.pom (3.5 kB at 94 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.pom (6.8 kB at 161 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.12/batik-css-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.12/batik-css-1.12.pom (2.3 kB at 60 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom (1.8 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.12/batik-dom-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.12/batik-dom-1.12.pom (2.9 kB at 78 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.12/batik-ext-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.12/batik-ext-1.12.pom (1.7 kB at 41 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.12/batik-xml-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.12/batik-xml-1.12.pom (1.9 kB at 46 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.12/batik-parser-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.12/batik-parser-1.12.pom (2.5 kB at 52 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12.pom (2.9 kB at 60 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.12/batik-bridge-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.12/batik-bridge-1.12.pom (4.0 kB at 99 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.12/batik-gvt-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.12/batik-gvt-1.12.pom (2.1 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12.pom (2.8 kB at 73 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.12/batik-svggen-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.12/batik-svggen-1.12.pom (2.1 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.12/batik-codec-1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.12/batik-codec-1.12.pom (2.5 kB at 66 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.12/batik-transcoder-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.12/batik-css-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.12/batik-anim-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.12/batik-parser-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.12/batik-css-1.12.jar (325 kB at 5.1 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.12/batik-awt-util-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.12/batik-awt-util-1.12.jar (422 kB at 2.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.12/batik-bridge-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-bridge/1.12/batik-bridge-1.12.jar (696 kB at 2.6 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-transcoder/1.12/batik-transcoder-1.12.jar (129 kB at 409 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.12/batik-dom-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.12/batik-parser-1.12.jar (77 kB at 244 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.12/batik-gvt-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-script/1.12/batik-script-1.12.jar (26 kB at 80 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.12/batik-svggen-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.12/batik-svg-dom-1.12.jar (232 kB at 699 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.12/batik-util-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-anim/1.12/batik-anim-1.12.jar (479 kB at 1.4 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.12/batik-constants-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.12/batik-dom-1.12.jar (183 kB at 490 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-gvt/1.12/batik-gvt-1.12.jar (191 kB at 512 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svggen/1.12/batik-svggen-1.12.jar (225 kB at 603 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.12/batik-constants-1.12.jar (8.3 kB at 22 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.12/batik-xml-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.12/batik-i18n-1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.12/batik-codec-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.12/batik-util-1.12.jar (127 kB at 321 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.12/batik-ext-1.12.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.12/batik-xml-1.12.jar (33 kB at 79 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.12/batik-ext-1.12.jar (10 kB at 24 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.12/batik-i18n-1.12.jar (11 kB at 27 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar (86 kB at 203 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-codec/1.12/batik-codec-1.12.jar (112 kB at 263 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar (84 kB at 187 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar (674 kB at 1.5 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-svg-support ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-svg-support ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-svg-support/target/classes
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-svg-support ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-svg-support ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-svg-support/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-svg-support ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] -----------< com.openhtmltopdf:openhtmltopdf-mathml-support >-----------
+[INFO] Building Openhtmltopdf MathML Support 1.0.5-SNAPSHOT              [7/13]
+[INFO]   from openhtmltopdf-mathml-support/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-core/3.1.12/jeuclid-core-3.1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-core/3.1.12/jeuclid-core-3.1.12.pom (7.4 kB at 127 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-parent/3.1.12/jeuclid-parent-3.1.12.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-parent/3.1.12/jeuclid-parent-3.1.12.pom (14 kB at 515 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.9/batik-svg-dom-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.9/batik-svg-dom-1.9.pom (4.3 kB at 170 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.9/batik-awt-util-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-awt-util/1.9/batik-awt-util-1.9.pom (3.2 kB at 118 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.9/batik-util-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-util/1.9/batik-util-1.9.pom (3.3 kB at 105 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.9/batik-constants-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-constants/1.9/batik-constants-1.9.pom (3.0 kB at 120 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.9/batik-i18n-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-i18n/1.9/batik-i18n-1.9.pom (3.0 kB at 88 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.9/batik-css-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.9/batik-css-1.9.pom (3.6 kB at 125 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.2/xmlgraphics-commons-2.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/2.2/xmlgraphics-commons-2.2.pom (3.5 kB at 120 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.9/batik-dom-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-dom/1.9/batik-dom-1.9.pom (4.1 kB at 136 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.9/batik-ext-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-ext/1.9/batik-ext-1.9.pom (3.0 kB at 132 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.9/batik-xml-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-xml/1.9/batik-xml-1.9.pom (3.2 kB at 128 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.9/batik-parser-1.9.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.9/batik-parser-1.9.pom (3.8 kB at 131 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.3.1/xmlgraphics-commons-1.3.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/xmlgraphics-commons/1.3.1/xmlgraphics-commons-1.3.1.pom (3.4 kB at 109 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-core/3.1.12/jeuclid-core-3.1.12.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.9/batik-svg-dom-1.9.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.9/batik-css-1.9.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.9/batik-parser-1.9.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-parser/1.9/batik-parser-1.9.jar (76 kB at 1.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-svg-dom/1.9/batik-svg-dom-1.9.jar (233 kB at 4.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/batik-css/1.9/batik-css-1.9.jar (325 kB at 6.8 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/jeuclid/jeuclid-core/3.1.12/jeuclid-core-3.1.12.jar (519 kB at 9.8 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-mathml-support ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-mathml-support ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-mathml-support/target/classes
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-mathml-support ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-mathml-support ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-mathml-support/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-mathml-support ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] ---------------< com.openhtmltopdf:openhtmltopdf-java2d >---------------
+[INFO] Building Openhtmltopdf Image Rendering (Java2D) 1.0.5-SNAPSHOT    [8/13]
+[INFO]   from openhtmltopdf-java2d/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-java2d ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-java2d ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/target/classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/main/java/com/openhtmltopdf/java2d/Java2DRenderer.java: Some input files use or override a deprecated API.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/main/java/com/openhtmltopdf/java2d/Java2DRenderer.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/main/java/com/openhtmltopdf/java2d/Java2DTextRenderer.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/main/java/com/openhtmltopdf/java2d/Java2DTextRenderer.java uses unchecked or unsafe operations.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/main/java/com/openhtmltopdf/java2d/Java2DTextRenderer.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-java2d ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-java2d ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-java2d/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-java2d ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --------------< com.openhtmltopdf:openhtmltopdf-objects >---------------
+[INFO] Building Openhtmltopdf PDF Rendering (Apache PDF-BOX 2) 1.0.5-SNAPSHOT [9/13]
+[INFO]   from openhtmltopdf-objects/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from ApacheSnapshot: https://repository.apache.org/content/groups/snapshots/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.pom (8.5 kB at 177 kB/s)
+[INFO] Downloading from ApacheSnapshot: https://repository.apache.org/content/groups/snapshots/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar (1.6 MB at 22 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-objects ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-objects ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-objects/target/classes
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-objects ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-objects ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-objects/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-objects ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] -----------< com.openhtmltopdf:openhtmltopdf-latex-support >------------
+[INFO] Building Openhtmltopdf Latex Math Support 1.0.5-SNAPSHOT         [10/13]
+[INFO]   from openhtmltopdf-latex-support/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex-core/1.3.0/snuggletex-core-1.3.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex-core/1.3.0/snuggletex-core-1.3.0.pom (4.6 kB at 85 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex/1.3.0/snuggletex-1.3.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex/1.3.0/snuggletex-1.3.0.pom (6.3 kB at 225 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex-core/1.3.0/snuggletex-core-1.3.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/de/rototor/snuggletex/snuggletex-core/1.3.0/snuggletex-core-1.3.0.jar (382 kB at 11 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-latex-support ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-latex-support ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-latex-support/target/classes
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-latex-support ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-latex-support ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-latex-support/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-latex-support ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --------------< com.openhtmltopdf:openhtmltopdf-examples >--------------
+[INFO] Building Openhtmltopdf Examples 1.0.5-SNAPSHOT                   [11/13]
+[INFO]   from openhtmltopdf-examples/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark/0.19.6/flexmark-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark/0.19.6/flexmark-0.19.6.pom (2.3 kB at 59 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-java/0.19.6/flexmark-java-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-java/0.19.6/flexmark-java-0.19.6.pom (17 kB at 717 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-util/0.19.6/flexmark-util-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-util/0.19.6/flexmark-util-0.19.6.pom (791 B at 33 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.19.6/flexmark-ext-anchorlink-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.19.6/flexmark-ext-anchorlink-0.19.6.pom (1.6 kB at 64 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.19.6/flexmark-formatter-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.19.6/flexmark-formatter-0.19.6.pom (1.1 kB at 42 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-toc/0.19.6/flexmark-ext-toc-0.19.6.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-toc/0.19.6/flexmark-ext-toc-0.19.6.pom (1.3 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.27-incubating/freemarker-2.3.27-incubating.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.27-incubating/freemarker-2.3.27-incubating.pom (3.5 kB at 125 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark/0.19.6/flexmark-0.19.6.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-util/0.19.6/flexmark-util-0.19.6.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.19.6/flexmark-ext-anchorlink-0.19.6.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.19.6/flexmark-formatter-0.19.6.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-toc/0.19.6/flexmark-ext-toc-0.19.6.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-toc/0.19.6/flexmark-ext-toc-0.19.6.jar (88 kB at 2.8 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.27-incubating/freemarker-2.3.27-incubating.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.19.6/flexmark-ext-anchorlink-0.19.6.jar (17 kB at 478 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.19.6/flexmark-formatter-0.19.6.jar (73 kB at 1.9 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark/0.19.6/flexmark-0.19.6.jar (359 kB at 7.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/vladsch/flexmark/flexmark-util/0.19.6/flexmark-util-0.19.6.jar (278 kB at 5.8 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/freemarker/freemarker/2.3.27-incubating/freemarker-2.3.27-incubating.jar (1.5 MB at 15 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-examples ---
+[INFO] Copying 620 resources from src/main/resources to target/classes
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-examples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 11 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/target/classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/src/main/java/VerifyGlyphExists.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/src/main/java/VerifyGlyphExists.java uses or overrides a deprecated API.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/src/main/java/VerifyGlyphExists.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-examples ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-examples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-examples/target/test-classes
+[INFO] 
+[INFO] ------------< com.openhtmltopdf:openhtmltopdf-pdfa-testing >------------
+[INFO] Building Openhtmltopdf PDF/A Testing 1.0.5-SNAPSHOT              [12/13]
+[INFO]   from openhtmltopdf-pdfa-testing/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/validation-model/1.14.102/validation-model-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/validation-model/1.14.102/validation-model-1.14.102.pom (2.4 kB at 32 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/validation/1.14.102/validation-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/validation/1.14.102/validation-1.14.102.pom (6.0 kB at 171 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.3/verapdf-parent-1.14.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.3/verapdf-parent-1.14.3.pom (17 kB at 170 kB/s)
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/verapdf/parser/maven-metadata.xml
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/parser/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/maven-metadata.xml (1.5 kB at 11 kB/s)
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/parser/maven-metadata.xml (8.3 kB at 9.8 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.1-RC/parser-1.14.1-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.1-RC/parser-1.14.1-RC.pom (5.4 kB at 146 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.1/verapdf-parent-1.14.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.1/verapdf-parent-1.14.1.pom (16 kB at 384 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.1/parser-1.14.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.1/parser-1.14.1.pom (5.4 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.2/verapdf-parent-1.14.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.2/verapdf-parent-1.14.2.pom (17 kB at 381 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.2-RC/parser-1.14.2-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.2-RC/parser-1.14.2-RC.pom (5.4 kB at 43 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.3-RC/parser-1.14.3-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.3-RC/parser-1.14.3-RC.pom (5.4 kB at 50 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.4-RC/parser-1.14.4-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.4-RC/parser-1.14.4-RC.pom (5.4 kB at 174 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.5-RC/parser-1.14.5-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.5-RC/parser-1.14.5-RC.pom (5.4 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.6-RC/parser-1.14.6-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.6-RC/parser-1.14.6-RC.pom (5.4 kB at 41 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.7-RC/parser-1.14.7-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.7-RC/parser-1.14.7-RC.pom (5.4 kB at 83 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.9-RC/parser-1.14.9-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.9-RC/parser-1.14.9-RC.pom (5.4 kB at 102 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.10-RC/parser-1.14.10-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.10-RC/parser-1.14.10-RC.pom (5.4 kB at 126 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.11-RC/parser-1.14.11-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.11-RC/parser-1.14.11-RC.pom (5.4 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.100/parser-1.14.100.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.100/parser-1.14.100.pom (5.4 kB at 54 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.101/parser-1.14.101.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.101/parser-1.14.101.pom (5.4 kB at 47 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.102/parser-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.102/parser-1.14.102.pom (5.4 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.4/verapdf-parent-1.14.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-parent/1.14.4/verapdf-parent-1.14.4.pom (17 kB at 527 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.103/parser-1.14.103.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.103/parser-1.14.103.pom (5.4 kB at 208 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.104/parser-1.14.104.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.104/parser-1.14.104.pom (5.4 kB at 58 kB/s)
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/verapdf/pdf-model/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/maven-metadata.xml
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/maven-metadata.xml (1.1 kB at 27 kB/s)
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/maven-metadata.xml (5.2 kB at 45 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.1-RC/pdf-model-1.14.1-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.1-RC/pdf-model-1.14.1-RC.pom (6.8 kB at 219 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.1/pdf-model-1.14.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.1/pdf-model-1.14.1.pom (6.8 kB at 72 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.2-RC/pdf-model-1.14.2-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.2-RC/pdf-model-1.14.2-RC.pom (6.8 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.3/pdf-model-1.14.3.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/1.14.3/pdf-model-1.14.3.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/1.14.3/pdf-model-1.14.3.pom (6.4 kB at 41 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.30-RC/pdf-model-1.14.30-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.30-RC/pdf-model-1.14.30-RC.pom (6.8 kB at 54 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.35-RC/pdf-model-1.14.35-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.35-RC/pdf-model-1.14.35-RC.pom (6.8 kB at 158 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.52/pdf-model-1.14.52.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/1.14.52/pdf-model-1.14.52.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/pdf-model/1.14.52/pdf-model-1.14.52.pom (6.4 kB at 45 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.100/pdf-model-1.14.100.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.100/pdf-model-1.14.100.pom (6.8 kB at 44 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.101/pdf-model-1.14.101.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.101/pdf-model-1.14.101.pom (6.8 kB at 189 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.102/pdf-model-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.102/pdf-model-1.14.102.pom (6.8 kB at 59 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103.pom (6.8 kB at 70 kB/s)
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/verapdf/core/maven-metadata.xml
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/maven-metadata.xml (1.4 kB at 41 kB/s)
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/maven-metadata.xml (13 kB at 108 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.1-RC/core-1.14.1-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.1-RC/core-1.14.1-RC.pom (3.3 kB at 130 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.1-RC/verapdf-library-1.14.1-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.1-RC/verapdf-library-1.14.1-RC.pom (6.1 kB at 160 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.1-RC/verapdf-xmp-core-1.14.1-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.1-RC/verapdf-xmp-core-1.14.1-RC.pom (1.8 kB at 64 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/mozilla/rhino/1.7.11/rhino-1.7.11.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/mozilla/rhino/1.7.11/rhino-1.7.11.pom (1.3 kB at 40 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.pom (20 kB at 547 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api-parent/2.4.0-b180830.0359/jaxb-api-parent-2.4.0-b180830.0359.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api-parent/2.4.0-b180830.0359/jaxb-api-parent-2.4.0-b180830.0359.pom (8.1 kB at 280 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.3.2/jaxb-impl-2.3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.3.2/jaxb-impl-2.3.2.pom (13 kB at 460 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/2.3.2/jaxb-bundles-2.3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/2.3.2/jaxb-bundles-2.3.2.pom (1.3 kB at 15 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/2.3.2/jaxb-parent-2.3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/2.3.2/jaxb-parent-2.3.2.pom (30 kB at 726 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/2.3.2/jaxb-bom-ext-2.3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/2.3.2/jaxb-bom-ext-2.3.2.pom (3.1 kB at 121 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/2.3.2/jaxb-bom-2.3.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/2.3.2/jaxb-bom-2.3.2.pom (8.0 kB at 229 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.pom (16 kB at 622 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/2.3.0.1/jaxb-bundles-2.3.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-bundles/2.3.0.1/jaxb-bundles-2.3.0.1.pom (2.9 kB at 122 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/2.3.0.1/jaxb-parent-2.3.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/2.3.0.1/jaxb-parent-2.3.0.1.pom (43 kB at 1.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/2.3.0.1/jaxb-bom-ext-2.3.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/2.3.0.1/jaxb-bom-ext-2.3.0.1.pom (5.4 kB at 200 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/2.3.0.1/jaxb-bom-2.3.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/2.3.0.1/jaxb-bom-2.3.0.1.pom (11 kB at 444 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/stax-utils/stax-utils/20070216/stax-utils-20070216.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/stax-utils/stax-utils/20070216/stax-utils-20070216.pom (1.2 kB at 32 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.1/core-1.14.1.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/1.14.1/core-1.14.1.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/1.14.1/core-1.14.1.pom (3.2 kB at 28 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.1/verapdf-library-1.14.1.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-library/1.14.1/verapdf-library-1.14.1.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-library/1.14.1/verapdf-library-1.14.1.pom (6.1 kB at 46 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.1/verapdf-xmp-core-1.14.1.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/1.14.1/verapdf-xmp-core-1.14.1.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/1.14.1/verapdf-xmp-core-1.14.1.pom (1.8 kB at 16 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.2-RC/core-1.14.2-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.2-RC/core-1.14.2-RC.pom (3.3 kB at 27 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.2-RC/verapdf-library-1.14.2-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.2-RC/verapdf-library-1.14.2-RC.pom (6.1 kB at 63 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.2-RC/verapdf-xmp-core-1.14.2-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.2-RC/verapdf-xmp-core-1.14.2-RC.pom (1.8 kB at 27 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.2/core-1.14.2.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/1.14.2/core-1.14.2.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/core/1.14.2/core-1.14.2.pom (3.2 kB at 27 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.2/verapdf-library-1.14.2.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-library/1.14.2/verapdf-library-1.14.2.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-library/1.14.2/verapdf-library-1.14.2.pom (6.1 kB at 55 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.2/verapdf-xmp-core-1.14.2.pom
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/1.14.2/verapdf-xmp-core-1.14.2.pom
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/1.14.2/verapdf-xmp-core-1.14.2.pom (1.8 kB at 15 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.3-RC/core-1.14.3-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.3-RC/core-1.14.3-RC.pom (3.3 kB at 105 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.3-RC/verapdf-library-1.14.3-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.3-RC/verapdf-library-1.14.3-RC.pom (6.1 kB at 225 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.3-RC/verapdf-xmp-core-1.14.3-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.3-RC/verapdf-xmp-core-1.14.3-RC.pom (1.8 kB at 17 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.6-RC/core-1.14.6-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.6-RC/core-1.14.6-RC.pom (3.3 kB at 74 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.6-RC/verapdf-library-1.14.6-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.6-RC/verapdf-library-1.14.6-RC.pom (6.1 kB at 53 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.6-RC/verapdf-xmp-core-1.14.6-RC.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.6-RC/verapdf-xmp-core-1.14.6-RC.pom (1.8 kB at 17 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.100/core-1.14.100.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.100/core-1.14.100.pom (3.3 kB at 102 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.100/verapdf-library-1.14.100.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.100/verapdf-library-1.14.100.pom (6.1 kB at 225 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.100/verapdf-xmp-core-1.14.100.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.100/verapdf-xmp-core-1.14.100.pom (1.8 kB at 32 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.101/core-1.14.101.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.101/core-1.14.101.pom (3.3 kB at 40 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.101/verapdf-library-1.14.101.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.101/verapdf-library-1.14.101.pom (6.1 kB at 108 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.101/verapdf-xmp-core-1.14.101.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.101/verapdf-xmp-core-1.14.101.pom (1.8 kB at 57 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.102/core-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.102/core-1.14.102.pom (3.3 kB at 29 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.102/verapdf-library-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.102/verapdf-library-1.14.102.pom (6.1 kB at 202 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.102/verapdf-xmp-core-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.102/verapdf-xmp-core-1.14.102.pom (1.8 kB at 17 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.103/core-1.14.103.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.103/core-1.14.103.pom (3.3 kB at 108 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.103/verapdf-library-1.14.103.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.103/verapdf-library-1.14.103.pom (6.1 kB at 225 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.103/verapdf-xmp-core-1.14.103.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.103/verapdf-xmp-core-1.14.103.pom (1.8 kB at 74 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.105/core-1.14.105.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.105/core-1.14.105.pom (3.3 kB at 120 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.105/verapdf-library-1.14.105.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-library/1.14.105/verapdf-library-1.14.105.pom (6.1 kB at 138 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.105/verapdf-xmp-core-1.14.105.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.105/verapdf-xmp-core-1.14.105.pom (1.8 kB at 14 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/feature-reporting/1.14.102/feature-reporting-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/feature-reporting/1.14.102/feature-reporting-1.14.102.pom (2.6 kB at 24 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/metadata-fixer/1.14.102/metadata-fixer-1.14.102.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/metadata-fixer/1.14.102/metadata-fixer-1.14.102.pom (2.2 kB at 88 kB/s)
+[INFO] Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/verapdf/verapdf-xmp-core/maven-metadata.xml
+[INFO] Downloading from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/maven-metadata.xml (1.2 kB at 31 kB/s)
+[INFO] Downloaded from vera-dev: https://artifactory.openpreservation.org/artifactory/vera-dev/org/verapdf/verapdf-xmp-core/maven-metadata.xml (14 kB at 67 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/validation-model/1.14.102/validation-model-1.14.102.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.104/parser-1.14.104.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.105/verapdf-xmp-core-1.14.105.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.105/core-1.14.105.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/pdf-model/1.14.103/pdf-model-1.14.103.jar (111 kB at 1.7 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/mozilla/rhino/1.7.11/rhino-1.7.11.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/parser/1.14.104/parser-1.14.104.jar (1.9 MB at 22 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.jar (128 kB at 1.1 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.3.2/jaxb-impl-2.3.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/mozilla/rhino/1.7.11/rhino-1.7.11.jar (1.3 MB at 11 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/validation-model/1.14.102/validation-model-1.14.102.jar (317 kB at 2.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/stax-utils/stax-utils/20070216/stax-utils-20070216.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/verapdf-xmp-core/1.14.105/verapdf-xmp-core-1.14.105.jar (143 kB at 961 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/feature-reporting/1.14.102/feature-reporting-1.14.102.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-impl/2.3.2/jaxb-impl-2.3.2.jar (1.0 MB at 6.7 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/verapdf/metadata-fixer/1.14.102/metadata-fixer-1.14.102.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.jar (255 kB at 1.7 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/stax-utils/stax-utils/20070216/stax-utils-20070216.jar (129 kB at 770 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/core/1.14.105/core-1.14.105.jar (674 kB at 4.0 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/metadata-fixer/1.14.102/metadata-fixer-1.14.102.jar (35 kB at 194 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/verapdf/feature-reporting/1.14.102/feature-reporting-1.14.102.jar (80 kB at 424 kB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-pdfa-testing ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-pdfa-testing/src/main/resources
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-pdfa-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-pdfa-testing ---
+[INFO] Copying 9 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-pdfa-testing ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-pdfa-testing/target/test-classes
+[INFO] 
+[INFO] -------------< com.openhtmltopdf:openhtmltopdf-templates >--------------
+[INFO] Building Openhtmltopdf Templates 1.0.5-SNAPSHOT                  [13/13]
+[INFO]   from openhtmltopdf-templates/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.0.11.RELEASE/thymeleaf-3.0.11.RELEASE.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.0.11.RELEASE/thymeleaf-3.0.11.RELEASE.pom (12 kB at 168 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.pom (10 kB at 274 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.pom (10.0 kB at 237 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/extras/thymeleaf-extras-java8time/3.0.4.RELEASE/thymeleaf-extras-java8time-3.0.4.RELEASE.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/extras/thymeleaf-extras-java8time/3.0.4.RELEASE/thymeleaf-extras-java8time-3.0.4.RELEASE.pom (14 kB at 381 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.pom (3.6 kB at 69 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codelibs/jhighlight/1.0.3/jhighlight-1.0.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codelibs/jhighlight/1.0.3/jhighlight-1.0.3.pom (3.2 kB at 88 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.0.11.RELEASE/thymeleaf-3.0.11.RELEASE.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/thymeleaf/extras/thymeleaf-extras-java8time/3.0.4.RELEASE/thymeleaf-extras-java8time-3.0.4.RELEASE.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar (174 kB at 1.9 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/extras/thymeleaf-extras-java8time/3.0.4.RELEASE/thymeleaf-extras-java8time-3.0.4.RELEASE.jar (40 kB at 436 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codelibs/jhighlight/1.0.3/jhighlight-1.0.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.jar (245 kB at 2.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar (751 kB at 7.2 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.0.11.RELEASE/thymeleaf-3.0.11.RELEASE.jar (870 kB at 8.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar (28 kB at 158 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codelibs/jhighlight/1.0.3/jhighlight-1.0.3.jar (234 kB at 1.3 MB/s)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-templates ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-templates ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-templates/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-templates ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-templates/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-templates ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-templates/target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Openhtmltopdf 1.0.5-SNAPSHOT:
+[INFO] 
+[INFO] Openhtmltopdf ...................................... SUCCESS [  0.299 s]
+[INFO] Openhtmltopdf Core Renderer ........................ SUCCESS [  4.659 s]
+[INFO] Openhtmltopdf PDF Rendering (Apache PDF-BOX 2) ..... SUCCESS [  0.805 s]
+[INFO] Openhtmltopdf slf4j Support ........................ SUCCESS [  0.910 s]
+[INFO] Openhtmltopdf RTL Support .......................... SUCCESS [  2.292 s]
+[INFO] Openhtmltopdf SVG Support .......................... SUCCESS [  3.099 s]
+[INFO] Openhtmltopdf MathML Support ....................... SUCCESS [  1.343 s]
+[INFO] Openhtmltopdf Image Rendering (Java2D) ............. SUCCESS [  1.005 s]
+[INFO] Openhtmltopdf PDF Rendering (Apache PDF-BOX 2) ..... SUCCESS [  2.065 s]
+[INFO] Openhtmltopdf Latex Math Support ................... SUCCESS [  0.547 s]
+[INFO] Openhtmltopdf Examples ............................. SUCCESS [  2.547 s]
+[INFO] Openhtmltopdf PDF/A Testing ........................ SUCCESS [  9.957 s]
+[INFO] Openhtmltopdf Templates ............................ SUCCESS [  1.047 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  30.966 s
+[INFO] Finished at: 2026-05-03T02:06:25-04:00
+[INFO] ------------------------------------------------------------------------

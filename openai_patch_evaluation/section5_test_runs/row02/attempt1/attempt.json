@@ -1,0 +1,11 @@
+{
+  "source": "section4_stitched",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "@Test\npublic void putWithEscapedMappedQueryParams() throws Exception {\n    Map<String, String> inputParams = new HashMap<String, String>();\n    inputParams.put(\"name\", \"us er\");\n    inputParams.put(\"number\", \"100\");\n    final Map<String, String> outputParams = new HashMap<String, String>();\n    final AtomicReference<String> method = new AtomicReference<String>();\n    handler = new RequestHandler() {\n\n      @Override\n      public void handle(Request request, HttpServletResponse response) {\n        method.set(request.getMethod());\n        outputParams.put(\"name\", request.getParameter(\"name\"));\n        outputParams.put(\"number\", request.getParameter(\"number\"));\n        response.setStatus(HTTP_OK);\n      }\n    };\n    HttpRequest request = put(url, inputParams, true);\n    assertTrue(request.ok());\n    assertEquals(\"PUT\", method.get());\n    assertEquals(\"us er\", outputParams.get(\"name\"));\n    assertEquals(\"100\", outputParams.get(\"number\"));\n    HttpRequest.setConnectionFactory(null);\n}\n\n@Test\npublic void customConnectionFactory() throws Exception {\n    handler = new RequestHandler() {\n\n      @Override\n      public void handle(Request request, HttpServletResponse response) {\n        response.setStatus(HTTP_OK);\n      }\n    };\n\n    ConnectionFactory factory = new ConnectionFactory() {\n\n      public HttpURLConnection create(URL otherUrl) throws IOException {\n        return (HttpURLConnection) new URL(url).openConnection();\n      }\n\n      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {\n        throw new IOException();\n      }\n    };\n\n    HttpRequest.setConnectionFactory(factory);\n    int code = get(\"http://not/a/real/url\").code();\n    assertEquals(200, code);\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

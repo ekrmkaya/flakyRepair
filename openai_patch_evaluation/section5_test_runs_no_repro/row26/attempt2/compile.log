@@ -1,0 +1,59 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.github.jnr:jnr-posix >----------------------
+[INFO] Building jnr-posix 3.1.5-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.0:enforce (enforce-maven) @ jnr-posix ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ jnr-posix ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ jnr-posix ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bundle:2.3.7:manifest (bundle-manifest) @ jnr-posix ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ jnr-posix ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ jnr-posix ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 26 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/target/test-classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/SpawnTest.java: Some input files use or override a deprecated API.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/SpawnTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/HostnameTest.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/HostnameTest.java uses unchecked or unsafe operations.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/HostnameTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/GroupTest.java:[39,10] cannot find symbol
+  symbol:   variable Platform
+  location: class jnr.posix.GroupTest
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/GroupTest.java:[96,9] cannot find symbol
+  symbol:   variable Platform
+  location: class jnr.posix.GroupTest
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.093 s
+[INFO] Finished at: 2026-05-03T04:12:13-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:testCompile (default-testCompile) on project jnr-posix: Compilation failure: Compilation failure: 
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/GroupTest.java:[39,10] cannot find symbol
+[ERROR]   symbol:   variable Platform
+[ERROR]   location: class jnr.posix.GroupTest
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix/src/test/java/jnr/posix/GroupTest.java:[96,9] cannot find symbol
+[ERROR]   symbol:   variable Platform
+[ERROR]   location: class jnr.posix.GroupTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,35 @@
+//<fix start>
+@Before
+public void setUp() throws Exception {
+	sf.reset();
+	sf.registerParser("VDM", VDMParser.class);
+}
+
+@Test
+public void testParametrizedConstructor() {
+
+	ExtendedBasicListener ebl = new ExtendedBasicListener();
+
+	assertNull(ebl.get());
+	assertEquals(ebl.messageType, AISMessage01.class);
+}
+
+@Test
+public void testRegisterParserWithAlternativeBeginChar() {
+
+	try {
+		assertTrue(sf.hasParser("VDM"));
+	} catch (Exception e) {
+		fail("parser registering failed");
+	}
+
+	Sentence s = sf.createParser("!AIVDM,1,2,3");
+	assertNotNull(s);
+	assertTrue(s instanceof Sentence);
+	assertTrue(s instanceof SentenceParser);
+	assertTrue(s instanceof VDMParser);
+	sf.unregisterParser(VDMParser.class);
+	assertFalse(sf.hasParser("VDM"));
+	sf.registerParser("VDM", VDMParser.class);
+}
+//<fix end>

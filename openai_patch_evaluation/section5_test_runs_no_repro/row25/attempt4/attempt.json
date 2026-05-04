@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "FAIL",
+  "stitch_status": "FAIL",
+  "test_status": null,
+  "attempt_result": "COMPILE_ERROR",
+  "fix_code": "@Before\npublic void setUp() throws Exception {\n    this.mgc = new MockGrblCommunicator();\n\n    // Initialize private variable.\n    Field f = GUIHelpers.class.getDeclaredField(\"unitTestMode\");\n    f.setAccessible(true);\n    f.set(null, true);\n\n    // Reset localization to ensure consistent message\n    Localization.initialize(\"en\", \"US\");\n}\n\n@Test\npublic void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {\n    // Given\n    GrblController instance = new GrblController(mgc);\n    instance.setDistanceModeCode(\"G90\");\n    instance.setUnitsCode(\"G21\");\n    instance.openCommPort(getSettings().getConnectionDriver(), \"foo\", 2400);\n\n    MessageService messageService = mock(MessageService.class);\n    instance.setMessageService(messageService);\n\n    // When\n    instance.rawResponseHandler(\"error:1\");\n\n    // Then\n    String genericErrorMessage = \"An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\\n\";\n    verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);\n    verify(messageService, times(1)).dispatchMessage(any(), anyString());\n\n    assertFalse(instance.getActiveCommand().isPresent());\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

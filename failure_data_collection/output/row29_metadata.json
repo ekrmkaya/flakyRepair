@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/alibaba/Sentinel",
+  "reproduction_steps": "testDefaultConfig passes when run alone but fails when run immediately after testColdFactoryLargerThanOne in the same JVM process (JDK 8, no restart between them). Same-class pair.",
+  "victim_test_name": "com.alibaba.csp.sentinel.config.SentinelConfigTest.testDefaultConfig",
+  "polluter_test_name": "com.alibaba.csp.sentinel.config.SentinelConfigTest.testColdFactoryLargerThanOne",
+  "error_messages": "expected:<3> but was:<4>",
+  "failing_lines": "assertEquals(SentinelConfig.DEFAULT_COLD_FACTOR, SentinelConfig.coldFactor());",
+  "global_variables": "",
+  "helper_methods": "",
+  "full_test_code": "// VICTIM: com.alibaba.csp.sentinel.config.SentinelConfigTest.testDefaultConfig\n    @Test\n    public void testDefaultConfig() {\n        assertEquals(SentinelConfig.DEFAULT_CHARSET, SentinelConfig.charset());\n        assertEquals(SentinelConfig.DEFAULT_SINGLE_METRIC_FILE_SIZE, SentinelConfig.singleMetricFileSize());\n        assertEquals(SentinelConfig.DEFAULT_TOTAL_METRIC_FILE_COUNT, SentinelConfig.totalMetricFileCount());\n        assertEquals(SentinelConfig.DEFAULT_COLD_FACTOR, SentinelConfig.coldFactor());\n        assertEquals(SentinelConfig.DEFAULT_STATISTIC_MAX_RT, SentinelConfig.statisticMaxRt());\n    }\n\n// POLLUTER: com.alibaba.csp.sentinel.config.SentinelConfigTest.testColdFactoryLargerThanOne\n    @Test\n    public void testColdFactoryLargerThanOne() {\n        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, \"2\");\n        assertEquals(2, SentinelConfig.coldFactor());\n\n        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, \"4\");\n        assertEquals(4, SentinelConfig.coldFactor());\n    }"
+}

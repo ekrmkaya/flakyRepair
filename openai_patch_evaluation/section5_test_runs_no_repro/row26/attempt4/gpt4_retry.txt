@@ -1,0 +1,267 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: jnr.posix.GroupTest.getgroups
+Polluter Test: jnr.posix.EnvTest.testSetenvOverwrite
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+ERROR INFORMATION:
+Error Messages: Cannot run program "id": error=2, No such file or directory
+Failing Lines: isr = new InputStreamReader(Runtime.getRuntime().exec(command).getInputStream());
+String[] groupIdsAsStrings = exec("id -G").split(" ");
+
+CODE CONTEXT:
+Relevant Global Variables: private static POSIX posix;
+Relevant Helper Methods:     @BeforeClass
+    public static void setUpClass() throws Exception {
+        posix = POSIXFactory.getPOSIX(new DummyPOSIXHandler(), true);
+    }
+// ---
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+// ---
+    @Before
+    public void setUp() {
+    }
+// ---
+    @After
+    public void tearDown() {
+    }
+// ---
+// --- POLLUTER CLASS ---
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        posix = POSIXFactory.getPOSIX(new DummyPOSIXHandler(), true);
+    }
+Relevant Test Code: // VICTIM: jnr.posix.GroupTest.getgroups
+    @Test
+    public void getgroups() throws Throwable {
+        if (jnr.ffi.Platform.getNativePlatform().isUnix()) {
+            String[] groupIdsAsStrings = exec("id -G").split(" ");
+            long[] expectedGroupIds = new long[groupIdsAsStrings.length];
+
+            for (int i = 0; i < groupIdsAsStrings.length; i++) {
+                expectedGroupIds[i] = Long.parseLong(groupIdsAsStrings[i]);
+            }
+
+            long[] actualGroupIds = posix.getgroups();
+
+            // getgroups does not specify whether the effective group ID is included along with the supplementary
+            // group IDs. However, `id -G` always includes all group IDs. So, we must do something of a fuzzy match.
+            // If the actual list is shorter than the expected list by 1, alter the expected list by removing the
+            // effective group ID before comparing the two arrays.
+            if (actualGroupIds.length == expectedGroupIds.length - 1) {
+                long effectiveGroupId = Long.parseLong(exec("id -g"));
+                expectedGroupIds = removeElement(expectedGroupIds, effectiveGroupId);
+            }
+
+            Arrays.sort(expectedGroupIds);
+            Arrays.sort(actualGroupIds);
+
+            assertArrayEquals(expectedGroupIds, actualGroupIds);
+        }
+    }
+
+// POLLUTER: jnr.posix.EnvTest.testSetenvOverwrite
+    @Test
+    public void testSetenvOverwrite() throws Throwable {
+        if (!Platform.IS_WINDOWS) {
+            final String path = posix.getenv("PATH");
+            int result = posix.setenv("PATH", "new value", 1);
+
+            assertEquals(0, result);
+            assertNotEquals(path, posix.getenv("PATH"));
+        }
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT FAILED TO COMPILE
+--------------------------------------------------------------------------------
+
+A fix was generated from the instructions above and applied to the test file,
+but it did NOT compile. Below is the exact state that was compiled and the
+resulting errors so you can identify what needs to change.
+
+Fix code that was applied:
+//<attempted fix start>
+@BeforeClass
+public static void setUpClass() throws Exception {
+    posix = POSIXFactory.getPOSIX(new DummyPOSIXHandler(), true);
+}
+
+@AfterClass
+public static void tearDownClass() throws Exception {
+    posix = null;
+}
+
+@Before
+public void setUp() {
+    if (!Platform.IS_WINDOWS) {
+        final String path = posix.getenv("PATH");
+        posix.setenv("PATH", path, 1);
+    }
+}
+
+@After
+public void tearDown() {
+}
+
+@Test
+public void getgroups() throws Throwable {
+    if (Platform.IS_UNIX) {
+        String[] groupIdsAsStrings = exec("id -G").split(" ");
+        long[] expectedGroupIds = new long[groupIdsAsStrings.length];
+
+        for (int i = 0; i < groupIdsAsStrings.length; i++) {
+            expectedGroupIds[i] = Long.parseLong(groupIdsAsStrings[i]);
+        }
+
+        long[] actualGroupIds = posix.getgroups();
+
+        if (actualGroupIds.length == expectedGroupIds.length - 1) {
+            long effectiveGroupId = Long.parseLong(exec("id -g"));
+            expectedGroupIds = removeElement(expectedGroupIds, effectiveGroupId);
+        }
+
+        Arrays.sort(expectedGroupIds);
+        Arrays.sort(actualGroupIds);
+
+        assertArrayEquals(expectedGroupIds, actualGroupIds);
+    }
+}
+
+@Test
+public void testSetenvOverwrite() throws Throwable {
+    if (!Platform.IS_WINDOWS) {
+        final String path = posix.getenv("PATH");
+        int result = posix.setenv("PATH", "new value", 1);
+
+        assertEquals(0, result);
+        assertNotEquals(path, posix.getenv("PATH"));
+    }
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Compiler errors (most relevant lines):
+GroupTest.java:[39] cannot find symbol
+  -> if (!Platform.IS_WINDOWS) {
+GroupTest.java:[96] cannot find symbol
+  -> if (Platform.IS_UNIX) {
+GroupTest.java:[96] illegal start of type
+  -> if (Platform.IS_UNIX) {
+
+Please provide a corrected version that compiles successfully.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Preserve the original fix intent; only change what is necessary to compile.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- If the fix requires different or additional imports, include them in //<import start> ... //<import end>.
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+
+
+=== RESPONSE ===
+//<fix start>
+@BeforeClass
+public static void setUpClass() throws Exception {
+    posix = POSIXFactory.getPOSIX(new DummyPOSIXHandler(), true);
+}
+
+@AfterClass
+public static void tearDownClass() throws Exception {
+    posix = null;
+}
+
+@Before
+public void setUp() {
+    if (!jnr.ffi.Platform.getNativePlatform().isWindows()) {
+        final String path = posix.getenv("PATH");
+        posix.setenv("PATH", path, 1);
+    }
+}
+
+@After
+public void tearDown() {
+}
+
+@Test
+public void getgroups() throws Throwable {
+    if (jnr.ffi.Platform.getNativePlatform().isUnix()) {
+        String[] groupIdsAsStrings = exec("id -G").split(" ");
+        long[] expectedGroupIds = new long[groupIdsAsStrings.length];
+
+        for (int i = 0; i < groupIdsAsStrings.length; i++) {
+            expectedGroupIds[i] = Long.parseLong(groupIdsAsStrings[i]);
+        }
+
+        long[] actualGroupIds = posix.getgroups();
+
+        if (actualGroupIds.length == expectedGroupIds.length - 1) {
+            long effectiveGroupId = Long.parseLong(exec("id -g"));
+            expectedGroupIds = removeElement(expectedGroupIds, effectiveGroupId);
+        }
+
+        Arrays.sort(expectedGroupIds);
+        Arrays.sort(actualGroupIds);
+
+        assertArrayEquals(expectedGroupIds, actualGroupIds);
+    }
+}
+
+@Test
+public void testSetenvOverwrite() throws Throwable {
+    if (!jnr.ffi.Platform.getNativePlatform().isWindows()) {
+        final String path = posix.getenv("PATH");
+        int result = posix.setenv("PATH", "new value", 1);
+
+        assertEquals(0, result);
+        assertNotEquals(path, posix.getenv("PATH"));
+    }
+}
+//<fix end>

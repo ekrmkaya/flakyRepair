@@ -1,0 +1,45 @@
+victim: com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole
+polluter: com.willwinder.universalgcodesender.i18n.LocalizationTest.loadLocalizationThatDoesExistShouldLoad
+source: https://github.com/winder/Universal-G-Code-Sender
+=== OUTPUT ===
+1) 
+//<fix start>
+// VICTIM: com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole
+    @Test
+    public void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {
+        // Given
+        GrblController instance = new GrblController(mgc);
+        instance.setDistanceModeCode("G90");
+        instance.setUnitsCode("G21");
+        instance.openCommPort(getSettings().getConnectionDriver(), "foo", 2400);
+
+        MessageService messageService = mock(MessageService.class);
+        instance.setMessageService(messageService);
+
+        // Resetting the locale to default before the test
+        Locale.setDefault(Locale.US);
+
+        // When
+        instance.rawResponseHandler("error:1");
+
+        // Then
+        String genericErrorMessage = "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\n";
+        verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+        verify(messageService, times(1)).dispatchMessage(any(), anyString());
+
+        assertFalse(instance.getActiveCommand().isPresent());
+    }
+
+// POLLUTER: com.willwinder.universalgcodesender.i18n.LocalizationTest.loadLocalizationThatDoesExistShouldLoad
+    @Test
+    public void loadLocalizationThatDoesExistShouldLoad() {
+        Locale defaultLocale = Locale.getDefault();
+        Localization.initialize("sv", "SE");
+        assertEquals("Beskrivning", Localization.getString(DESCRIPTION_KEY));
+        assertEquals("sv", Locale.getDefault().getLanguage());
+        assertEquals("SE", Locale.getDefault().getCountry());
+
+        // Resetting the locale to default after the test
+        Locale.setDefault(defaultLocale);
+    }
+//<fix end>

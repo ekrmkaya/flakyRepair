@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "FAIL",
+  "stitch_status": "FAIL",
+  "test_status": null,
+  "attempt_result": "COMPILE_ERROR",
+  "fix_code": "@Before\npublic void setUp() throws Exception {\n\tinstance.reset();\n\tinstance.registerParser(\"VDM\", VDMParser.class);\n}\n\n@Test\npublic void testParametrizedConstructor() {\n\n\tExtendedBasicListener ebl = new ExtendedBasicListener();\n\n\tassertNull(ebl.get());\n\tassertEquals(ebl.messageType, AISMessage01.class);\n}\n\n@Test\npublic void testRegisterParserWithAlternativeBeginChar() {\n\n\ttry {\n\t\tassertTrue(instance.hasParser(\"VDM\"));\n\t} catch (Exception e) {\n\t\tfail(\"parser registering failed\");\n\t}\n\n\tSentence s = instance.createParser(\"!AIVDM,1,2,3\");\n\tassertNotNull(s);\n\tassertTrue(s instanceof Sentence);\n\tassertTrue(s instanceof SentenceParser);\n\tassertTrue(s instanceof VDMParser);\n\tinstance.unregisterParser(VDMParser.class);\n\tassertFalse(instance.hasParser(\"VDM\"));\n\tinstance.registerParser(\"VDM\", VDMParser.class);\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

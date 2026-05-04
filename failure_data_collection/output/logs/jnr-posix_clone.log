@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/jnr/jnr-posix /Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/jnr-posix'...

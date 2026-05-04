@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/winder/Universal-G-Code-Sender /Users/ekaya/Desktop/testing/flakyRepair/repos/Universal-G-Code-Sender
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/Universal-G-Code-Sender'...

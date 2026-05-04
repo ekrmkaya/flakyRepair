@@ -1,0 +1,193 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertIsShutdownAlready
+Polluter Test: io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertRemoveLocalInstancePath
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+REPRODUCTION STEPS:
+Steps required to reproduce failure: assertIsShutdownAlready passes when run alone but fails when run immediately after assertRemoveLocalInstancePath in the same JVM process (JDK 8, no restart between them). Same-class pair.
+
+ERROR INFORMATION:
+Error Messages: schedulerFacade.shutdownInstance(); Never wanted here: -> at io.elasticjob.lite.internal.schedule.SchedulerFacade.shutdownInstance(SchedulerFacade.java:128) But invoked here: -> at io.elasticjob.lite.internal.instance.ShutdownListenerManager$InstanceShutdownStatusJobListener.dataChanged(ShutdownListenerManager.java:61)
+Failing Lines: verify(schedulerFacade, times(0)).shutdownInstance();
+
+CODE CONTEXT:
+Relevant Global Variables: private CoordinatorRegistryCenter regCenter;
+private JobScheduleController jobScheduleController;
+private JobNodeStorage jobNodeStorage;
+private InstanceService instanceService;
+private SchedulerFacade schedulerFacade;
+private ShutdownListenerManager shutdownListenerManager;
+Relevant Helper Methods:     @Before
+    public void setUp() throws NoSuchFieldException {
+        JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
+        shutdownListenerManager = new ShutdownListenerManager(null, "test_job");
+        MockitoAnnotations.initMocks(this);
+        ReflectionUtils.setFieldValue(shutdownListenerManager, "instanceService", instanceService);
+        ReflectionUtils.setFieldValue(shutdownListenerManager, "schedulerFacade", schedulerFacade);
+        ReflectionUtils.setFieldValue(shutdownListenerManager, shutdownListenerManager.getClass().getSuperclass().getDeclaredField("jobNodeStorage"), jobNodeStorage);
+    }
+Relevant Test Code: // VICTIM: io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertIsShutdownAlready
+    @Test
+    public void assertIsShutdownAlready() {
+        shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+        verify(schedulerFacade, times(0)).shutdownInstance();
+    }
+
+// POLLUTER: io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertRemoveLocalInstancePath
+    @Test
+    public void assertRemoveLocalInstancePath() {
+        JobRegistry.getInstance().registerJob("test_job", jobScheduleController, regCenter);
+        shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+        verify(schedulerFacade).shutdownInstance();
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT COMPILED BUT DID NOT FIX THE FLAKINESS
+--------------------------------------------------------------------------------
+
+A fix was generated, applied, and compiled successfully, but running the test
+in polluter->victim order shows the victim test still fails. Below is the fix
+that was attempted and the relevant test failure output.
+
+Fix code that was applied:
+//<attempted fix start>
+@Before
+public void setUp() throws NoSuchFieldException {
+    JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
+    shutdownListenerManager = new ShutdownListenerManager(null, "test_job");
+    MockitoAnnotations.initMocks(this);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, "instanceService", instanceService);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, "schedulerFacade", schedulerFacade);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, shutdownListenerManager.getClass().getSuperclass().getDeclaredField("jobNodeStorage"), jobNodeStorage);
+    reset(schedulerFacade);
+}
+
+@Test
+public void assertIsShutdownAlready() {
+    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+    verify(schedulerFacade, times(0)).shutdownInstance();
+}
+
+@Test
+public void assertRemoveLocalInstancePath() {
+    JobRegistry.getInstance().registerJob("test_job", jobScheduleController, regCenter);
+    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+    verify(schedulerFacade).shutdownInstance();
+    reset(schedulerFacade);
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+import static org.mockito.Mockito.reset;
+//<attempted imports end>
+
+Test failure output (relevant lines):
+
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.561 sec <<< FAILURE! - in flakyrepro.ProgrammaticReproducer_patch_row15_shardingsphere_elasticjob
+reproduce(flakyrepro.ProgrammaticReproducer_patch_row15_shardingsphere_elasticjob)  Time elapsed: 2.509 sec  <<< FAILURE!
+org.mockito.exceptions.verification.NeverWantedButInvoked: 
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+
+Please provide a DIFFERENT fix that addresses the root cause of the flakiness.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Do NOT repeat the same fix -- it did not address the flakiness.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- Make minimal changes; preserve original test logic unless absolutely necessary.
+- Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+- If imports must be added, include them in //<import start> ... //<import end>.
+
+
+=== RESPONSE ===
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start>
+@Before
+public void setUp() throws NoSuchFieldException {
+    JobRegistry.getInstance().addJobInstance("test_job", new JobInstance("127.0.0.1@-@0"));
+    shutdownListenerManager = new ShutdownListenerManager(null, "test_job");
+    MockitoAnnotations.initMocks(this);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, "instanceService", instanceService);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, "schedulerFacade", schedulerFacade);
+    ReflectionUtils.setFieldValue(shutdownListenerManager, shutdownListenerManager.getClass().getSuperclass().getDeclaredField("jobNodeStorage"), jobNodeStorage);
+}
+
+@Test
+public void assertIsShutdownAlready() {
+    when(schedulerFacade.isShutdownAlready()).thenReturn(true);
+    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+    verify(schedulerFacade, times(0)).shutdownInstance();
+}
+
+@Test
+public void assertRemoveLocalInstancePath() {
+    JobRegistry.getInstance().registerJob("test_job", jobScheduleController, regCenter);
+    when(schedulerFacade.isShutdownAlready()).thenReturn(false);
+    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged("/test_job/instances/127.0.0.1@-@0", Type.NODE_REMOVED, "");
+    verify(schedulerFacade).shutdownInstance();
+}
+//<fix end>
+
+3) If imports must be added, output:
+//<import start>
+import static org.mockito.Mockito.when;
+//<import end>

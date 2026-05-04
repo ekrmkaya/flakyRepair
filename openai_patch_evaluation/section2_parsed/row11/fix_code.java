@@ -1,0 +1,35 @@
+@Before
+public void setUp() throws Exception {
+    instance.reset();
+    instance.registerParser("VDM", VDMParser.class);
+}
+
+@Test
+public void testGenericsListenerDefaultConstructorThrows() {
+    try {
+        GenericsListener<Integer, AISMessage01> gl = new GenericsListener<>();
+        fail("exception not thrown, resolved to " + gl.messageType);
+    } catch (IllegalStateException ise) {
+        assertEquals("Cannot resolve generic type <T>, use constructor with Class<T> param.", ise.getMessage());
+    } catch (Exception e) {
+        fail("unexpected exception thrown: " + e.getMessage());
+    }
+}
+
+@Test
+public void testRegisterParserWithAlternativeBeginChar() {
+
+    try {
+        assertTrue(instance.hasParser("VDM"));
+    } catch (Exception e) {
+        fail("parser registering failed");
+    }
+
+    Sentence s = instance.createParser("!AIVDM,1,2,3");
+    assertNotNull(s);
+    assertTrue(s instanceof Sentence);
+    assertTrue(s instanceof SentenceParser);
+    assertTrue(s instanceof VDMParser);
+    instance.unregisterParser(VDMParser.class);
+    assertFalse(instance.hasParser("VDM"));
+}

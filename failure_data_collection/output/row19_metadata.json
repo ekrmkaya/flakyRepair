@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/Thomas-S-B/visualee",
+  "reproduction_steps": "testIsOkExcludeFalse passes when run alone but fails when run immediately after testIsOkExcludeTrue in the same JVM process (JDK 8, no restart between them). Same-class pair.",
+  "victim_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse",
+  "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeTrue",
+  "error_messages": "expected:<true> but was:<false>",
+  "failing_lines": "assertEquals(true, FilterContainer.getInstance().isOk(javaSource));",
+  "global_variables": "private static JavaSource javaSource;",
+  "helper_methods": "   @BeforeClass\n   public static void setUpClass() {\n      FilterContainer.getInstance().clear();\n\n      String sourceCode;\n      javaSource = JavaSourceFactory.getInstance().newJavaSource(\"DatabaseProducer\");\n      sourceCode = \"package org.agoncal.application.petstore.util;\\n\"\n              + \"import javax.enterprise.inject.Produces;\\n\"\n              + \"import javax.persistence.EntityManager;\\n\"\n              + \"import javax.persistence.PersistenceContext;\\n\"\n              + \"public class DatabaseProducer {\\n\"\n              + \"@Produces\\n\"\n              + \"    @PersistenceContext(unitName = \\\"applicationPetstorePU\\\")\\n\"\n              + \"    private EntityManager em;\\n\"\n              + \"}\\n\";\n\n      javaSource.setSourceCode(sourceCode);\n   }\n// ---\n   @AfterClass\n   public static void tearDownClass() {\n   }\n// ---\n   @Before\n   public void setUp() {\n   }\n// ---\n   @After\n   public void tearDown() {\n   }",
+  "full_test_code": "// VICTIM: de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse\n   @Test\n   public void testIsOkExcludeFalse() {\n      ClassFilter filter = new ClassFilter();\n      filter.setFilterToken(\"XYZDatabaseProducer\");\n      filter.setExclude(true);\n      FilterContainer.getInstance().add(filter);\n\n      assertEquals(true, FilterContainer.getInstance().isOk(javaSource));\n   }\n\n// POLLUTER: de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeTrue\n   @Test\n   public void testIsOkExcludeTrue() {\n      ClassFilter filter = new ClassFilter();\n      filter.setFilterToken(\"DatabaseProducer\");\n      filter.setExclude(true);\n      FilterContainer.getInstance().add(filter);\n\n      assertEquals(false, FilterContainer.getInstance().isOk(javaSource));\n   }"
+}

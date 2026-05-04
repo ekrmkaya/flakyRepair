@@ -50,6 +50,11 @@ All outputs are written to `output/` (gitignored):
 4. **step4_extract.py** -- Extract test source code, error messages, failing lines, helper methods, and global variables.
 5. **step5_assemble.py** -- Assemble `flaky_test_data.json` and timing report from reproduced rows.
 
+## Supporting Modules
+
+- **config.py** -- Central configuration for the pipeline: Java home paths, Maven timeouts, repo-specific build flags, and reproduction strategy assignments.
+- **repro_strategies.py** -- Java reproducer templates and execution functions for four OD reproduction strategies (programmatic same-class, programmatic diff-class, Surefire plus-syntax, and custom Undertow).
+
 ## Notes
 
 - The pipeline is resumable: re-running skips completed steps based on `manifest.json` status fields.

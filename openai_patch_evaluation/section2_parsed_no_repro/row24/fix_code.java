@@ -1,0 +1,14 @@
+// VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException
+public void createDirectoryManagerIoException() throws IOException {
+    DirectoryManagerFactory.setDirectoryManagerClass(null);
+    DirectoryManagerFactory.createDirectoryManager(
+            "/nonexisting-directory/123456789/hopefully", true);
+}
+
+// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor
+public void createDirectoryManagerNoConstructor() throws IOException {
+    DirectoryManagerFactory
+            .setDirectoryManagerClass(TestDirectoryManager.class);
+    DirectoryManagerFactory.createDirectoryManager("/", true);
+    DirectoryManagerFactory.setDirectoryManagerClass(null);
+}

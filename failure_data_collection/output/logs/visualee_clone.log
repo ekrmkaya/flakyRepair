@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/Thomas-S-B/visualee /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/visualee'...

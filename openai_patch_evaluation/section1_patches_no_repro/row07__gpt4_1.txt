@@ -1,0 +1,46 @@
+victim: com.github.kevinsawicki.http.HttpRequestTest.singleVerifier
+polluter: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+source: https://github.com/kevinsawicki/http-request
+=== OUTPUT ===
+1) 
+//<fix start>
+  @Test
+  public void singleVerifier() {
+    HttpRequest request1 = get("https://localhost").trustAllHosts();
+    HttpRequest request2 = get("https://localhost").trustAllHosts();
+    assertNotNull(((HttpsURLConnection) request1.getConnection())
+        .getHostnameVerifier());
+    assertNotNull(((HttpsURLConnection) request2.getConnection())
+        .getHostnameVerifier());
+    assertEquals(
+        ((HttpsURLConnection) request1.getConnection()).getHostnameVerifier(),
+        ((HttpsURLConnection) request2.getConnection()).getHostnameVerifier());
+  }
+
+  @Test
+  public void customConnectionFactory() throws Exception {
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        response.setStatus(HTTP_OK);
+      }
+    };
+
+    ConnectionFactory factory = new ConnectionFactory() {
+
+      public HttpURLConnection create(URL otherUrl) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
+      }
+
+      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+        throw new IOException();
+      }
+    };
+
+    HttpRequest.setConnectionFactory(factory);
+    int code = get("http://not/a/real/url").code();
+    assertEquals(200, code);
+    HttpRequest.setConnectionFactory(null); // Reset the factory to its default state after the test
+  }
+//<fix end>

@@ -1,0 +1,53 @@
+{
+  "final_status": "FIXED",
+  "attempt_metrics": [
+    {
+      "attempt_num": 1,
+      "source": "section4",
+      "compiled": false,
+      "stitched": true,
+      "stitch_worked": false,
+      "test_result": null,
+      "attempt_result": "COMPILE_ERROR",
+      "gpt4_prompt_tokens": null,
+      "gpt4_completion_tokens": null,
+      "gpt4_total_tokens": null,
+      "gpt4_api_elapsed_seconds": null,
+      "stitch_prompt_tokens": 1665,
+      "stitch_completion_tokens": 346,
+      "stitch_total_tokens": 2011,
+      "stitch_api_elapsed_seconds": 7.49,
+      "compile_elapsed_seconds": 7.45,
+      "stitch_compile_elapsed_seconds": 7.16,
+      "test_elapsed_seconds": null,
+      "victim_alone_result": null,
+      "victim_alone_elapsed_seconds": null,
+      "polluter_alone_result": null,
+      "polluter_alone_elapsed_seconds": null
+    },
+    {
+      "attempt_num": 2,
+      "source": "gpt4_retry",
+      "compiled": true,
+      "stitched": false,
+      "stitch_worked": false,
+      "test_result": "PASSED",
+      "attempt_result": "FIXED",
+      "gpt4_prompt_tokens": 1683,
+      "gpt4_completion_tokens": 386,
+      "gpt4_total_tokens": 2069,
+      "gpt4_api_elapsed_seconds": 10.42,
+      "stitch_prompt_tokens": null,
+      "stitch_completion_tokens": null,
+      "stitch_total_tokens": null,
+      "stitch_api_elapsed_seconds": null,
+      "compile_elapsed_seconds": 7.78,
+      "stitch_compile_elapsed_seconds": null,
+      "test_elapsed_seconds": 11.57,
+      "victim_alone_result": "PASSED",
+      "victim_alone_elapsed_seconds": 6.0,
+      "polluter_alone_result": "PASSED",
+      "polluter_alone_elapsed_seconds": 6.02
+    }
+  ]
+}

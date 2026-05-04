@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void createDefaultDirectoryManagerPath() throws IOException {\n    Path path = Paths.get(System.getProperty(\"user.dir\"));\n    DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManagerImpl.class);\n    DirectoryManager dm = DirectoryManagerFactory.createDirectoryManager(\n            path, true);\n    assertTrue(dm instanceof DirectoryManagerImpl);\n    DirectoryManagerImpl dmi = (DirectoryManagerImpl) dm;\n    assertTrue(dmi.readOnly);\n    assertEquals(path, dmi.directory);\n}\n\n@Test\npublic void createDirectoryManagerNoConstructor() throws IOException {\n    DirectoryManagerFactory\n            .setDirectoryManagerClass(TestDirectoryManager.class);\n    DirectoryManagerFactory.createDirectoryManager(\"/\", true);\n    DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManagerImpl.class);\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "FAILED"
+}

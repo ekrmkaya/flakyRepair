@@ -1,0 +1,225 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole
+Polluter Test: com.willwinder.universalgcodesender.i18n.LocalizationTest.loadLocalizationThatDoesExistShouldLoad
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+ERROR INFORMATION:
+Error Messages: Argument(s) are different! Wanted: messageService.dispatchMessage( INFO, "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found. " ); -> at com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole(GrblControllerTest.java:1333) Actual invocations have different arguments: messageService.dispatchMessage( INFO, "Ett oväntat fel har uppstått: (error:1) G-code words consist of a letter and a value. Letter was not found. " ); -> at com.willwinder.universalgcodesender.AbstractController.dispatchConsoleMessage(AbstractController.java:870)
+Failing Lines: verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+
+CODE CONTEXT:
+Relevant Global Variables: private MockGrblCommunicator mgc;
+private static File tempDir;
+private Settings settings = new Settings();
+private static final String DESCRIPTION_KEY = "description";
+Relevant Helper Methods:     @BeforeClass
+    static public void setup() throws IOException {
+        tempDir = GcodeStreamTest.createTempDirectory();
+    }
+// ---
+    @AfterClass
+    static public void teardown() throws IOException {
+        FileUtils.forceDeleteOnExit(tempDir);
+    }
+// ---
+    @Before
+    public void setUp() throws Exception {
+        this.mgc = new MockGrblCommunicator();
+
+        // Initialize private variable.
+        Field f = GUIHelpers.class.getDeclaredField("unitTestMode");
+        f.setAccessible(true);
+        f.set(null, true);
+    }
+// ---
+    @After
+    public void tearDown() throws Exception {
+        // Initialize private variable.
+        Field f = GUIHelpers.class.getDeclaredField("unitTestMode");
+        f.setAccessible(true);
+        f.set(null, false);
+    }
+Relevant Test Code: // VICTIM: com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole
+    @Test
+    public void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {
+        // Given
+        GrblController instance = new GrblController(mgc);
+        instance.setDistanceModeCode("G90");
+        instance.setUnitsCode("G21");
+        instance.openCommPort(getSettings().getConnectionDriver(), "foo", 2400);
+
+        MessageService messageService = mock(MessageService.class);
+        instance.setMessageService(messageService);
+
+        // When
+        instance.rawResponseHandler("error:1");
+
+        // Then
+        String genericErrorMessage = "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\n";
+        verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+        verify(messageService, times(1)).dispatchMessage(any(), anyString());
+
+        assertFalse(instance.getActiveCommand().isPresent());
+    }
+
+// POLLUTER: com.willwinder.universalgcodesender.i18n.LocalizationTest.loadLocalizationThatDoesExistShouldLoad
+    @Test
+    public void loadLocalizationThatDoesExistShouldLoad() {
+        Localization.initialize("sv", "SE");
+        assertEquals("Beskrivning", Localization.getString(DESCRIPTION_KEY));
+        assertEquals("sv", Locale.getDefault().getLanguage());
+        assertEquals("SE", Locale.getDefault().getCountry());
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT COMPILED BUT DID NOT FIX THE FLAKINESS
+--------------------------------------------------------------------------------
+
+A fix was generated, applied, and compiled successfully, but running the test
+in polluter->victim order shows the victim test still fails. Below is the fix
+that was attempted and the relevant test failure output.
+
+Fix code that was applied:
+//<attempted fix start>
+@Test
+public void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {
+    // Given
+    GrblController instance = new GrblController(mgc);
+    instance.setDistanceModeCode("G90");
+    instance.setUnitsCode("G21");
+    instance.openCommPort(getSettings().getConnectionDriver(), "foo", 2400);
+
+    MessageService messageService = mock(MessageService.class);
+    instance.setMessageService(messageService);
+
+    // Set default locale to ensure consistent message
+    Locale.setDefault(new Locale("en", "US"));
+
+    // When
+    instance.rawResponseHandler("error:1");
+
+    // Then
+    String genericErrorMessage = "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\n";
+    verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+    verify(messageService, times(1)).dispatchMessage(any(), anyString());
+
+    assertFalse(instance.getActiveCommand().isPresent());
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+import java.util.Locale;
+//<attempted imports end>
+
+Test failure output (relevant lines):
+
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.812 s <<< FAILURE! - in flakyrepro.DiffClassReproducer_patch_row25_Universal_G_Code_Sender
+[ERROR] flakyrepro.DiffClassReproducer_patch_row25_Universal_G_Code_Sender.reproduce  Time elapsed: 0.738 s  <<< FAILURE!
+Argument(s) are different! Wanted:
+messageService.dispatchMessage(
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+
+Please provide a DIFFERENT fix that addresses the root cause of the flakiness.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Do NOT repeat the same fix -- it did not address the flakiness.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- Make minimal changes; preserve original test logic unless absolutely necessary.
+- Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+- If imports must be added, include them in //<import start> ... //<import end>.
+
+
+=== RESPONSE ===
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> 
+@Test
+public void rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole() throws Exception {
+    // Given
+    GrblController instance = new GrblController(mgc);
+    instance.setDistanceModeCode("G90");
+    instance.setUnitsCode("G21");
+    instance.openCommPort(getSettings().getConnectionDriver(), "foo", 2400);
+
+    MessageService messageService = mock(MessageService.class);
+    instance.setMessageService(messageService);
+
+    // Reset localization to ensure consistent message
+    Localization.initialize("en", "US");
+
+    // When
+    instance.rawResponseHandler("error:1");
+
+    // Then
+    String genericErrorMessage = "An unexpected error was detected: (error:1) G-code words consist of a letter and a value. Letter was not found.\n";
+    verify(messageService, times(1)).dispatchMessage(MessageType.INFO, genericErrorMessage);
+    verify(messageService, times(1)).dispatchMessage(any(), anyString());
+
+    assertFalse(instance.getActiveCommand().isPresent());
+}
+//<fix end>
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+<!-- <pom.xml end> -->
+
+3) If imports must be added, output:
+//<import start> //<import end>

@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "// VICTIM: net.sf.marineapi.ais.event.AbstractAISMessageListenerTest.testGenericsListenerDefaultConstructorThrows\n    @Test\n    public void testGenericsListenerDefaultConstructorThrows() {\n        try {\n            GenericsListener<Integer, AISMessage01> gl = new GenericsListener<>();\n            fail(\"exception not thrown, resolved to \" + gl.messageType);\n        } catch (IllegalStateException ise) {\n            assertEquals(\"Cannot resolve generic type <T>, use constructor with Class<T> param.\", ise.getMessage());\n        } catch (Exception e) {\n            fail(\"unexpected exception thrown: \" + e.getMessage());\n        } finally {\n            SentenceFactory.getInstance().reset();\n        }\n    }\n\n// POLLUTER: net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar\n\t@Test\n\tpublic void testRegisterParserWithAlternativeBeginChar() {\n\n\t\ttry {\n\t\t\tinstance.registerParser(\"VDM\", VDMParser.class);\n\t\t\tassertTrue(instance.hasParser(\"VDM\"));\n\t\t} catch (Exception e) {\n\t\t\tfail(\"parser registering failed\");\n\t\t}\n\n\t\tSentence s = instance.createParser(\"!AIVDM,1,2,3\");\n\t\tassertNotNull(s);\n\t\tassertTrue(s instanceof Sentence);\n\t\tassertTrue(s instanceof SentenceParser);\n\t\tassertTrue(s instanceof VDMParser);\n\t\tinstance.unregisterParser(VDMParser.class);\n\t\tassertFalse(instance.hasParser(\"VDM\"));\n\t}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

@@ -1,0 +1,49 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< io.elasticjob:elastic-job-lite-core >-----------------
+[INFO] Building elastic-job-lite-core 3.0.0.M1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.4:enforce (enforce-banned-dependencies) @ elastic-job-lite-core ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ elastic-job-lite-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ elastic-job-lite-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ elastic-job-lite-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ elastic-job-lite-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 153 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/target/test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/src/test/java/io/elasticjob/lite/internal/instance/ShutdownListenerManagerTest.java:[49,5] cannot find symbol
+  symbol:   method reset(io.elasticjob.lite.internal.schedule.SchedulerFacade)
+  location: class io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.379 s
+[INFO] Finished at: 2026-05-03T03:55:18-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.3:testCompile (default-testCompile) on project elastic-job-lite-core: Compilation failure
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/src/test/java/io/elasticjob/lite/internal/instance/ShutdownListenerManagerTest.java:[49,5] cannot find symbol
+[ERROR]   symbol:   method reset(io.elasticjob.lite.internal.schedule.SchedulerFacade)
+[ERROR]   location: class io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

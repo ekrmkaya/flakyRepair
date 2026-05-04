@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": "PASS",
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Before\npublic void resetEndpoints() {\n    MessageEndpoint.reset();\n    AnnotatedClientEndpoint.reset();\n}\n\n@Test\npublic void testCloseReason() throws Exception {\n\n    Session session = deployment.connectToServer(AnnotatedClientEndpoint.class, new URI(\"ws://\" + DefaultServer.getHostAddress(\"default\") + \":\" + DefaultServer.getHostPort(\"default\") + \"/ws/chat/Bob\"));\n\n    Assert.assertEquals(\"hi Bob (protocol=foo)\", AnnotatedClientEndpoint.message());\n\n    session.close(new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, \"Foo!\"));\n    Assert.assertEquals(\"CLOSED\", AnnotatedClientEndpoint.message());\n    CloseReason cr = MessageEndpoint.getReason();\n    Assert.assertEquals(CloseReason.CloseCodes.VIOLATED_POLICY.getCode(), cr.getCloseCode().getCode());\n    Assert.assertEquals(\"Foo!\", cr.getReasonPhrase());\n\n}\n\n@Test\npublic void testErrorHandling() throws Exception {\n    //make a sub class\n    AnnotatedClientEndpoint c = new AnnotatedClientEndpoint() {\n\n    };\n\n    Session session = deployment.connectToServer(c, new URI(\"ws://\" + DefaultServer.getHostAddress(\"default\") + \":\" + DefaultServer.getHostPort(\"default\") + \"/ws/error\"));\n    Assert.assertEquals(\"hi\", ErrorEndpoint.getMessage());\n    session.getAsyncRemote().sendText(\"app-error\");\n    Assert.assertEquals(\"app-error\", ErrorEndpoint.getMessage());\n    Assert.assertEquals(\"ERROR: java.lang.RuntimeException\", ErrorEndpoint.getMessage());\n    Assert.assertTrue(c.isOpen());\n\n    session.getBasicRemote().sendText(\"io-error\");\n    Assert.assertEquals(\"io-error\", ErrorEndpoint.getMessage());\n    Assert.assertEquals(\"ERROR: java.io.IOException\", ErrorEndpoint.getMessage());\n    Assert.assertTrue(c.isOpen());\n    ((UndertowSession)session).forceClose();\n    Assert.assertEquals(\"CLOSED\", ErrorEndpoint.getMessage());\n\n}",
+  "imports": "import org.junit.Before;",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

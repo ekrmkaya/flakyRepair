@@ -1,0 +1,186 @@
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: io.dropwizard.logging.DefaultLoggingFactoryPrintErrorMessagesTest.testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut
+Polluter Test: io.dropwizard.logging.ThrottlingAppenderWrapperTest.belowThrottlingLimit
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+ERROR INFORMATION:
+Error Messages: Expecting: <org.apache.maven.surefire.report.ConsoleOutputCapture$ForwardingPrintStream@2a8d39c4> and actual: <java.io.PrintStream@72758afa> to refer to the same object
+Failing Lines: assertThat(out).isSameAs(System.out);
+
+CODE CONTEXT:
+Relevant Global Variables: public final TemporaryFolder tempDir = new TemporaryFolder();
+DefaultLoggingFactory factory;
+ByteArrayOutputStream output;
+private static final String LINE_SEPERATOR = System.getProperty("line.separator");
+private static final double NANOS_PER_SECOND = TimeUnit.SECONDS.toNanos(1L);
+private static final int WRITE_LINES = 100;
+private static final Duration RUN_WINDOW = Duration.seconds(1);
+private static final String APP_LOG_PREFIX = "Application log";
+private static final Condition<String> APP_LOG_CONDITION = new Condition<>(o -> o.contains(APP_LOG_PREFIX), "contains application log");
+private static final Duration LOG_WAIT = Duration.seconds(90);
+private final ByteArrayOutputStream bos;
+private PrintStream oldSysOut;
+private PrintStream newSysOut;
+Relevant Helper Methods:     @Before
+    public void setUp() throws Exception {
+        output = new ByteArrayOutputStream();
+        factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));
+    }
+// ---
+    @After
+    public void tearDown() throws Exception {
+        factory.stop();
+    }
+// ---
+// --- POLLUTER CLASS ---
+    @Before
+    public void setup() throws UnsupportedEncodingException {
+        this.oldSysOut = System.out;
+        // This forces auto-flush, which should help with buffering issues
+        this.newSysOut = new PrintStream(this.bos, true, StandardCharsets.UTF_8.name());
+        System.setOut(this.newSysOut);
+    }
+// ---
+    @After
+    public void teardown() {
+        if (this.oldSysOut != null) {
+            System.setOut(this.oldSysOut);
+        }
+
+        if (this.newSysOut != null) {
+            this.newSysOut.close();
+        }
+
+        this.bos.reset();
+    }
+Relevant Test Code: // VICTIM: io.dropwizard.logging.DefaultLoggingFactoryPrintErrorMessagesTest.testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut
+    @Test
+    public void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {
+        Field field = StatusPrinter.class.getDeclaredField("ps");
+        field.setAccessible(true);
+
+        PrintStream out = (PrintStream) field.get(null);
+        assertThat(out).isSameAs(System.out);
+    }
+
+// POLLUTER: io.dropwizard.logging.ThrottlingAppenderWrapperTest.belowThrottlingLimit
+    @Test
+    public void belowThrottlingLimit() throws Exception {
+        this.runLineTest(Duration.microseconds(1), WRITE_LINES, RUN_WINDOW);
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT FAILED TO COMPILE
+--------------------------------------------------------------------------------
+
+A fix was generated from the instructions above and applied to the test file,
+but it did NOT compile. Below is the exact state that was compiled and the
+resulting errors, so you can identify what needs to change.
+
+Fix code that was applied:
+//<attempted fix start>
+@Before
+public void setUp() throws Exception {
+    output = new ByteArrayOutputStream();
+    factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));
+    this.oldSysOut = System.out;
+    // This forces auto-flush, which should help with buffering issues
+    this.newSysOut = new PrintStream(this.bos, true, StandardCharsets.UTF_8.name());
+    System.setOut(this.newSysOut);
+}
+
+@After
+public void tearDown() throws Exception {
+    factory.stop();
+    if (this.oldSysOut != null) {
+        System.setOut(this.oldSysOut);
+    }
+
+    if (this.newSysOut != null) {
+        this.newSysOut.close();
+    }
+
+    this.bos.reset();
+}
+
+@Test
+public void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {
+    Field field = StatusPrinter.class.getDeclaredField("ps");
+    field.setAccessible(true);
+
+    PrintStream out = (PrintStream) field.get(null);
+    assertThat(out).isSameAs(System.out);
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Compiler errors (most relevant lines):
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[37] cannot find symbol
+  → this.oldSysOut = System.out;
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[39] cannot find symbol
+  → this.newSysOut = new PrintStream(this.bos, true, StandardCharsets.UTF_8.name());
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[40] cannot find symbol
+  → System.setOut(this.newSysOut);
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[46] cannot find symbol
+  → if (this.oldSysOut != null) {
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[47] cannot find symbol
+  → System.setOut(this.oldSysOut);
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[50] cannot find symbol
+  → if (this.newSysOut != null) {
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[51] cannot find symbol
+  → this.newSysOut.close();
+DefaultLoggingFactoryPrintErrorMessagesTest.java:[54] cannot find symbol
+  → this.bos.reset();
+
+Please provide a corrected version that compiles successfully.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Preserve the original fix intent; only change what is necessary to compile.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- If the fix requires different or additional imports, include them in //<import start> ... //<import end>.

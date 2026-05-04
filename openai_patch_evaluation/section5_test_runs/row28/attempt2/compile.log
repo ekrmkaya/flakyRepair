@@ -1,0 +1,38 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.dropwizard:dropwizard-logging >------------------
+[INFO] Building Dropwizard Logging Support 2.0.0-rc1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.4.1:enforce (enforce) @ dropwizard-logging ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- checkstyle:3.0.0:check (checkstyle) @ dropwizard-logging ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ dropwizard-logging ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ dropwizard-logging ---
+[WARNING]  Parameter 'optimize' (user property 'maven.compiler.optimize') is deprecated: This property is a no-op in {@code javac}.
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ dropwizard-logging ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 26 resources
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ dropwizard-logging ---
+[WARNING]  Parameter 'optimize' (user property 'maven.compiler.optimize') is deprecated: This property is a no-op in {@code javac}.
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 22 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/dropwizard/dropwizard-logging/target/test-classes
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/dropwizard/dropwizard-logging/src/test/java/io/dropwizard/logging/TcpServer.java:[84,13] [CatchAndPrintStackTrace] Logging or rethrowing exceptions should usually be preferred to catching and calling printStackTrace
+    (see http://errorprone.info/bugpattern/CatchAndPrintStackTrace)
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/dropwizard/dropwizard-logging/src/test/java/io/dropwizard/logging/UdpSocketAppenderFactoryTest.java:[51,21] [CatchAndPrintStackTrace] Logging or rethrowing exceptions should usually be preferred to catching and calling printStackTrace
+    (see http://errorprone.info/bugpattern/CatchAndPrintStackTrace)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.801 s
+[INFO] Finished at: 2026-05-03T02:31:57-04:00
+[INFO] ------------------------------------------------------------------------

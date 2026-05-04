@@ -1,0 +1,11 @@
+{
+  "source": "section4_stitched",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "@Test\npublic void basicProxyAuthentication() throws Exception {\n  final AtomicBoolean finalHostReached = new AtomicBoolean(false);\n  handler = new RequestHandler() {\n\n    @Override\n    public void handle(Request request, HttpServletResponse response) {\n      finalHostReached.set(true);\n      response.setStatus(HTTP_OK);\n    }\n  };\n  HttpRequest.keepAlive(false);\n  assertTrue(get(url).useProxy(\"localhost\", proxyPort).proxyBasic(\"user\", \"p4ssw0rd\").ok());\n  assertEquals(\"user\", proxyUser.get());\n  assertEquals(\"p4ssw0rd\", proxyPassword.get());\n  assertEquals(true, finalHostReached.get());\n  assertEquals(1, proxyHitCount.get());\n}\n\n@Test\npublic void customConnectionFactory() throws Exception {\n  handler = new RequestHandler() {\n\n    @Override\n    public void handle(Request request, HttpServletResponse response) {\n      response.setStatus(HTTP_OK);\n    }\n  };\n\n  ConnectionFactory factory = new ConnectionFactory() {\n\n    public HttpURLConnection create(URL otherUrl) throws IOException {\n      return (HttpURLConnection) new URL(url).openConnection();\n    }\n\n    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {\n      throw new IOException();\n    }\n  };\n\n  HttpRequest.setConnectionFactory(factory);\n  int code = get(\"http://not/a/real/url\").code();\n  assertEquals(200, code);\n  HttpRequest.keepAlive(true);\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

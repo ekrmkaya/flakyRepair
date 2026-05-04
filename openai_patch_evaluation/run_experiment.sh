@@ -20,7 +20,8 @@ cd "$SCRIPT_DIR"
 
 # ── Parse row arguments (default: 1–50) ──────────────────────────────────────
 if [[ $# -eq 0 ]]; then
-    mapfile -t ROWS < <(seq 1 50)
+    ROWS=()
+    for i in $(seq 1 50); do ROWS+=("$i"); done
 else
     ROWS=("$@")
 fi
@@ -62,7 +63,7 @@ fi
 # ── Set up logging ────────────────────────────────────────────────────────────
 ROW_LABEL=$(IFS=_; echo "${ROWS[*]}")
 if [[ ${#ROWS[@]} -gt 6 ]]; then
-    ROW_LABEL="${ROWS[0]}-${ROWS[-1]}_n${#ROWS[@]}"
+    ROW_LABEL="${ROWS[0]}-${ROWS[${#ROWS[@]}-1]}_n${#ROWS[@]}"
 fi
 LOG="$SCRIPT_DIR/logs/experiment_rows_${ROW_LABEL}_$(date +%Y%m%d_%H%M%S).log"
 mkdir -p "$SCRIPT_DIR/logs"

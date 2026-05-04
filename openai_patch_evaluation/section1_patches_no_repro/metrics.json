@@ -1,0 +1,402 @@
+{
+  "row01": {
+    "victim_test_name": "io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testCloseReason",
+    "polluter_test_name": "io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testErrorHandling",
+    "prompt_tokens": 1252,
+    "completion_tokens": 376,
+    "total_tokens": 1628,
+    "elapsed_seconds": 14.55
+  },
+  "row02": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.putWithEscapedMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1055,
+    "completion_tokens": 363,
+    "total_tokens": 1418,
+    "elapsed_seconds": 9.36
+  },
+  "row03": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.putWithEscapedVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1032,
+    "completion_tokens": 342,
+    "total_tokens": 1374,
+    "elapsed_seconds": 7.22
+  },
+  "row04": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.putWithMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 350,
+    "total_tokens": 1395,
+    "elapsed_seconds": 8.14
+  },
+  "row05": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.putWithVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1022,
+    "completion_tokens": 338,
+    "total_tokens": 1360,
+    "elapsed_seconds": 8.44
+  },
+  "row06": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 978,
+    "completion_tokens": 275,
+    "total_tokens": 1253,
+    "elapsed_seconds": 10.02
+  },
+  "row07": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.singleVerifier",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 961,
+    "completion_tokens": 272,
+    "total_tokens": 1233,
+    "elapsed_seconds": 6.71
+  },
+  "row08": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.basicProxyAuthentication",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1004,
+    "completion_tokens": 304,
+    "total_tokens": 1308,
+    "elapsed_seconds": 8.03
+  },
+  "row09": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1055,
+    "completion_tokens": 343,
+    "total_tokens": 1398,
+    "elapsed_seconds": 8.03
+  },
+  "row10": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1032,
+    "completion_tokens": 329,
+    "total_tokens": 1361,
+    "elapsed_seconds": 11.07
+  },
+  "row11": {
+    "victim_test_name": "net.sf.marineapi.ais.event.AbstractAISMessageListenerTest.testGenericsListenerDefaultConstructorThrows",
+    "polluter_test_name": "net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar",
+    "prompt_tokens": 1051,
+    "completion_tokens": 308,
+    "total_tokens": 1359,
+    "elapsed_seconds": 9.96
+  },
+  "row12": {
+    "victim_test_name": "net.sf.marineapi.ais.event.AbstractAISMessageListenerTest.testParametrizedConstructor",
+    "polluter_test_name": "net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar",
+    "prompt_tokens": 988,
+    "completion_tokens": 188,
+    "total_tokens": 1176,
+    "elapsed_seconds": 6.37
+  },
+  "row13": {
+    "victim_test_name": "org.apache.shardingsphere.elasticjob.cloud.scheduler.mesos.AppConstraintEvaluatorTest.assertExistExecutorOnS0",
+    "polluter_test_name": "org.apache.shardingsphere.elasticjob.cloud.scheduler.mesos.AppConstraintEvaluatorTest.assertGetExecutorError",
+    "prompt_tokens": 982,
+    "completion_tokens": 307,
+    "total_tokens": 1289,
+    "elapsed_seconds": 13.44
+  },
+  "row14": {
+    "victim_test_name": "com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLogger",
+    "polluter_test_name": "com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLoggerWarnLevel",
+    "prompt_tokens": 786,
+    "completion_tokens": 210,
+    "total_tokens": 996,
+    "elapsed_seconds": 9.87
+  },
+  "row15": {
+    "victim_test_name": "io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertIsShutdownAlready",
+    "polluter_test_name": "io.elasticjob.lite.internal.instance.ShutdownListenerManagerTest.assertRemoveLocalInstancePath",
+    "prompt_tokens": 888,
+    "completion_tokens": 306,
+    "total_tokens": 1194,
+    "elapsed_seconds": 6.98
+  },
+  "row16": {
+    "victim_test_name": "io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNull",
+    "polluter_test_name": "io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNotNull",
+    "prompt_tokens": 629,
+    "completion_tokens": 134,
+    "total_tokens": 763,
+    "elapsed_seconds": 3.31
+  },
+  "row17": {
+    "victim_test_name": "org.apache.shardingsphere.elasticjob.cloud.scheduler.env.BootstrapEnvironmentTest.assertWithoutEventTraceRdbConfiguration",
+    "polluter_test_name": "org.apache.shardingsphere.elasticjob.cloud.scheduler.env.BootstrapEnvironmentTest.assertGetEventTraceRdbConfigurationMap",
+    "prompt_tokens": 837,
+    "completion_tokens": 314,
+    "total_tokens": 1151,
+    "elapsed_seconds": 6.63
+  },
+  "row18": {
+    "victim_test_name": "de.strullerbaumann.visualee.filter.boundary.FilterContainerTest.testIsOkExcludeFalse",
+    "polluter_test_name": "de.strullerbaumann.visualee.filter.boundary.FilterContainerTest.testIsOkExcludeTrue",
+    "prompt_tokens": 861,
+    "completion_tokens": 146,
+    "total_tokens": 1007,
+    "elapsed_seconds": 6.13
+  },
+  "row19": {
+    "victim_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse",
+    "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeTrue",
+    "prompt_tokens": 845,
+    "completion_tokens": 138,
+    "total_tokens": 983,
+    "elapsed_seconds": 3.74
+  },
+  "row20": {
+    "victim_test_name": "de.strullerbaumann.visualee.filter.entity.PackageFilterTest.testIsOkExcludeFalse",
+    "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.PackageFilterTest.testIsOkExcludeTrue",
+    "prompt_tokens": 845,
+    "completion_tokens": 138,
+    "total_tokens": 983,
+    "elapsed_seconds": 3.63
+  },
+  "row21": {
+    "victim_test_name": "dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest.canHandleFragmentedMessageReceived",
+    "polluter_test_name": "dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest.canFlushUnhandled",
+    "prompt_tokens": 1092,
+    "completion_tokens": 523,
+    "total_tokens": 1615,
+    "elapsed_seconds": 19.98
+  },
+  "row22": {
+    "victim_test_name": "dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest.canHandleUnfragmentedMessageReceived",
+    "polluter_test_name": "dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest.canFlushUnhandled",
+    "prompt_tokens": 1021,
+    "completion_tokens": 452,
+    "total_tokens": 1473,
+    "elapsed_seconds": 10.99
+  },
+  "row23": {
+    "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDefaultDirectoryManagerPath",
+    "polluter_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor",
+    "prompt_tokens": 668,
+    "completion_tokens": 212,
+    "total_tokens": 880,
+    "elapsed_seconds": 7.97
+  },
+  "row24": {
+    "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException",
+    "polluter_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor",
+    "prompt_tokens": 618,
+    "completion_tokens": 147,
+    "total_tokens": 765,
+    "elapsed_seconds": 3.38
+  },
+  "row25": {
+    "victim_test_name": "com.willwinder.universalgcodesender.GrblControllerTest.rawResponseHandlerOnErrorWithNoSentCommandsShouldSendMessageToConsole",
+    "polluter_test_name": "com.willwinder.universalgcodesender.i18n.LocalizationTest.loadLocalizationThatDoesExistShouldLoad",
+    "prompt_tokens": 1146,
+    "completion_tokens": 227,
+    "total_tokens": 1373,
+    "elapsed_seconds": 5.35
+  },
+  "row26": {
+    "victim_test_name": "jnr.posix.GroupTest.getgroups",
+    "polluter_test_name": "jnr.posix.EnvTest.testSetenvOverwrite",
+    "prompt_tokens": 975,
+    "completion_tokens": 357,
+    "total_tokens": 1332,
+    "elapsed_seconds": 13.46
+  },
+  "row27": {
+    "victim_test_name": "lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldReturnBodyWhenEnabledAndNoMax",
+    "polluter_test_name": "lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldNotReturnBodyWhenEnabledButLongerThanMaxSize",
+    "prompt_tokens": 939,
+    "completion_tokens": 342,
+    "total_tokens": 1281,
+    "elapsed_seconds": 13.11
+  },
+  "row28": {
+    "victim_test_name": "io.dropwizard.logging.DefaultLoggingFactoryPrintErrorMessagesTest.testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut",
+    "polluter_test_name": "io.dropwizard.logging.ThrottlingAppenderWrapperTest.belowThrottlingLimit",
+    "prompt_tokens": 1006,
+    "completion_tokens": 223,
+    "total_tokens": 1229,
+    "elapsed_seconds": 4.97
+  },
+  "row29": {
+    "victim_test_name": "com.alibaba.csp.sentinel.config.SentinelConfigTest.testDefaultConfig",
+    "polluter_test_name": "com.alibaba.csp.sentinel.config.SentinelConfigTest.testColdFactoryLargerThanOne",
+    "prompt_tokens": 694,
+    "completion_tokens": 244,
+    "total_tokens": 938,
+    "elapsed_seconds": 5.62
+  },
+  "row30": {
+    "victim_test_name": "com.alibaba.json.bvt.serializer.MaxBufSizeTest.test_max_buf",
+    "polluter_test_name": "com.alibaba.json.bvt.serializer.SerializeWriterTest_14.test_writer_2",
+    "prompt_tokens": 690,
+    "completion_tokens": 196,
+    "total_tokens": 886,
+    "elapsed_seconds": 4.66
+  },
+  "row31": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.deleteWithMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 363,
+    "total_tokens": 1408,
+    "elapsed_seconds": 13.49
+  },
+  "row32": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.deleteWithVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1022,
+    "completion_tokens": 330,
+    "total_tokens": 1352,
+    "elapsed_seconds": 14.19
+  },
+  "row33": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithPercent",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 949,
+    "completion_tokens": 273,
+    "total_tokens": 1222,
+    "elapsed_seconds": 6.43
+  },
+  "row34": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithSpace",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 953,
+    "completion_tokens": 270,
+    "total_tokens": 1223,
+    "elapsed_seconds": 9.66
+  },
+  "row35": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithUnicode",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 954,
+    "completion_tokens": 267,
+    "total_tokens": 1221,
+    "elapsed_seconds": 13.27
+  },
+  "row36": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getWithEscapedMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1055,
+    "completion_tokens": 343,
+    "total_tokens": 1398,
+    "elapsed_seconds": 8.0
+  },
+  "row37": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getWithEscapedVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1032,
+    "completion_tokens": 375,
+    "total_tokens": 1407,
+    "elapsed_seconds": 9.94
+  },
+  "row38": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getWithMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 366,
+    "total_tokens": 1411,
+    "elapsed_seconds": 7.97
+  },
+  "row39": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.headWithEscapedMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1055,
+    "completion_tokens": 362,
+    "total_tokens": 1417,
+    "elapsed_seconds": 12.02
+  },
+  "row40": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.headWithEscapedVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1032,
+    "completion_tokens": 329,
+    "total_tokens": 1361,
+    "elapsed_seconds": 7.18
+  },
+  "row41": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.headWithMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 347,
+    "total_tokens": 1392,
+    "elapsed_seconds": 14.22
+  },
+  "row42": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.headWithVaragsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1022,
+    "completion_tokens": 337,
+    "total_tokens": 1359,
+    "elapsed_seconds": 16.82
+  },
+  "row43": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.postWithEscapedMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1055,
+    "completion_tokens": 352,
+    "total_tokens": 1407,
+    "elapsed_seconds": 7.94
+  },
+  "row44": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.postWithEscapedVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1032,
+    "completion_tokens": 327,
+    "total_tokens": 1359,
+    "elapsed_seconds": 13.13
+  },
+  "row45": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.postWithNumericQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 365,
+    "total_tokens": 1410,
+    "elapsed_seconds": 7.55
+  },
+  "row46": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.verifierAccepts",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 920,
+    "completion_tokens": 221,
+    "total_tokens": 1141,
+    "elapsed_seconds": 5.98
+  },
+  "row47": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.getWithVarargsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1022,
+    "completion_tokens": 337,
+    "total_tokens": 1359,
+    "elapsed_seconds": 7.56
+  },
+  "row48": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.postWithMappedQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1045,
+    "completion_tokens": 355,
+    "total_tokens": 1400,
+    "elapsed_seconds": 8.99
+  },
+  "row49": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.postWithVaragsQueryParams",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 1022,
+    "completion_tokens": 338,
+    "total_tokens": 1360,
+    "elapsed_seconds": 8.33
+  },
+  "row50": {
+    "victim_test_name": "net.sf.marineapi.ais.parser.AISMessageFactoryTest.testCreateWithIncorrectOrder",
+    "polluter_test_name": "net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar",
+    "prompt_tokens": 977,
+    "completion_tokens": 226,
+    "total_tokens": 1203,
+    "elapsed_seconds": 5.31
+  }
+}

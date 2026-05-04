@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/ktuukkan/marine-api /Users/ekaya/Desktop/testing/flakyRepair/repos/marine-api
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/marine-api'...

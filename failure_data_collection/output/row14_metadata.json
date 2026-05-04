@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/danfickle/openhtmltopdf",
+  "reproduction_steps": "testLogger passes when run alone but fails when run immediately after testLoggerWarnLevel in the same JVM process (JDK 8, no restart between them). Same-class pair.",
+  "victim_test_name": "com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLogger",
+  "polluter_test_name": "com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLoggerWarnLevel",
+  "error_messages": "Expected: a string containing \"] [INFO]\" but: was \"ERROR: 'The markup in the document preceding the root element must be well-formed.' \"",
+  "failing_lines": "builder.run();\nrunWithLogOutput();\nAssert.assertThat(log, containsString(\"] [INFO]\"));",
+  "global_variables": "",
+  "helper_methods": "    @BeforeClass\n    public static void levelFormat() {\n        // We use this property to differentiate log messages\n        // going through slf4j to those going through the default\n        // java.util.logging logger implementation.\n        System.setProperty(\"org.slf4j.simpleLogger.levelInBrackets\", \"true\");\n    }",
+  "full_test_code": "// VICTIM: com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLogger\n    @Test\n    public void testLogger() throws IOException {\n        ByteArrayOutputStream baos = new ByteArrayOutputStream();\n        PrintStream ps = new PrintStream(baos, true, \"UTF-8\");\n        PrintStream old = System.err;\n        System.setErr(ps);\n\n        XRLog.setLoggerImpl(new Slf4jLogger());\n        runWithLogOutput();\n\n        ps.flush();\n        String log = baos.toString(\"UTF-8\");\n\n        old.println(log);\n        System.setErr(old);\n\n        Assert.assertThat(log, containsString(\"] [INFO]\"));\n        Assert.assertThat(log, containsString(\"] [WARN]\"));\n    }\n\n// POLLUTER: com.openhtmltopdf.slf4j.Slf4JLoggerTest.testLoggerWarnLevel\n    @Test\n    public void testLoggerWarnLevel() throws IOException {\n        System.setProperty(\"org.slf4j.simpleLogger.defaultLogLevel\", \"warn\");\n        XRLog.setLoggerImpl(new Slf4jLogger());\n\n        runWithLogOutput();\n    }"
+}

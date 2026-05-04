@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/wikidata/wikidata-toolkit",
+  "reproduction_steps": "createDirectoryManagerIoException passes when run alone but fails when run immediately after createDirectoryManagerNoConstructor in the same JVM process (JDK 8, no restart between them). Same-class pair.",
+  "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException",
+  "polluter_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor",
+  "error_messages": "java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManagerFactoryTest$TestDirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)",
+  "failing_lines": "DirectoryManagerFactory.createDirectoryManager(",
+  "global_variables": "return null;\nreturn false;\nreturn 0;",
+  "helper_methods": "",
+  "full_test_code": "// VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException\n\tpublic void createDirectoryManagerIoException() throws IOException {\n\t\tDirectoryManagerFactory.createDirectoryManager(\n\t\t\t\t\"/nonexisting-directory/123456789/hopefully\", true);\n\t}\n\n// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor\n\tpublic void createDirectoryManagerNoConstructor() throws IOException {\n\t\tDirectoryManagerFactory\n\t\t\t\t.setDirectoryManagerClass(TestDirectoryManager.class);\n\t\tDirectoryManagerFactory.createDirectoryManager(\"/\", true);\n\t}"
+}

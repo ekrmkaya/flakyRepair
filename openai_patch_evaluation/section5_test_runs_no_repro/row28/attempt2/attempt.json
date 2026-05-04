@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Before\npublic void setUp() throws Exception {\n    output = new ByteArrayOutputStream();\n    factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));\n    PrintStream oldSysOut = System.out;\n    // This forces auto-flush, which should help with buffering issues\n    PrintStream newSysOut = new PrintStream(output, true, StandardCharsets.UTF_8.name());\n    System.setOut(newSysOut);\n}\n\n@After\npublic void tearDown() throws Exception {\n    factory.stop();\n    if (System.out != null) {\n        System.setOut(System.out);\n    }\n\n    if (System.out != null) {\n        System.out.close();\n    }\n\n    output.reset();\n}\n\n@Test\npublic void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {\n    Field field = StatusPrinter.class.getDeclaredField(\"ps\");\n    field.setAccessible(true);\n\n    PrintStream out = (PrintStream) field.get(null);\n    assertThat(out).isSameAs(System.out);\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

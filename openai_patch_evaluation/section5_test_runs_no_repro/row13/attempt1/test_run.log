@@ -1,0 +1,34 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --< org.apache.shardingsphere.elasticjob:elasticjob-cloud-scheduler >---
+[INFO] Building elasticjob-cloud-scheduler 3.0.0-RC1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-cli) @ elasticjob-cloud-scheduler ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running flakyrepro.ProgrammaticReproducer_patch_row13_shardingsphere_elasticjob
+[REPRODUCED] patch_row13_shardingsphere_elasticjob: JsonParseException: null
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.759 sec <<< FAILURE! - in flakyrepro.ProgrammaticReproducer_patch_row13_shardingsphere_elasticjob
+reproduce(flakyrepro.ProgrammaticReproducer_patch_row13_shardingsphere_elasticjob)  Time elapsed: 2.688 sec  <<< ERROR!
+com.google.gson.JsonParseException
+
+
+Results :
+
+Tests in error: 
+  ProgrammaticReproducer_patch_row13_shardingsphere_elasticjob.reproduce » JsonParse
+
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+
+[ERROR] There are test failures.
+
+Please refer to /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-bdfcaff0/elasticjob-cloud/elasticjob-cloud-scheduler/target/surefire-reports for the individual test results.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.219 s
+[INFO] Finished at: 2026-05-03T03:49:16-04:00
+[INFO] ------------------------------------------------------------------------

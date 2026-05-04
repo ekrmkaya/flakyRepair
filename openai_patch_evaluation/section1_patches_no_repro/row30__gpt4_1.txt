@@ -1,0 +1,35 @@
+victim: com.alibaba.json.bvt.serializer.MaxBufSizeTest.test_max_buf
+polluter: com.alibaba.json.bvt.serializer.SerializeWriterTest_14.test_writer_2
+source: https://github.com/alibaba/fastjson
+=== OUTPUT ===
+//<fix start>
+// VICTIM: com.alibaba.json.bvt.serializer.MaxBufSizeTest.test_max_buf
+public void test_max_buf() throws Exception {
+    SerializeWriter writer = new SerializeWriter();
+
+    Throwable error = null;
+    try {
+        writer.setMaxBufSize(1);
+    } catch (JSONException e) {
+        error = e;
+    }
+    assertNotNull(error);
+    writer.close();
+}
+
+// POLLUTER: com.alibaba.json.bvt.serializer.SerializeWriterTest_14.test_writer_2
+public void test_writer_2() throws Exception {
+    StringWriter strOut = new StringWriter();
+    SerializeWriter out = new SerializeWriter(strOut, 1);
+
+    try {
+        JSONSerializer serializer = new JSONSerializer(out);
+
+        Map map = Collections.singletonMap("ab", "a");
+        serializer.write(map);
+    } finally {
+        out.close();
+    }
+    Assert.assertEquals("{ab:\"a\"}", strOut.toString());
+}
+//<fix end>

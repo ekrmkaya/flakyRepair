@@ -1,0 +1,29 @@
+victim: com.alibaba.csp.sentinel.config.SentinelConfigTest.testDefaultConfig
+polluter: com.alibaba.csp.sentinel.config.SentinelConfigTest.testColdFactoryLargerThanOne
+source: https://github.com/alibaba/Sentinel
+=== OUTPUT ===
+//<fix start>
+@Test
+public void testDefaultConfig() {
+    SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, String.valueOf(SentinelConfig.DEFAULT_COLD_FACTOR));
+    assertEquals(SentinelConfig.DEFAULT_CHARSET, SentinelConfig.charset());
+    assertEquals(SentinelConfig.DEFAULT_SINGLE_METRIC_FILE_SIZE, SentinelConfig.singleMetricFileSize());
+    assertEquals(SentinelConfig.DEFAULT_TOTAL_METRIC_FILE_COUNT, SentinelConfig.totalMetricFileCount());
+    assertEquals(SentinelConfig.DEFAULT_COLD_FACTOR, SentinelConfig.coldFactor());
+    assertEquals(SentinelConfig.DEFAULT_STATISTIC_MAX_RT, SentinelConfig.statisticMaxRt());
+}
+
+@Test
+public void testColdFactoryLargerThanOne() {
+    String originalColdFactor = SentinelConfig.getConfig(SentinelConfig.COLD_FACTOR);
+    try {
+        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, "2");
+        assertEquals(2, SentinelConfig.coldFactor());
+
+        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, "4");
+        assertEquals(4, SentinelConfig.coldFactor());
+    } finally {
+        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, originalColdFactor);
+    }
+}
+//<fix end>

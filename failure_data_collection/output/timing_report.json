@@ -1,0 +1,502 @@
+{
+  "row01": {
+    "clone_sec": 1.8008151054382324,
+    "checkout_sec": 0.7887587547302246,
+    "compile_sec": 41.43900918960571,
+    "victim_alone_sec": 8.241112232208252,
+    "polluter_victim_sec": 19.54867196083069,
+    "source_locate_sec": 0.21335887908935547,
+    "error_extract_sec": 0.01213383674621582,
+    "total_sec": 72.04385995864868
+  },
+  "row02": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.945815086364746,
+    "polluter_victim_sec": 11.532112836837769,
+    "source_locate_sec": 0.03076791763305664,
+    "error_extract_sec": 0.0029239654541015625,
+    "total_sec": 27.43863606452942
+  },
+  "row03": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.738968133926392,
+    "polluter_victim_sec": 11.64441704750061,
+    "source_locate_sec": 0.02948284149169922,
+    "error_extract_sec": 0.0031311511993408203,
+    "total_sec": 27.343015432357788
+  },
+  "row04": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.763529062271118,
+    "polluter_victim_sec": 11.666913032531738,
+    "source_locate_sec": 0.029468774795532227,
+    "error_extract_sec": 0.003095865249633789,
+    "total_sec": 27.39002299308777
+  },
+  "row05": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.709270238876343,
+    "polluter_victim_sec": 11.732297897338867,
+    "source_locate_sec": 0.029970169067382812,
+    "error_extract_sec": 0.0037660598754882812,
+    "total_sec": 27.402320623397827
+  },
+  "row06": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 6.1441569328308105,
+    "polluter_victim_sec": 11.78533673286438,
+    "source_locate_sec": 0.029139995574951172,
+    "error_extract_sec": 0.003926753997802734,
+    "total_sec": 27.88957667350769
+  },
+  "row07": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.838820934295654,
+    "polluter_victim_sec": 11.922098159790039,
+    "source_locate_sec": 0.02858901023864746,
+    "error_extract_sec": 0.0046427249908447266,
+    "total_sec": 27.72116708755493
+  },
+  "row08": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 6.014595985412598,
+    "polluter_victim_sec": 11.660996198654175,
+    "source_locate_sec": 0.028522968292236328,
+    "error_extract_sec": 0.006781101226806641,
+    "total_sec": 27.63791251182556
+  },
+  "row09": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.893550872802734,
+    "polluter_victim_sec": 11.605571031570435,
+    "source_locate_sec": 0.030935049057006836,
+    "error_extract_sec": 0.004091978073120117,
+    "total_sec": 27.461165189743042
+  },
+  "row10": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.942950010299683,
+    "polluter_victim_sec": 11.873769044876099,
+    "source_locate_sec": 0.02884817123413086,
+    "error_extract_sec": 0.0036160945892333984,
+    "total_sec": 27.77619957923889
+  },
+  "row11": {
+    "clone_sec": 0.5529508590698242,
+    "checkout_sec": 0.21116995811462402,
+    "compile_sec": 12.925984144210815,
+    "victim_alone_sec": 6.802097320556641,
+    "polluter_victim_sec": 16.678379774093628,
+    "source_locate_sec": 0.07830286026000977,
+    "error_extract_sec": 0.004678964614868164,
+    "total_sec": 37.25356388092041
+  },
+  "row12": {
+    "clone_sec": 0.5529508590698242,
+    "checkout_sec": 0.21116995811462402,
+    "compile_sec": 12.925984144210815,
+    "victim_alone_sec": 6.524850130081177,
+    "polluter_victim_sec": 16.71704602241516,
+    "source_locate_sec": 0.06006312370300293,
+    "error_extract_sec": 0.003543853759765625,
+    "total_sec": 36.99560809135437
+  },
+  "row13": {
+    "clone_sec": 1.849606990814209,
+    "checkout_sec": 0.5857491493225098,
+    "compile_sec": 47.01801300048828,
+    "victim_alone_sec": 9.40058708190918,
+    "polluter_victim_sec": 26.03700613975525,
+    "source_locate_sec": 0.09352397918701172,
+    "error_extract_sec": 0.004289865493774414,
+    "total_sec": 84.98877620697021
+  },
+  "row14": {
+    "clone_sec": 1.8648462295532227,
+    "checkout_sec": 0.6055822372436523,
+    "compile_sec": 20.253348112106323,
+    "victim_alone_sec": 8.629175186157227,
+    "polluter_victim_sec": 13.875903844833374,
+    "source_locate_sec": 0.1022348403930664,
+    "error_extract_sec": 0.0033338069915771484,
+    "total_sec": 45.33442425727844
+  },
+  "row15": {
+    "clone_sec": 1.8298790454864502,
+    "checkout_sec": 0.6934118270874023,
+    "compile_sec": 14.198324918746948,
+    "victim_alone_sec": 7.455647945404053,
+    "polluter_victim_sec": 18.90603280067444,
+    "source_locate_sec": 0.061929941177368164,
+    "error_extract_sec": 0.0027761459350585938,
+    "total_sec": 43.14800262451172
+  },
+  "row16": {
+    "clone_sec": 1.8298790454864502,
+    "checkout_sec": 0.6934118270874023,
+    "compile_sec": 14.198324918746948,
+    "victim_alone_sec": 4.9603071212768555,
+    "polluter_victim_sec": 15.97966194152832,
+    "source_locate_sec": 0.03740525245666504,
+    "error_extract_sec": 0.0028448104858398438,
+    "total_sec": 37.70183491706848
+  },
+  "row17": {
+    "clone_sec": 1.849606990814209,
+    "checkout_sec": 0.5857491493225098,
+    "compile_sec": 47.01801300048828,
+    "victim_alone_sec": 6.6327807903289795,
+    "polluter_victim_sec": 24.256388664245605,
+    "source_locate_sec": 0.05288505554199219,
+    "error_extract_sec": 0.0028600692749023438,
+    "total_sec": 80.39828372001648
+  },
+  "row18": {
+    "clone_sec": 0.3890669345855713,
+    "checkout_sec": 0.028682947158813477,
+    "compile_sec": 11.19757604598999,
+    "victim_alone_sec": 5.950194835662842,
+    "polluter_victim_sec": 15.300571203231812,
+    "source_locate_sec": 0.03300809860229492,
+    "error_extract_sec": 0.0035719871520996094,
+    "total_sec": 32.90267205238342
+  },
+  "row19": {
+    "clone_sec": 0.3890669345855713,
+    "checkout_sec": 0.028682947158813477,
+    "compile_sec": 11.19757604598999,
+    "victim_alone_sec": 5.674418926239014,
+    "polluter_victim_sec": 14.815617084503174,
+    "source_locate_sec": 0.03012704849243164,
+    "error_extract_sec": 0.002955913543701172,
+    "total_sec": 32.138444900512695
+  },
+  "row20": {
+    "clone_sec": 0.3890669345855713,
+    "checkout_sec": 0.028682947158813477,
+    "compile_sec": 11.19757604598999,
+    "victim_alone_sec": 5.62581992149353,
+    "polluter_victim_sec": 15.241099119186401,
+    "source_locate_sec": 0.03085613250732422,
+    "error_extract_sec": 0.002947092056274414,
+    "total_sec": 32.516048192977905
+  },
+  "row21": {
+    "clone_sec": 0.5348401069641113,
+    "checkout_sec": 0.17597007751464844,
+    "compile_sec": 10.019490003585815,
+    "victim_alone_sec": 4.902531862258911,
+    "polluter_victim_sec": 10.526478052139282,
+    "source_locate_sec": 0.031905174255371094,
+    "error_extract_sec": 0.0026922225952148438,
+    "total_sec": 26.193907499313354
+  },
+  "row22": {
+    "clone_sec": 0.5348401069641113,
+    "checkout_sec": 0.17597007751464844,
+    "compile_sec": 10.019490003585815,
+    "victim_alone_sec": 4.472502946853638,
+    "polluter_victim_sec": 10.364085912704468,
+    "source_locate_sec": 0.029191970825195312,
+    "error_extract_sec": 0.0028769969940185547,
+    "total_sec": 25.598958015441895
+  },
+  "row23": {
+    "clone_sec": 1.1444790363311768,
+    "checkout_sec": 0.3161952495574951,
+    "compile_sec": 7.372972726821899,
+    "victim_alone_sec": 5.557847023010254,
+    "polluter_victim_sec": 12.366332292556763,
+    "source_locate_sec": 0.03332996368408203,
+    "error_extract_sec": 0.0028028488159179688,
+    "total_sec": 26.793959140777588
+  },
+  "row24": {
+    "clone_sec": 1.1444790363311768,
+    "checkout_sec": 0.3161952495574951,
+    "compile_sec": 7.372972726821899,
+    "victim_alone_sec": 4.570165157318115,
+    "polluter_victim_sec": 12.041188716888428,
+    "source_locate_sec": 0.029758930206298828,
+    "error_extract_sec": 0.002814054489135742,
+    "total_sec": 25.47757387161255
+  },
+  "row25": {
+    "clone_sec": 2.303942918777466,
+    "checkout_sec": 0.6181859970092773,
+    "compile_sec": 18.510143041610718,
+    "victim_alone_sec": 10.050747156143188,
+    "polluter_victim_sec": 23.410916090011597,
+    "source_locate_sec": 0.08518290519714355,
+    "error_extract_sec": 0.003874063491821289,
+    "total_sec": 54.98299217224121
+  },
+  "row26": {
+    "clone_sec": 0.44498491287231445,
+    "checkout_sec": 0.1372983455657959,
+    "compile_sec": 12.480644702911377,
+    "victim_alone_sec": 5.512409210205078,
+    "polluter_victim_sec": 14.033010959625244,
+    "source_locate_sec": 0.062124013900756836,
+    "error_extract_sec": 0.003763914108276367,
+    "total_sec": 32.67423605918884
+  },
+  "row27": {
+    "clone_sec": 0.4323861598968506,
+    "checkout_sec": 0.20121288299560547,
+    "compile_sec": 9.259407997131348,
+    "victim_alone_sec": 7.11576771736145,
+    "polluter_victim_sec": 13.106139898300171,
+    "source_locate_sec": 0.03982114791870117,
+    "error_extract_sec": 0.002933979034423828,
+    "total_sec": 30.15766978263855
+  },
+  "row28": {
+    "clone_sec": 4.629683971405029,
+    "checkout_sec": 0.5445399284362793,
+    "compile_sec": 29.06062412261963,
+    "victim_alone_sec": 6.466814994812012,
+    "polluter_victim_sec": 21.52728509902954,
+    "source_locate_sec": 0.08065414428710938,
+    "error_extract_sec": 0.003180980682373047,
+    "total_sec": 62.31278324127197
+  },
+  "row29": {
+    "clone_sec": 0.8055949211120605,
+    "checkout_sec": 0.46007299423217773,
+    "compile_sec": 12.414448976516724,
+    "victim_alone_sec": 5.783761739730835,
+    "polluter_victim_sec": 16.556726932525635,
+    "source_locate_sec": 0.0766141414642334,
+    "error_extract_sec": 0.002866983413696289,
+    "total_sec": 36.10008668899536
+  },
+  "row30": {
+    "clone_sec": 1.3134708404541016,
+    "checkout_sec": 0.6073200702667236,
+    "compile_sec": 29.608829021453857,
+    "victim_alone_sec": 7.067922830581665,
+    "polluter_victim_sec": 33.02559804916382,
+    "source_locate_sec": 0.13633012771606445,
+    "error_extract_sec": 0.003598928451538086,
+    "total_sec": 71.76306986808777
+  },
+  "row31": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.972881317138672,
+    "polluter_victim_sec": 11.58135724067688,
+    "source_locate_sec": 0.029415130615234375,
+    "error_extract_sec": 0.0029380321502685547,
+    "total_sec": 27.5136079788208
+  },
+  "row32": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.7415571212768555,
+    "polluter_victim_sec": 11.38302206993103,
+    "source_locate_sec": 0.03212428092956543,
+    "error_extract_sec": 0.004168033599853516,
+    "total_sec": 27.08788776397705
+  },
+  "row33": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.886209011077881,
+    "polluter_victim_sec": 11.498010158538818,
+    "source_locate_sec": 0.029288053512573242,
+    "error_extract_sec": 0.0029900074005126953,
+    "total_sec": 27.34351348876953
+  },
+  "row34": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.999631881713867,
+    "polluter_victim_sec": 11.54801607131958,
+    "source_locate_sec": 0.028872013092041016,
+    "error_extract_sec": 0.0034852027893066406,
+    "total_sec": 27.50702142715454
+  },
+  "row35": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.81493878364563,
+    "polluter_victim_sec": 11.496072053909302,
+    "source_locate_sec": 0.03051590919494629,
+    "error_extract_sec": 0.0036668777465820312,
+    "total_sec": 27.272209882736206
+  },
+  "row36": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.702895879745483,
+    "polluter_victim_sec": 11.376695156097412,
+    "source_locate_sec": 0.0295412540435791,
+    "error_extract_sec": 0.004786968231201172,
+    "total_sec": 27.040935516357422
+  },
+  "row37": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.716907978057861,
+    "polluter_victim_sec": 12.27510666847229,
+    "source_locate_sec": 0.028653860092163086,
+    "error_extract_sec": 0.004307270050048828,
+    "total_sec": 27.95199203491211
+  },
+  "row38": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 6.292952060699463,
+    "polluter_victim_sec": 12.987269878387451,
+    "source_locate_sec": 0.03255796432495117,
+    "error_extract_sec": 0.0034410953521728516,
+    "total_sec": 29.243237257003784
+  },
+  "row39": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.995473146438599,
+    "polluter_victim_sec": 11.802793979644775,
+    "source_locate_sec": 0.028589963912963867,
+    "error_extract_sec": 0.004949092864990234,
+    "total_sec": 27.758822441101074
+  },
+  "row40": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.924752950668335,
+    "polluter_victim_sec": 12.052763938903809,
+    "source_locate_sec": 0.028528213500976562,
+    "error_extract_sec": 0.004149198532104492,
+    "total_sec": 27.93721055984497
+  },
+  "row41": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.977863073348999,
+    "polluter_victim_sec": 11.769532918930054,
+    "source_locate_sec": 0.028742074966430664,
+    "error_extract_sec": 0.0040891170501708984,
+    "total_sec": 27.7072434425354
+  },
+  "row42": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.699089050292969,
+    "polluter_victim_sec": 11.415383100509644,
+    "source_locate_sec": 0.030008792877197266,
+    "error_extract_sec": 0.003465890884399414,
+    "total_sec": 27.074963092803955
+  },
+  "row43": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.6921000480651855,
+    "polluter_victim_sec": 11.656341075897217,
+    "source_locate_sec": 0.0286862850189209,
+    "error_extract_sec": 0.003961086273193359,
+    "total_sec": 27.308104753494263
+  },
+  "row44": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.675534248352051,
+    "polluter_victim_sec": 11.611654996871948,
+    "source_locate_sec": 0.02866673469543457,
+    "error_extract_sec": 0.0034160614013671875,
+    "total_sec": 27.246288299560547
+  },
+  "row45": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 6.235184192657471,
+    "polluter_victim_sec": 11.521000862121582,
+    "source_locate_sec": 0.028687238693237305,
+    "error_extract_sec": 0.003347158432006836,
+    "total_sec": 27.715235710144043
+  },
+  "row46": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.810374975204468,
+    "polluter_victim_sec": 11.287806987762451,
+    "source_locate_sec": 0.03012990951538086,
+    "error_extract_sec": 0.0033588409423828125,
+    "total_sec": 27.05868697166443
+  },
+  "row47": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.751471042633057,
+    "polluter_victim_sec": 11.537687063217163,
+    "source_locate_sec": 0.02902507781982422,
+    "error_extract_sec": 0.004450798034667969,
+    "total_sec": 27.249650239944458
+  },
+  "row48": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 6.023436069488525,
+    "polluter_victim_sec": 11.793068885803223,
+    "source_locate_sec": 0.0288388729095459,
+    "error_extract_sec": 0.0028710365295410156,
+    "total_sec": 27.77523112297058
+  },
+  "row49": {
+    "clone_sec": 0.3102529048919678,
+    "checkout_sec": 0.039835214614868164,
+    "compile_sec": 9.57692813873291,
+    "victim_alone_sec": 5.766978025436401,
+    "polluter_victim_sec": 11.767675161361694,
+    "source_locate_sec": 0.03088212013244629,
+    "error_extract_sec": 0.004918098449707031,
+    "total_sec": 27.497469663619995
+  },
+  "row50": {
+    "clone_sec": 0.5529508590698242,
+    "checkout_sec": 0.21116995811462402,
+    "compile_sec": 12.925984144210815,
+    "victim_alone_sec": 6.826848983764648,
+    "polluter_victim_sec": 16.344388246536255,
+    "source_locate_sec": 0.06200218200683594,
+    "error_extract_sec": 0.002708911895751953,
+    "total_sec": 36.926053285598755
+  }
+}

@@ -1,0 +1,35 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.wikidata.wdtk:wdtk-util >---------------------
+[INFO] Building Wikidata Toolkit Utilities 0.9.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- license:1.6:update-file-header (first) @ wdtk-util ---
+[INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/src/main/java
+[INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/src/test/java
+[INFO] Scan 14 files header done in 69.706ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- license:1.6:update-project-license (first) @ wdtk-util ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ wdtk-util ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/src/main/resources
+[INFO] Copying 1 resource from target/generated-sources/license to target/classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ wdtk-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wdtk-util ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ wdtk-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.081 s
+[INFO] Finished at: 2026-05-03T04:05:46-04:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,75 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.wikidata.wdtk:wdtk-util >---------------------
+[INFO] Building Wikidata Toolkit Utilities 0.9.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-cli) @ wdtk-util ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit
+[REPRODUCED] patch_row24_wikidata_toolkit: RuntimeException: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.085 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit
+[ERROR] flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit.reproduce -- Time elapsed: 0.029 s <<< ERROR!
+java.lang.RuntimeException: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+	at org.wikidata.wdtk.util.DirectoryManagerFactory.createDirectoryManager(DirectoryManagerFactory.java:74)
+	at org.wikidata.wdtk.util.DirectoryManagerFactory.createDirectoryManager(DirectoryManagerFactory.java:99)
+	at org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException(DirectoryManagerFactoryTest.java:124)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit.reproduce(ProgrammaticReproducer_patch_row24_wikidata_toolkit.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+	at java.lang.Class.getConstructor0(Class.java:3082)
+	at java.lang.Class.getConstructor(Class.java:1825)
+	at org.wikidata.wdtk.util.DirectoryManagerFactory.createDirectoryManager(DirectoryManagerFactory.java:69)
+	... 32 more
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   ProgrammaticReproducer_patch_row24_wikidata_toolkit.reproduce:63 » Runtime java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+[INFO] 
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[ERROR] 
+
+Please refer to /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit/wdtk-util/target/surefire-reports for the individual test results.
+Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.295 s
+[INFO] Finished at: 2026-05-03T02:25:57-04:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+{
+  "source": "section4_stitched",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void getUrlEncodedWithSpace() throws Exception {\n    String unencoded = \"/a resource\";\n    final AtomicReference<String> path = new AtomicReference<String>();\n    handler = new RequestHandler() {\n\n      @Override\n      public void handle(Request request, HttpServletResponse response) {\n        path.set(request.getPathInfo());\n        response.setStatus(HTTP_OK);\n      }\n    };\n    HttpRequest request = get(encode(url + unencoded));\n    assertTrue(request.ok());\n    assertEquals(unencoded, path.get());\n}\n\n@Test\npublic void customConnectionFactory() throws Exception {\n    handler = new RequestHandler() {\n\n      @Override\n      public void handle(Request request, HttpServletResponse response) {\n        response.setStatus(HTTP_OK);\n      }\n    };\n\n    ConnectionFactory factory = new ConnectionFactory() {\n\n      public HttpURLConnection create(URL otherUrl) throws IOException {\n        return (HttpURLConnection) new URL(url).openConnection();\n      }\n\n      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {\n        throw new IOException();\n      }\n    };\n\n    HttpRequest.setConnectionFactory(factory);\n    int code = get(\"http://not/a/real/url\").code();\n    assertEquals(200, code);\n    HttpRequest.setConnectionFactory(null);\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

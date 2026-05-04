@@ -1,0 +1,47 @@
+
+1) 
+//<fix start>
+@Before
+public void resetEndpoints() {
+    MessageEndpoint.reset();
+    ErrorEndpoint.reset();
+}
+
+@Test
+public void testCloseReason() throws Exception {
+
+    Session session = deployment.connectToServer(AnnotatedClientEndpoint.class, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/chat/Bob"));
+
+    Assert.assertEquals("hi Bob (protocol=foo)", AnnotatedClientEndpoint.message());
+
+    session.close(new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, "Foo!"));
+    Assert.assertEquals("CLOSED", AnnotatedClientEndpoint.message());
+    CloseReason cr = MessageEndpoint.getReason();
+    Assert.assertEquals(CloseReason.CloseCodes.VIOLATED_POLICY.getCode(), cr.getCloseCode().getCode());
+    Assert.assertEquals("Foo!", cr.getReasonPhrase());
+
+}
+
+@Test
+public void testErrorHandling() throws Exception {
+    //make a sub class
+    AnnotatedClientEndpoint c = new AnnotatedClientEndpoint() {
+
+    };
+
+    Session session = deployment.connectToServer(c, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/error"));
+    Assert.assertEquals("hi", ErrorEndpoint.getMessage());
+    session.getAsyncRemote().sendText("app-error");
+    Assert.assertEquals("app-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.lang.RuntimeException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+
+    session.getBasicRemote().sendText("io-error");
+    Assert.assertEquals("io-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.io.IOException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+    ((UndertowSession)session).forceClose();
+    Assert.assertEquals("CLOSED", ErrorEndpoint.getMessage());
+
+}
+//<fix end>

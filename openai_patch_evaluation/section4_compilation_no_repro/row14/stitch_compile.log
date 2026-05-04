@@ -1,0 +1,27 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.openhtmltopdf:openhtmltopdf-slf4j >----------------
+[INFO] Building Openhtmltopdf slf4j Support 1.0.5-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openhtmltopdf-slf4j ---
+[INFO] Copying 4 resources from .. to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ openhtmltopdf-slf4j ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- bundle:5.1.1:manifest (bundle-manifest) @ openhtmltopdf-slf4j ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openhtmltopdf-slf4j ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-slf4j/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ openhtmltopdf-slf4j ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/ekaya/Desktop/testing/flakyRepair/repos/openhtmltopdf/openhtmltopdf-slf4j/target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.513 s
+[INFO] Finished at: 2026-05-03T03:15:37-04:00
+[INFO] ------------------------------------------------------------------------

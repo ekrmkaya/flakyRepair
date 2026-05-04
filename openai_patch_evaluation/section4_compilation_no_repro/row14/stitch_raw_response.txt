@@ -1,0 +1,40 @@
+//<fix start>
+import org.junit.Before;
+
+@Before
+public void resetLoggerLevel() {
+    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "info");
+}
+
+@Test
+public void testLogger() throws IOException {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    PrintStream ps = new PrintStream(baos, true, "UTF-8");
+    PrintStream old = System.err;
+    System.setErr(ps);
+
+    XRLog.setLoggerImpl(new Slf4jLogger());
+    runWithLogOutput();
+
+    ps.flush();
+    String log = baos.toString("UTF-8");
+
+    old.println(log);
+    System.setErr(old);
+
+    Assert.assertThat(log, containsString("] [INFO]"));
+    Assert.assertThat(log, containsString("] [WARN]"));
+}
+
+@Test
+public void testLoggerWarnLevel() throws IOException {
+    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "warn");
+    XRLog.setLoggerImpl(new Slf4jLogger());
+
+    runWithLogOutput();
+}
+//<fix end>
+
+//<import start>
+import org.junit.Before;
+//<import end>

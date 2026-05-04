@@ -1,0 +1,14 @@
+// VICTIM: io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNull
+    @Test
+    public void assertGetCurrentShardingTotalCountIfNull() {
+        JobRegistry.getInstance().setCurrentShardingTotalCount("exist_job_instance", 0);
+        assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount("exist_job_instance"), is(0));
+    }
+
+// POLLUTER: io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNotNull
+    @Test
+    public void assertGetCurrentShardingTotalCountIfNotNull() {
+        JobRegistry.getInstance().setCurrentShardingTotalCount("exist_job_instance", 10);
+        assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount("exist_job_instance"), is(10));
+        JobRegistry.getInstance().setCurrentShardingTotalCount("exist_job_instance", 0);
+    }

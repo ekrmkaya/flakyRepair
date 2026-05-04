@@ -1,0 +1,29 @@
+{
+  "final_status": "FIXED",
+  "attempt_metrics": [
+    {
+      "attempt_num": 1,
+      "source": "section4_initial",
+      "compiled": true,
+      "stitched": false,
+      "stitch_worked": false,
+      "test_result": "PASSED",
+      "attempt_result": "FIXED",
+      "gpt4_prompt_tokens": null,
+      "gpt4_completion_tokens": null,
+      "gpt4_total_tokens": null,
+      "gpt4_api_elapsed_seconds": null,
+      "stitch_prompt_tokens": null,
+      "stitch_completion_tokens": null,
+      "stitch_total_tokens": null,
+      "stitch_api_elapsed_seconds": null,
+      "compile_elapsed_seconds": 9.43,
+      "stitch_compile_elapsed_seconds": null,
+      "test_elapsed_seconds": 14.92,
+      "victim_alone_result": "PASSED",
+      "victim_alone_elapsed_seconds": 5.66,
+      "polluter_alone_result": "PASSED",
+      "polluter_alone_elapsed_seconds": 5.6
+    }
+  ]
+}

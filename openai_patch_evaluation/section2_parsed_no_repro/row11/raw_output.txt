@@ -1,0 +1,38 @@
+
+1) 
+//<fix start>
+// VICTIM: net.sf.marineapi.ais.event.AbstractAISMessageListenerTest.testGenericsListenerDefaultConstructorThrows
+    @Test
+    public void testGenericsListenerDefaultConstructorThrows() {
+        try {
+            SentenceFactory.getInstance().reset();
+            GenericsListener<Integer, AISMessage01> gl = new GenericsListener<>();
+            fail("exception not thrown, resolved to " + gl.messageType);
+        } catch (IllegalStateException ise) {
+            assertEquals("Cannot resolve generic type <T>, use constructor with Class<T> param.", ise.getMessage());
+        } catch (Exception e) {
+            fail("unexpected exception thrown: " + e.getMessage());
+        }
+    }
+
+// POLLUTER: net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar
+	@Test
+	public void testRegisterParserWithAlternativeBeginChar() {
+
+		try {
+			instance.registerParser("VDM", VDMParser.class);
+			assertTrue(instance.hasParser("VDM"));
+		} catch (Exception e) {
+			fail("parser registering failed");
+		}
+
+		Sentence s = instance.createParser("!AIVDM,1,2,3");
+		assertNotNull(s);
+		assertTrue(s instanceof Sentence);
+		assertTrue(s instanceof SentenceParser);
+		assertTrue(s instanceof VDMParser);
+		instance.unregisterParser(VDMParser.class);
+		assertFalse(instance.hasParser("VDM"));
+		SentenceFactory.getInstance().reset();
+	}
+//<fix end>

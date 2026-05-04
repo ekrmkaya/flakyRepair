@@ -1,0 +1,30 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< io.elasticjob:elastic-job-lite-core >-----------------
+[INFO] Building elastic-job-lite-core 3.0.0.M1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.4:enforce (enforce-banned-dependencies) @ elastic-job-lite-core ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ elastic-job-lite-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ elastic-job-lite-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ elastic-job-lite-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ elastic-job-lite-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 153 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-b022898e/elastic-job-lite-core/target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.464 s
+[INFO] Finished at: 2026-05-03T02:09:46-04:00
+[INFO] ------------------------------------------------------------------------

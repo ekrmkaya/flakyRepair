@@ -1,0 +1,106 @@
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldReturnBodyWhenEnabledAndNoMax
+Polluter Test: lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldNotReturnBodyWhenEnabledButLongerThanMaxSize
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+REPRODUCTION STEPS:
+Steps required to reproduce failure: shouldReturnBodyWhenEnabledAndNoMax passes when run alone but fails when run immediately after shouldNotReturnBodyWhenEnabledButLongerThanMaxSize in the same JVM process (JDK 8, no restart between them). Same-class pair.
+
+ERROR INFORMATION:
+Error Messages: expected:<... was "404" with body[: """ { "error": "not found" } """]. > but was:<... was "404" with body[ <exceeding max size to show>]. >
+Failing Lines: assertEquals(expectedMessage, error.getMessage());
+validateException(
+
+CODE CONTEXT:
+Relevant Global Variables: private ObjectFactory objectFactory = SingletonObjectFactory.instance();
+HttpAssertionFacade facade = objectFactory.getInstance(HttpAssertionFacadeImpl.class);
+GlobalWorldFacade world = objectFactory.getInstance(GlobalWorldFacade.class);
+Relevant Helper Methods: 
+Relevant Test Code: // VICTIM: lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldReturnBodyWhenEnabledAndNoMax
+    @Test
+    public void shouldReturnBodyWhenEnabledAndNoMax() {
+        String body = "{\n" +
+            "  \"error\": \"not found\"\n" +
+            "}";
+
+        HttpResponseFacade mock = mock(HttpResponseFacade.class);
+        when(mock.response()).thenReturn(generateResponse(
+            "application/json",
+            404,
+            body.getBytes()));
+
+        ((HttpAssertionFacadeImpl) facade).facade = mock;
+        world.put(ASSERTS_STATUS_CODE_DISPLAY_BODY, "true");
+
+        validateException(
+            200,
+            "1 expectation failed.\n" +
+                "Expected status code \"200\" but was \"404\" with body:\n" +
+                "\"\"\"\n" +
+                body +
+                "\n\"\"\".\n");
+    }
+
+// POLLUTER: lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest.shouldNotReturnBodyWhenEnabledButLongerThanMaxSize
+    @Test
+    public void shouldNotReturnBodyWhenEnabledButLongerThanMaxSize() {
+        String body = "{\n" +
+            "  \"error\": \"not found\"\n" +
+            "}";
+
+        HttpResponseFacade mock = mock(HttpResponseFacade.class);
+        when(mock.response()).thenReturn(generateResponse(
+            "application/json",
+            404,
+            body.getBytes()));
+
+        ((HttpAssertionFacadeImpl) facade).facade = mock;
+        world.put(ASSERTS_STATUS_CODE_DISPLAY_BODY, "true");
+        world.put(ASSERTS_STATUS_CODE_MAX_SIZE, "5");
+
+
+        validateException(
+            200,
+            "1 expectation failed.\n" +
+                "Expected status code \"200\" but was \"404\" with body <exceeding max size to show>.\n");
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.

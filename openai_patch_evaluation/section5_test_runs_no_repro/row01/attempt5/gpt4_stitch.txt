@@ -1,0 +1,266 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testCloseReason
+Polluter Test: io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testErrorHandling
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+ERROR INFORMATION:
+Error Messages: expected:<[hi Bob (protocol=foo)]> but was:<[CLOSED]>
+Failing Lines: Assert.assertEquals("hi Bob (protocol=foo)", AnnotatedClientEndpoint.message());
+
+CODE CONTEXT:
+Relevant Global Variables: private static ServerWebSocketContainer deployment;
+Relevant Helper Methods:     @BeforeClass
+    public static void setup() throws Exception {
+
+        final ServletContainer container = ServletContainer.Factory.newInstance();
+
+        DeploymentInfo builder = new DeploymentInfo()
+                .setClassLoader(AnnotatedEndpointTest.class.getClassLoader())
+                .setContextPath("/ws")
+                .setResourceManager(new TestResourceLoader(AnnotatedEndpointTest.class))
+                .setClassIntrospecter(TestClassIntrospector.INSTANCE)
+                .addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME,
+                        new WebSocketDeploymentInfo()
+                                .setBuffers(DefaultServer.getBufferPool())
+                                .setWorker(DefaultServer.getWorker())
+                                .addEndpoint(MessageEndpoint.class)
+                                .addEndpoint(AnnotatedClientEndpoint.class)
+                                .addEndpoint(AnnotatedClientEndpointWithConfigurator.class)
+                                .addEndpoint(IncrementEndpoint.class)
+                                .addEndpoint(EncodingEndpoint.class)
+                                .addEndpoint(EncodingGenericsEndpoint.class)
+                                .addEndpoint(TimeoutEndpoint.class)
+                                .addEndpoint(ErrorEndpoint.class)
+                                .addEndpoint(RootContextEndpoint.class)
+                                .addEndpoint(ThreadSafetyEndpoint.class)
+                                .addEndpoint(RequestUriEndpoint.class)
+                                .addListener(new WebSocketDeploymentInfo.ContainerReadyListener() {
+                                    @Override
+                                    public void ready(ServerWebSocketContainer container) {
+                                        deployment = container;
+                                    }
+                                })
+                )
+                .addServlet(new ServletInfo("redirect", RedirectServlet.class)
+                .addMapping("/redirect"))
+                .setDeploymentName("servletContext.war");
+
+
+        DeploymentManager manager = container.addDeployment(builder);
+        manager.deploy();
+
+
+        DefaultServer.setRootHandler(Handlers.path().addPrefixPath("/ws", manager.start()));
+    }
+// ---
+    @AfterClass
+    public static void after() {
+        deployment = null;
+    }
+Relevant Test Code: // VICTIM: io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testCloseReason
+    @Test
+    public void testCloseReason() throws Exception {
+        MessageEndpoint.reset();
+
+        Session session = deployment.connectToServer(AnnotatedClientEndpoint.class, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/chat/Bob"));
+
+        Assert.assertEquals("hi Bob (protocol=foo)", AnnotatedClientEndpoint.message());
+
+        session.close(new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, "Foo!"));
+        Assert.assertEquals("CLOSED", AnnotatedClientEndpoint.message());
+        CloseReason cr = MessageEndpoint.getReason();
+        Assert.assertEquals(CloseReason.CloseCodes.VIOLATED_POLICY.getCode(), cr.getCloseCode().getCode());
+        Assert.assertEquals("Foo!", cr.getReasonPhrase());
+
+    }
+
+// POLLUTER: io.undertow.websockets.jsr.test.annotated.AnnotatedEndpointTest.testErrorHandling
+    @Test
+    public void testErrorHandling() throws Exception {
+        //make a sub class
+        AnnotatedClientEndpoint c = new AnnotatedClientEndpoint() {
+
+        };
+
+        Session session = deployment.connectToServer(c, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/error"));
+        Assert.assertEquals("hi", ErrorEndpoint.getMessage());
+        session.getAsyncRemote().sendText("app-error");
+        Assert.assertEquals("app-error", ErrorEndpoint.getMessage());
+        Assert.assertEquals("ERROR: java.lang.RuntimeException", ErrorEndpoint.getMessage());
+        Assert.assertTrue(c.isOpen());
+
+        session.getBasicRemote().sendText("io-error");
+        Assert.assertEquals("io-error", ErrorEndpoint.getMessage());
+        Assert.assertEquals("ERROR: java.io.IOException", ErrorEndpoint.getMessage());
+        Assert.assertTrue(c.isOpen());
+        ((UndertowSession)session).forceClose();
+        Assert.assertEquals("CLOSED", ErrorEndpoint.getMessage());
+
+    }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT FAILED TO COMPILE
+--------------------------------------------------------------------------------
+
+A fix was generated from the instructions above and applied to the test file,
+but it did NOT compile. Below is the exact state that was compiled and the
+resulting errors so you can identify what needs to change.
+
+Fix code that was applied:
+//<attempted fix start>
+@Before
+public void resetEndpoints() {
+    MessageEndpoint.reset();
+    AnnotatedClientEndpoint.reset();
+}
+
+@Test
+public void testCloseReason() throws Exception {
+
+    Session session = deployment.connectToServer(AnnotatedClientEndpoint.class, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/chat/Bob"));
+
+    Assert.assertEquals("hi Bob (protocol=foo)", AnnotatedClientEndpoint.message());
+
+    session.close(new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, "Foo!"));
+    Assert.assertEquals("CLOSED", AnnotatedClientEndpoint.message());
+    CloseReason cr = MessageEndpoint.getReason();
+    Assert.assertEquals(CloseReason.CloseCodes.VIOLATED_POLICY.getCode(), cr.getCloseCode().getCode());
+    Assert.assertEquals("Foo!", cr.getReasonPhrase());
+
+}
+
+@Test
+public void testErrorHandling() throws Exception {
+    //make a sub class
+    AnnotatedClientEndpoint c = new AnnotatedClientEndpoint() {
+
+    };
+
+    Session session = deployment.connectToServer(c, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/error"));
+    Assert.assertEquals("hi", ErrorEndpoint.getMessage());
+    session.getAsyncRemote().sendText("app-error");
+    Assert.assertEquals("app-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.lang.RuntimeException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+
+    session.getBasicRemote().sendText("io-error");
+    Assert.assertEquals("io-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.io.IOException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+    ((UndertowSession)session).forceClose();
+    Assert.assertEquals("CLOSED", ErrorEndpoint.getMessage());
+
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Compiler errors (most relevant lines):
+AnnotatedEndpointTest.java:[197] cannot find symbol
+  -> @Before
+
+Please provide a corrected version that compiles successfully.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Preserve the original fix intent; only change what is necessary to compile.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- If the fix requires different or additional imports, include them in //<import start> ... //<import end>.
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+
+
+=== RESPONSE ===
+//<fix start>
+@Before
+public void resetEndpoints() {
+    MessageEndpoint.reset();
+    AnnotatedClientEndpoint.reset();
+}
+
+@Test
+public void testCloseReason() throws Exception {
+
+    Session session = deployment.connectToServer(AnnotatedClientEndpoint.class, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/chat/Bob"));
+
+    Assert.assertEquals("hi Bob (protocol=foo)", AnnotatedClientEndpoint.message());
+
+    session.close(new CloseReason(CloseReason.CloseCodes.VIOLATED_POLICY, "Foo!"));
+    Assert.assertEquals("CLOSED", AnnotatedClientEndpoint.message());
+    CloseReason cr = MessageEndpoint.getReason();
+    Assert.assertEquals(CloseReason.CloseCodes.VIOLATED_POLICY.getCode(), cr.getCloseCode().getCode());
+    Assert.assertEquals("Foo!", cr.getReasonPhrase());
+
+}
+
+@Test
+public void testErrorHandling() throws Exception {
+    //make a sub class
+    AnnotatedClientEndpoint c = new AnnotatedClientEndpoint() {
+
+    };
+
+    Session session = deployment.connectToServer(c, new URI("ws://" + DefaultServer.getHostAddress("default") + ":" + DefaultServer.getHostPort("default") + "/ws/error"));
+    Assert.assertEquals("hi", ErrorEndpoint.getMessage());
+    session.getAsyncRemote().sendText("app-error");
+    Assert.assertEquals("app-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.lang.RuntimeException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+
+    session.getBasicRemote().sendText("io-error");
+    Assert.assertEquals("io-error", ErrorEndpoint.getMessage());
+    Assert.assertEquals("ERROR: java.io.IOException", ErrorEndpoint.getMessage());
+    Assert.assertTrue(c.isOpen());
+    ((UndertowSession)session).forceClose();
+    Assert.assertEquals("CLOSED", ErrorEndpoint.getMessage());
+
+}
+//<fix end>
+
+//<import start>
+import org.junit.Before;
+//<import end>

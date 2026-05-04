@@ -1,0 +1,37 @@
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 1 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 1 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] 
+[INFO] --------------------< de.struller-baumann:visualee >--------------------
+[INFO] Building visualee 0.29-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] ----------------------------[ maven-plugin ]----------------------------
+[INFO] 
+[INFO] --- license:1.6:update-file-header (add-apache-headers) @ visualee ---
+[INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/src
+[INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/target/generated-sources
+[INFO] Scan 63 files header done in 229.527ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ visualee ---
+[INFO] Copying 9 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ visualee ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- plugin:3.13.1:descriptor (default-descriptor) @ visualee ---
+[WARNING] Execution skipped
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ visualee ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ visualee ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 26 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.159 s
+[INFO] Finished at: 2026-05-03T02:16:14-04:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,51 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< dk.tbsalling:aismessages >----------------------
+[INFO] Building aismessages 3.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.0:enforce (enforce-maven) @ aismessages ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ aismessages ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ aismessages ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ aismessages ---
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ aismessages ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/target/test-classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/ais/messages/ShipAndVoyageDataTest.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/ais/messages/ShipAndVoyageDataTest.java uses or overrides a deprecated API.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/ais/messages/ShipAndVoyageDataTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/nmea/NMEAMessageHandlerTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/nmea/NMEAMessageHandlerTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/nmea/NMEAMessageHandlerTest.java:[25,2] cannot find symbol
+  symbol:   class Before
+  location: class dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.675 s
+[INFO] Finished at: 2026-05-03T03:17:31-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:testCompile (default-testCompile) on project aismessages: Compilation failure
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/aismessages/src/test/java/dk/tbsalling/aismessages/nmea/NMEAMessageHandlerTest.java:[25,2] cannot find symbol
+[ERROR]   symbol:   class Before
+[ERROR]   location: class dk.tbsalling.aismessages.nmea.NMEAMessageHandlerTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

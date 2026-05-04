@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void verifierAccepts() {\n  HttpRequest request = get(\"https://localhost\");\n  HttpsURLConnection connection = (HttpsURLConnection) request\n      .getConnection();\n  request.trustAllHosts();\n  assertNotNull(connection.getHostnameVerifier());\n  assertTrue(connection.getHostnameVerifier().verify(null, null));\n}\n\n@Test\npublic void customConnectionFactory() throws Exception {\n  handler = new RequestHandler() {\n\n    @Override\n    public void handle(Request request, HttpServletResponse response) {\n      response.setStatus(HTTP_OK);\n    }\n  };\n\n  ConnectionFactory factory = new ConnectionFactory() {\n\n    public HttpURLConnection create(URL otherUrl) throws IOException {\n      return (HttpURLConnection) new URL(url).openConnection();\n    }\n\n    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {\n      throw new IOException();\n    }\n  };\n\n  HttpRequest.setConnectionFactory(factory);\n  int code = get(\"http://not/a/real/url\").code();\n  assertEquals(200, code);\n  HttpRequest.setConnectionFactory(null); // Reset the factory after the test\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

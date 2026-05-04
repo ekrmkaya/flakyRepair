@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "@Test\npublic void testLogger() throws IOException {\n    System.setProperty(\"org.slf4j.simpleLogger.defaultLogLevel\", \"info\");\n    ByteArrayOutputStream baos = new ByteArrayOutputStream();\n    PrintStream ps = new PrintStream(baos, true, \"UTF-8\");\n    PrintStream old = System.err;\n    System.setErr(ps);\n\n    XRLog.setLoggerImpl(new Slf4jLogger());\n    runWithLogOutput();\n\n    ps.flush();\n    String log = baos.toString(\"UTF-8\");\n\n    old.println(log);\n    System.setErr(old);\n\n    Assert.assertThat(log, containsString(\"] [INFO]\"));\n    Assert.assertThat(log, containsString(\"] [WARN]\"));\n}\n\n@Test\npublic void testLoggerWarnLevel() throws IOException {\n    System.setProperty(\"org.slf4j.simpleLogger.defaultLogLevel\", \"warn\");\n    XRLog.setLoggerImpl(new Slf4jLogger());\n\n    runWithLogOutput();\n    System.setProperty(\"org.slf4j.simpleLogger.defaultLogLevel\", \"info\");\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

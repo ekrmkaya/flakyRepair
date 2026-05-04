@@ -1,0 +1,24 @@
+@Before
+public void setUp() {
+    FilterContainer.getInstance().clear();
+}
+
+@Test
+public void testIsOkExcludeFalse() {
+    ClassFilter filter = new ClassFilter();
+    filter.setFilterToken("XYZDatabaseProducer");
+    filter.setExclude(true);
+    FilterContainer.getInstance().add(filter);
+
+    assertEquals(true, FilterContainer.getInstance().isOk(javaSource));
+}
+
+@Test
+public void testIsOkExcludeTrue() {
+    ClassFilter filter = new ClassFilter();
+    filter.setFilterToken("DatabaseProducer");
+    filter.setExclude(true);
+    FilterContainer.getInstance().add(filter);
+
+    assertEquals(false, FilterContainer.getInstance().isOk(javaSource));
+}

@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/dropwizard/dropwizard /Users/ekaya/Desktop/testing/flakyRepair/repos/dropwizard
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/dropwizard'...

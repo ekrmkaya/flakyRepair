@@ -1,0 +1,28 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< lv.ctco.cukes:cukes-http >----------------------
+[INFO] Building Cukes HTTP 0.0.33-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-cli) @ cukes-http ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.696 sec - in lv.ctco.cukes.http.facade.HttpAssertionFacadeImplTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.555 s
+[INFO] Finished at: 2026-05-03T02:31:38-04:00
+[INFO] ------------------------------------------------------------------------

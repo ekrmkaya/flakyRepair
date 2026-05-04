@@ -1,0 +1,42 @@
+victim: net.sf.marineapi.ais.parser.AISMessageFactoryTest.testCreateWithIncorrectOrder
+polluter: net.sf.marineapi.nmea.parser.SentenceFactoryTest.testRegisterParserWithAlternativeBeginChar
+source: https://github.com/ktuukkan/marine-api
+=== OUTPUT ===
+//<fix start>
+@Before
+public void setUp() throws Exception {
+	instance.reset();
+	instance.registerParser("VDM", VDMParser.class);
+}
+
+@Test
+public void testCreateWithIncorrectOrder() {
+	try {
+		amf.create(split2, split1);
+		fail("AISMessageFactory didn't throw on incorrect order");
+	} catch (IllegalArgumentException iae) {
+		assertEquals("Incorrect order of AIS sentences", iae.getMessage());
+	} catch (Exception e) {
+		fail("Unexpected exception thrown from AISMessageFactory");
+	}
+}
+
+@Test
+public void testRegisterParserWithAlternativeBeginChar() {
+
+	try {
+		assertTrue(instance.hasParser("VDM"));
+	} catch (Exception e) {
+		fail("parser registering failed");
+	}
+
+	Sentence s = instance.createParser("!AIVDM,1,2,3");
+	assertNotNull(s);
+	assertTrue(s instanceof Sentence);
+	assertTrue(s instanceof SentenceParser);
+	assertTrue(s instanceof VDMParser);
+	instance.unregisterParser(VDMParser.class);
+	assertFalse(instance.hasParser("VDM"));
+	instance.registerParser("VDM", VDMParser.class);
+}
+//<fix end>

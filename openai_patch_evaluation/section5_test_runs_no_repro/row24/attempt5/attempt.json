@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "// VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException\npublic void createDirectoryManagerIoException() throws IOException {\n    DirectoryManagerFactory\n            .setDirectoryManagerClass(DirectoryManager.class);\n    DirectoryManagerFactory.createDirectoryManager(\n            \"/nonexisting-directory/123456789/hopefully\", true);\n}\n\n// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor\npublic void createDirectoryManagerNoConstructor() throws IOException {\n    DirectoryManagerFactory\n            .setDirectoryManagerClass(TestDirectoryManager.class);\n    DirectoryManagerFactory.createDirectoryManager(\"/\", true);\n    DirectoryManagerFactory\n            .setDirectoryManagerClass(DirectoryManager.class);\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

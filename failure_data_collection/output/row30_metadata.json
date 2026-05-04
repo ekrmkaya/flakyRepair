@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/alibaba/fastjson",
+  "reproduction_steps": "test_max_buf passes when run alone but fails when run immediately after test_writer_2 in the same JVM process (JDK 8, no restart between them). Different-class pair.",
+  "victim_test_name": "com.alibaba.json.bvt.serializer.MaxBufSizeTest.test_max_buf",
+  "polluter_test_name": "com.alibaba.json.bvt.serializer.SerializeWriterTest_14.test_writer_2",
+  "error_messages": "junit.framework.AssertionFailedError",
+  "failing_lines": "assertNotNull(error);",
+  "global_variables": "SerializeWriter writer = new SerializeWriter();\nThrowable error = null;\nStringWriter strOut = new StringWriter();\nSerializeWriter out = new SerializeWriter(strOut, 1);\nJSONSerializer serializer = new JSONSerializer(out);\nMap map = Collections.singletonMap(\"\", \"a\");",
+  "helper_methods": "",
+  "full_test_code": "// VICTIM: com.alibaba.json.bvt.serializer.MaxBufSizeTest.test_max_buf\n    public void test_max_buf() throws Exception {\n        SerializeWriter writer = new SerializeWriter();\n\n        Throwable error = null;\n        try {\n            writer.setMaxBufSize(1);\n        } catch (JSONException e) {\n            error = e;\n        }\n        assertNotNull(error);\n    }\n\n// POLLUTER: com.alibaba.json.bvt.serializer.SerializeWriterTest_14.test_writer_2\n    public void test_writer_2() throws Exception {\n        StringWriter strOut = new StringWriter();\n        SerializeWriter out = new SerializeWriter(strOut, 1);\n\n        try {\n            JSONSerializer serializer = new JSONSerializer(out);\n\n            Map map = Collections.singletonMap(\"ab\", \"a\");\n            serializer.write(map);\n        } finally {\n            out.close();\n        }\n        Assert.assertEquals(\"{ab:\\\"a\\\"}\", strOut.toString());\n    }"
+}

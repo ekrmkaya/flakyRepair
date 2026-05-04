@@ -1,0 +1,12 @@
+{
+  "od_or_id": "OD",
+  "source": "https://github.com/apache/shardingsphere-elasticjob",
+  "reproduction_steps": "assertGetCurrentShardingTotalCountIfNull passes when run alone but fails when run immediately after assertGetCurrentShardingTotalCountIfNotNull in the same JVM process (JDK 8, no restart between them). Same-class pair.",
+  "victim_test_name": "io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNull",
+  "polluter_test_name": "io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNotNull",
+  "error_messages": "Expected: is <0> but: was <10>",
+  "failing_lines": "assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(\"exist_job_instance\"), is(0));",
+  "global_variables": "",
+  "helper_methods": "",
+  "full_test_code": "// VICTIM: io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNull\n    @Test\n    public void assertGetCurrentShardingTotalCountIfNull() {\n        assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(\"exist_job_instance\"), is(0));\n    }\n\n// POLLUTER: io.elasticjob.lite.internal.schedule.JobRegistryTest.assertGetCurrentShardingTotalCountIfNotNull\n    @Test\n    public void assertGetCurrentShardingTotalCountIfNotNull() {\n        JobRegistry.getInstance().setCurrentShardingTotalCount(\"exist_job_instance\", 10);\n        assertThat(JobRegistry.getInstance().getCurrentShardingTotalCount(\"exist_job_instance\"), is(10));\n    }"
+}

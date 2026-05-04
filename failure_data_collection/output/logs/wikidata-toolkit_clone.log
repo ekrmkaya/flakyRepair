@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/wikidata/wikidata-toolkit /Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/wikidata-toolkit'...

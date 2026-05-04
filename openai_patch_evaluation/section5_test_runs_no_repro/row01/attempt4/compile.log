@@ -1,0 +1,195 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< io.undertow:undertow-websockets-jsr >-----------------
+[INFO] Building Undertow WebSockets JSR356 implementations 2.0.14.Final-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-java-version) @ undertow-websockets-jsr ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven-version) @ undertow-websockets-jsr ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- buildnumber:1.4:create (get-scm-revision) @ undertow-websockets-jsr ---
+[INFO] maven is executed in offline mode, Updating project files from SCM: skipped.
+[INFO] Executing: /bin/sh -c cd '/Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr
+[INFO] Storing buildNumber: d0efffad5d2034bb07525cac9b299dac72c3045d at timestamp: 1777793425877
+[WARNING] Cannot get the branch information from the git repository: 
+Detecting the current branch failed: fatal: ref HEAD is not a symbolic ref
+
+[INFO] Executing: /bin/sh -c cd '/Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr
+[INFO] Storing buildScmBranch: UNKNOWN
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ undertow-websockets-jsr ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ undertow-websockets-jsr ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- checkstyle:3.0.0:checkstyle (check-style) @ undertow-websockets-jsr ---
+[INFO] 
+[INFO] --- bundle:3.2.0:manifest (generate-manifest) @ undertow-websockets-jsr ---
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ undertow-websockets-jsr ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/resources
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ undertow-websockets-jsr ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 49 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/target/test-classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/annotated/RootContextEndpoint.java:[43,24] unchecked cast
+  required: T
+  found:    io.undertow.websockets.jsr.test.annotated.RootContextEndpoint
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[105,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[105,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[136,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[136,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[168,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[168,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[205,53] unchecked call to setResult(T) as a member of the raw type org.xnio.FutureResult
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[213,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[213,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[253,53] unchecked call to setResult(T) as a member of the raw type org.xnio.FutureResult
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[261,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[261,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[303,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[303,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[337,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[337,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[384,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[384,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[430,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[430,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[456,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[456,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[497,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[497,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[542,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[542,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[585,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[585,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[623,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[623,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[641,44] unchecked method invocation: constructor <init> in class io.undertow.websockets.jsr.ServerWebSocketContainer is applied to given types
+  required: io.undertow.servlet.api.ClassIntrospecter,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List<io.undertow.servlet.api.ThreadSetupHandler>,boolean,boolean
+  found: io.undertow.servlet.test.util.TestClassIntrospector,org.xnio.XnioWorker,io.undertow.connector.ByteBufferPool,java.util.List,boolean,boolean
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[641,174] unchecked conversion
+  required: java.util.List<io.undertow.servlet.api.ThreadSetupHandler>
+  found:    java.util.List
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/JsrWebSocketServer07Test.java:[700,24] unchecked cast
+  required: T
+  found:    java.lang.Object
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/extension/JsrWebsocketExtensionTestCase.java:[113,63] connect(org.xnio.XnioWorker,org.xnio.ssl.XnioSsl,io.undertow.connector.ByteBufferPool,org.xnio.OptionMap,java.net.URI,io.undertow.websockets.core.WebSocketVersion,io.undertow.websockets.client.WebSocketClientNegotiation,java.util.Set<io.undertow.websockets.extensions.ExtensionHandshake>) in io.undertow.websockets.client.WebSocketClient has been deprecated
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/extension/JsrWebsocketExtensionTestCase.java:[174,63] connect(org.xnio.XnioWorker,org.xnio.ssl.XnioSsl,io.undertow.connector.ByteBufferPool,org.xnio.OptionMap,java.net.URI,io.undertow.websockets.core.WebSocketVersion,io.undertow.websockets.client.WebSocketClientNegotiation,java.util.Set<io.undertow.websockets.extensions.ExtensionHandshake>) in io.undertow.websockets.client.WebSocketClient has been deprecated
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/ProgramaticAutobahnServer.java:[75,91] unchecked method invocation: method createStreamConnectionServer in class org.xnio.XnioWorker is applied to given types
+  required: java.net.SocketAddress,org.xnio.ChannelListener<? super org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>>,org.xnio.OptionMap
+  found: java.net.InetSocketAddress,org.xnio.ChannelListener,org.xnio.OptionMap
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/ProgramaticAutobahnServer.java:[75,121] unchecked conversion
+  required: org.xnio.ChannelListener<? super org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>>
+  found:    org.xnio.ChannelListener
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/ProgramaticAutobahnServer.java:[75,91] unchecked conversion
+  required: org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>
+  found:    org.xnio.channels.AcceptingChannel
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[63,33] WORKER_READ_THREADS in org.xnio.Options has been deprecated
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[62,33] WORKER_WRITE_THREADS in org.xnio.Options has been deprecated
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[73,33] WORKER_ACCEPT_THREADS in org.xnio.Options has been deprecated
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[80,92] unchecked method invocation: method createStreamConnectionServer in class org.xnio.XnioWorker is applied to given types
+  required: java.net.SocketAddress,org.xnio.ChannelListener<? super org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>>,org.xnio.OptionMap
+  found: java.net.InetSocketAddress,org.xnio.ChannelListener,org.xnio.OptionMap
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[80,122] unchecked conversion
+  required: org.xnio.ChannelListener<? super org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>>
+  found:    org.xnio.ChannelListener
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/autobahn/AnnotatedAutobahnServer.java:[80,92] unchecked conversion
+  required: org.xnio.channels.AcceptingChannel<org.xnio.StreamConnection>
+  found:    org.xnio.channels.AcceptingChannel
+[INFO] 45 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/annotated/AnnotatedEndpointTest.java:[201,18] cannot find symbol
+  symbol:   method reset()
+  location: class io.undertow.websockets.jsr.test.annotated.ErrorEndpoint
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.203 s
+[INFO] Finished at: 2026-05-03T03:30:33-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:testCompile (default-testCompile) on project undertow-websockets-jsr: Compilation failure
+[ERROR] /Users/ekaya/Desktop/testing/flakyRepair/repos/undertow/websockets-jsr/src/test/java/io/undertow/websockets/jsr/test/annotated/AnnotatedEndpointTest.java:[201,18] cannot find symbol
+[ERROR]   symbol:   method reset()
+[ERROR]   location: class io.undertow.websockets.jsr.test.annotated.ErrorEndpoint
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

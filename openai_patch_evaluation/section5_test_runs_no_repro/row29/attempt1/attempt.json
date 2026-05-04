@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void testDefaultConfig() {\n    SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, String.valueOf(SentinelConfig.DEFAULT_COLD_FACTOR));\n    assertEquals(SentinelConfig.DEFAULT_CHARSET, SentinelConfig.charset());\n    assertEquals(SentinelConfig.DEFAULT_SINGLE_METRIC_FILE_SIZE, SentinelConfig.singleMetricFileSize());\n    assertEquals(SentinelConfig.DEFAULT_TOTAL_METRIC_FILE_COUNT, SentinelConfig.totalMetricFileCount());\n    assertEquals(SentinelConfig.DEFAULT_COLD_FACTOR, SentinelConfig.coldFactor());\n    assertEquals(SentinelConfig.DEFAULT_STATISTIC_MAX_RT, SentinelConfig.statisticMaxRt());\n}\n\n@Test\npublic void testColdFactoryLargerThanOne() {\n    String originalColdFactor = SentinelConfig.getConfig(SentinelConfig.COLD_FACTOR);\n    try {\n        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, \"2\");\n        assertEquals(2, SentinelConfig.coldFactor());\n\n        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, \"4\");\n        assertEquals(4, SentinelConfig.coldFactor());\n    } finally {\n        SentinelConfig.setConfig(SentinelConfig.COLD_FACTOR, originalColdFactor);\n    }\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}

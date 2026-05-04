@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "FAIL",
+  "stitch_status": "FAIL",
+  "test_status": null,
+  "attempt_result": "COMPILE_ERROR",
+  "fix_code": "@Before\npublic void setUp() throws Exception {\n    output = new ByteArrayOutputStream();\n    factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));\n    System.setOut(System.out);\n}\n\n@After\npublic void tearDown() throws Exception {\n    factory.stop();\n    System.setOut(System.out);\n}\n\n@Test\npublic void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {\n    Field field = StatusPrinter.class.getDeclaredField(\"ps\");\n    field.setAccessible(true);\n\n    PrintStream out = (PrintStream) field.get(null);\n    assertThat(out).isSameAs(System.out);\n}\n\n@Before\npublic void setup() throws UnsupportedEncodingException {\n    oldSysOut = System.out;\n    // This forces auto-flush, which should help with buffering issues\n    newSysOut = new PrintStream(bos, true, StandardCharsets.UTF_8.name());\n    System.setOut(newSysOut);\n}\n\n@After\npublic void teardown() {\n    if (oldSysOut != null) {\n        System.setOut(oldSysOut);\n    }\n\n    if (newSysOut != null) {\n        newSysOut.close();\n    }\n\n    bos.reset();\n}\n\n@Test\npublic void belowThrottlingLimit() throws Exception {\n    this.runLineTest(Duration.microseconds(1), WRITE_LINES, RUN_WINDOW);\n}",
+  "imports": "",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

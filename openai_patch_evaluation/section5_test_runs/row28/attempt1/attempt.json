@@ -1,0 +1,7 @@
+{
+  "source": "section4",
+  "compile_status": "FAIL",
+  "attempt_result": "COMPILE_ERROR",
+  "fix_code": "@Before\npublic void setUp() throws Exception {\n    output = new ByteArrayOutputStream();\n    factory = new DefaultLoggingFactory(new LoggerContext(), new PrintStream(output));\n    this.oldSysOut = System.out;\n    // This forces auto-flush, which should help with buffering issues\n    this.newSysOut = new PrintStream(this.bos, true, StandardCharsets.UTF_8.name());\n    System.setOut(this.newSysOut);\n}\n\n@After\npublic void tearDown() throws Exception {\n    factory.stop();\n    if (this.oldSysOut != null) {\n        System.setOut(this.oldSysOut);\n    }\n\n    if (this.newSysOut != null) {\n        this.newSysOut.close();\n    }\n\n    this.bos.reset();\n}\n\n@Test\npublic void testLogbackStatusPrinterPrintStreamIsRestoredToSystemOut() throws Exception {\n    Field field = StatusPrinter.class.getDeclaredField(\"ps\");\n    field.setAccessible(true);\n\n    PrintStream out = (PrintStream) field.get(null);\n    assertThat(out).isSameAs(System.out);\n}\n\n@Test\npublic void belowThrottlingLimit() throws Exception {\n    this.runLineTest(Duration.microseconds(1), WRITE_LINES, RUN_WINDOW);\n}",
+  "imports": ""
+}

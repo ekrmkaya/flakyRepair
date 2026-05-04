@@ -1,0 +1,48 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --< org.apache.shardingsphere.elasticjob:elasticjob-cloud-scheduler >---
+[INFO] Building elasticjob-cloud-scheduler 3.0.0-RC1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:1.4:enforce (enforce-maven-version) @ elasticjob-cloud-scheduler ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- enforcer:1.4:enforce (enforce-banned-dependencies) @ elasticjob-cloud-scheduler ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- checkstyle:3.1.0:check (validate) @ elasticjob-cloud-scheduler ---
+[INFO] 
+[INFO] --- jacoco:0.8.5:prepare-agent (default) @ elasticjob-cloud-scheduler ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- remote-resources:1.5:process (process-resource-bundles) @ elasticjob-cloud-scheduler ---
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ elasticjob-cloud-scheduler ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- flatten:1.2.5:flatten (flatten) @ elasticjob-cloud-scheduler ---
+[INFO] Generating flattened POM of project org.apache.shardingsphere.elasticjob:elasticjob-cloud-scheduler:jar:3.0.0-RC1-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ elasticjob-cloud-scheduler ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ elasticjob-cloud-scheduler ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ elasticjob-cloud-scheduler ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 65 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-bdfcaff0/elasticjob-cloud/elasticjob-cloud-scheduler/target/test-classes
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-bdfcaff0/elasticjob-cloud/elasticjob-cloud-scheduler/src/test/java/org/apache/shardingsphere/elasticjob/cloud/scheduler/mesos/TaskLaunchScheduledServiceTest.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-bdfcaff0/elasticjob-cloud/elasticjob-cloud-scheduler/src/test/java/org/apache/shardingsphere/elasticjob/cloud/scheduler/mesos/TaskLaunchScheduledServiceTest.java uses unchecked or unsafe operations.
+[INFO] /Users/ekaya/Desktop/testing/flakyRepair/repos/shardingsphere-elasticjob-bdfcaff0/elasticjob-cloud/elasticjob-cloud-scheduler/src/test/java/org/apache/shardingsphere/elasticjob/cloud/scheduler/mesos/TaskLaunchScheduledServiceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.320 s
+[INFO] Finished at: 2026-05-03T03:56:15-04:00
+[INFO] ------------------------------------------------------------------------

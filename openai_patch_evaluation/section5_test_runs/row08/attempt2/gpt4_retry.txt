@@ -1,0 +1,285 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: com.github.kevinsawicki.http.HttpRequestTest.basicProxyAuthentication
+Polluter Test: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+REPRODUCTION STEPS:
+Steps required to reproduce failure: basicProxyAuthentication passes when run alone but fails when run immediately after customConnectionFactory in the same JVM process (JDK 8, no restart between them). Same-class pair.
+
+ERROR INFORMATION:
+Error Messages: java.io.IOException
+Failing Lines: assertTrue(get(url).useProxy("localhost", proxyPort).proxyBasic("user", "p4ssw0rd").ok());
+throw new IOException();
+
+CODE CONTEXT:
+Relevant Global Variables: private static String url;
+private static RequestHandler handler;
+Relevant Helper Methods:   @BeforeClass
+  public static void startServer() throws Exception {
+    url = setUp(new RequestHandler() {
+
+      @Override
+      public void handle(String target, Request baseRequest,
+          HttpServletRequest request, HttpServletResponse response)
+          throws IOException, ServletException {
+        if (handler != null)
+          handler.handle(target, baseRequest, request, response);
+      }
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        if (handler != null)
+          handler.handle(request, response);
+      }
+    });
+  }
+// ---
+  @After
+  public void clearHandler() {
+    handler = null;
+  }
+// ---
+// --- SUPERCLASS (ServerTestCase) ---
+  @Before
+  public void clearProxyHitCount() {
+    proxyHitCount.set(0);
+  }
+// ---
+  @AfterClass
+  public static void tearDown() throws Exception {
+    if (server != null)
+      server.stop();
+    if (proxy != null)
+      proxy.stop();
+  }
+Relevant Test Code: // VICTIM: com.github.kevinsawicki.http.HttpRequestTest.basicProxyAuthentication
+  @Test
+  public void basicProxyAuthentication() throws Exception {
+    final AtomicBoolean finalHostReached = new AtomicBoolean(false);
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        finalHostReached.set(true);
+        response.setStatus(HTTP_OK);
+      }
+    };
+    assertTrue(get(url).useProxy("localhost", proxyPort).proxyBasic("user", "p4ssw0rd").ok());
+    assertEquals("user", proxyUser.get());
+    assertEquals("p4ssw0rd", proxyPassword.get());
+    assertEquals(true, finalHostReached.get());
+    assertEquals(1, proxyHitCount.get());
+  }
+
+// POLLUTER: com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory
+  @Test
+  public void customConnectionFactory() throws Exception {
+    handler = new RequestHandler() {
+
+      @Override
+      public void handle(Request request, HttpServletResponse response) {
+        response.setStatus(HTTP_OK);
+      }
+    };
+
+    ConnectionFactory factory = new ConnectionFactory() {
+
+      public HttpURLConnection create(URL otherUrl) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
+      }
+
+      public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+        throw new IOException();
+      }
+    };
+
+    HttpRequest.setConnectionFactory(factory);
+    int code = get("http://not/a/real/url").code();
+    assertEquals(200, code);
+  }
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT COMPILED BUT DID NOT FIX THE FLAKINESS
+--------------------------------------------------------------------------------
+
+A fix was generated, applied, and compiled successfully, but running the test
+in polluter->victim order shows the victim test still fails. Below is the fix
+that was attempted and the relevant test failure output.
+
+Fix code that was applied:
+//<attempted fix start>
+@Test
+public void basicProxyAuthentication() throws Exception {
+  final AtomicBoolean finalHostReached = new AtomicBoolean(false);
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      finalHostReached.set(true);
+      response.setStatus(HTTP_OK);
+    }
+  };
+  HttpRequest.keepAlive(false);
+  assertTrue(get(url).useProxy("localhost", proxyPort).proxyBasic("user", "p4ssw0rd").ok());
+  assertEquals("user", proxyUser.get());
+  assertEquals("p4ssw0rd", proxyPassword.get());
+  assertEquals(true, finalHostReached.get());
+  assertEquals(1, proxyHitCount.get());
+}
+
+@Test
+public void customConnectionFactory() throws Exception {
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      response.setStatus(HTTP_OK);
+    }
+  };
+
+  ConnectionFactory factory = new ConnectionFactory() {
+
+    public HttpURLConnection create(URL otherUrl) throws IOException {
+      return (HttpURLConnection) new URL(url).openConnection();
+    }
+
+    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+      throw new IOException();
+    }
+  };
+
+  HttpRequest.setConnectionFactory(factory);
+  int code = get("http://not/a/real/url").code();
+  assertEquals(200, code);
+  HttpRequest.keepAlive(true);
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Test failure output (relevant lines):
+2026-05-03 01:54:33.861:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:49941
+[REPRODUCED] patch_row08_http_request: HttpRequestException: java.io.IOException
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.616 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_patch_row08_http_request
+[ERROR] flakyrepro.ProgrammaticReproducer_patch_row08_http_request.reproduce -- Time elapsed: 0.553 s <<< ERROR!
+
+com.github.kevinsawicki.http.HttpRequest$HttpRequestException: java.io.IOException
+	at com.github.kevinsawicki.http.HttpRequest.createConnection(HttpRequest.java:1507)
+	at com.github.kevinsawicki.http.HttpRequest.getConnection(HttpRequest.java:1523)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+
+Please provide a DIFFERENT fix that addresses the root cause of the flakiness.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Do NOT repeat the same fix -- it did not address the flakiness.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- Make minimal changes; preserve original test logic unless absolutely necessary.
+- Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+- If imports must be added, include them in //<import start> ... //<import end>.
+
+
+=== RESPONSE ===
+//<fix start>
+@Test
+public void basicProxyAuthentication() throws Exception {
+  final AtomicBoolean finalHostReached = new AtomicBoolean(false);
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      finalHostReached.set(true);
+      response.setStatus(HTTP_OK);
+    }
+  };
+  assertTrue(get(url).useProxy("localhost", proxyPort).proxyBasic("user", "p4ssw0rd").ok());
+  assertEquals("user", proxyUser.get());
+  assertEquals("p4ssw0rd", proxyPassword.get());
+  assertEquals(true, finalHostReached.get());
+  assertEquals(1, proxyHitCount.get());
+}
+
+@Test
+public void customConnectionFactory() throws Exception {
+  handler = new RequestHandler() {
+
+    @Override
+    public void handle(Request request, HttpServletResponse response) {
+      response.setStatus(HTTP_OK);
+    }
+  };
+
+  ConnectionFactory factory = new ConnectionFactory() {
+
+    public HttpURLConnection create(URL otherUrl) throws IOException {
+      return (HttpURLConnection) new URL(url).openConnection();
+    }
+
+    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {
+      throw new IOException();
+    }
+  };
+
+  HttpRequest.setConnectionFactory(factory);
+  int code = get("http://not/a/real/url").code();
+  assertEquals(200, code);
+  HttpRequest.setConnectionFactory(HttpRequest.DEFAULT_CONNECTION_FACTORY);
+}
+//<fix end>

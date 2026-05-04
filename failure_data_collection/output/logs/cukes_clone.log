@@ -1,0 +1,6 @@
+CMD: git clone https://github.com/ctco/cukes /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes
+RC: 0
+STDOUT:
+
+STDERR:
+Cloning into '/Users/ekaya/Desktop/testing/flakyRepair/repos/cukes'...

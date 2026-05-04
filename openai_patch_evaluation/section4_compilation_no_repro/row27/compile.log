@@ -1,0 +1,29 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< lv.ctco.cukes:cukes-http >----------------------
+[INFO] Building Cukes HTTP 0.0.33-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ cukes-http ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ cukes-http ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cukes-http ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ cukes-http ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/target/test-classes
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/src/test/java/lv/ctco/cukes/http/RequestBody.java: /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/src/test/java/lv/ctco/cukes/http/RequestBody.java uses unchecked or unsafe operations.
+[WARNING] /Users/ekaya/Desktop/testing/flakyRepair/repos/cukes/cukes-http/src/test/java/lv/ctco/cukes/http/RequestBody.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.305 s
+[INFO] Finished at: 2026-05-03T03:19:11-04:00
+[INFO] ------------------------------------------------------------------------

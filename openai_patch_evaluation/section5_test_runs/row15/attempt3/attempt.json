@@ -1,0 +1,11 @@
+{
+  "source": "gpt4_retry",
+  "compile_status": "PASS",
+  "stitch_status": "PASS",
+  "test_status": "FAILED",
+  "attempt_result": "NOT_FIXED",
+  "fix_code": "@Before\npublic void setUp() throws NoSuchFieldException {\n    JobRegistry.getInstance().addJobInstance(\"test_job\", new JobInstance(\"127.0.0.1@-@0\"));\n    shutdownListenerManager = new ShutdownListenerManager(null, \"test_job\");\n    MockitoAnnotations.initMocks(this);\n    ReflectionUtils.setFieldValue(shutdownListenerManager, \"instanceService\", instanceService);\n    ReflectionUtils.setFieldValue(shutdownListenerManager, \"schedulerFacade\", schedulerFacade);\n    ReflectionUtils.setFieldValue(shutdownListenerManager, shutdownListenerManager.getClass().getSuperclass().getDeclaredField(\"jobNodeStorage\"), jobNodeStorage);\n}\n\n@Test\npublic void assertIsShutdownAlready() {\n    reset(schedulerFacade);\n    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged(\"/test_job/instances/127.0.0.1@-@0\", Type.NODE_REMOVED, \"\");\n    verify(schedulerFacade, times(0)).shutdownInstance();\n}\n\n@Test\npublic void assertRemoveLocalInstancePath() {\n    JobRegistry.getInstance().registerJob(\"test_job\", jobScheduleController, regCenter);\n    shutdownListenerManager.new InstanceShutdownStatusJobListener().dataChanged(\"/test_job/instances/127.0.0.1@-@0\", Type.NODE_REMOVED, \"\");\n    verify(schedulerFacade).shutdownInstance();\n}",
+  "imports": "import static org.mockito.Mockito.reset;",
+  "victim_alone_status": null,
+  "polluter_alone_status": null
+}

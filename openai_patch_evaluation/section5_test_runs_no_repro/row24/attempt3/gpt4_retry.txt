@@ -1,0 +1,152 @@
+=== PROMPT ===
+You are a software testing expert specializing in debugging and
+repairing flaky tests.
+Your task is to fix a flaky test using structured execution evidence.
+
+TEST METADATA:
+Flaky Type: OD
+
+ORDER-DEPENDENT CONTEXT:
+Victim Test: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException
+Polluter Test: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor
+
+FLAKINESS DESCRIPTION:
+Order-dependent flaky tests fail due to interactions between tests through shared state. A polluter test modifies state that causes a victim test to fail. Fixes typically remove shared state dependencies or isolate tests.
+
+ERROR INFORMATION:
+Error Messages: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManagerFactoryTest$TestDirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+Failing Lines: DirectoryManagerFactory.createDirectoryManager(
+
+CODE CONTEXT:
+Relevant Global Variables: return null;
+return false;
+return 0;
+Relevant Helper Methods: 
+Relevant Test Code: // VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException
+	public void createDirectoryManagerIoException() throws IOException {
+		DirectoryManagerFactory.createDirectoryManager(
+				"/nonexisting-directory/123456789/hopefully", true);
+	}
+
+// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor
+	public void createDirectoryManagerNoConstructor() throws IOException {
+		DirectoryManagerFactory
+				.setDirectoryManagerClass(TestDirectoryManager.class);
+		DirectoryManagerFactory.createDirectoryManager("/", true);
+	}
+
+INSTRUCTIONS - STRICT OUTPUT FORMAT:
+Follow steps below. Output raw code only. Do NOT use markdown code fences (\`\`\`). Do NOT include \`\`\` anywhere in your output. Do not write explanations.
+
+1) Fix the flakiness and print the fixed complete method code of this test between:
+//<fix start> CODE HERE //<fix end>
+
+Requirements:
+• Code must compile and use correct argument and variable types.
+• Do NOT invent new classes, methods or API that are not explicitly in the code context
+• Do NOT suppress assertion failures with try-catch.
+• Make minimal changes; preserve original test logic unless absolutely necessary.
+• Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+• Only wrap or modify the existing flaky API usage; do NOT bypass it.
+• Do not manually reconstruct expected outputs or JSON strings.
+• Only use reflection if it is already present in the test.
+
+2) If dependencies must be updated, output:
+<!-- <pom.xml start> -->
+DEPENDENCY HERE
+<!-- <pom.xml end> -->
+
+Rules:
+• Provide exact version.
+• Do not duplicate existing dependencies.
+• Do not include project artifacts.
+
+3) If imports must be added, output:
+//<import start> IMPORTS HERE //<import end>
+
+Assume all existing classes and imports are already correctly configured.
+
+--------------------------------------------------------------------------------
+PREVIOUS ATTEMPT COMPILED BUT DID NOT FIX THE FLAKINESS
+--------------------------------------------------------------------------------
+
+A fix was generated, applied, and compiled successfully, but running the test
+in polluter->victim order shows the victim test still fails. Below is the fix
+that was attempted and the relevant test failure output.
+
+Fix code that was applied:
+//<attempted fix start>
+// VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException
+public void createDirectoryManagerIoException() throws IOException {
+    DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManager.class);
+    DirectoryManagerFactory.createDirectoryManager(
+            "/nonexisting-directory/123456789/hopefully", true);
+}
+
+// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor
+public void createDirectoryManagerNoConstructor() throws IOException {
+    DirectoryManagerFactory
+            .setDirectoryManagerClass(TestDirectoryManager.class);
+    DirectoryManagerFactory.createDirectoryManager("/", true);
+    DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManager.class);
+}
+//<attempted fix end>
+
+Imports that were added to the file (empty means none were added):
+//<attempted imports start>
+(none)
+//<attempted imports end>
+
+Test failure output (relevant lines):
+[INFO] Running flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit
+[REPRODUCED] patch_row24_wikidata_toolkit: RuntimeException: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.081 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit
+[ERROR] flakyrepro.ProgrammaticReproducer_patch_row24_wikidata_toolkit.reproduce -- Time elapsed: 0.026 s <<< ERROR!
+
+java.lang.RuntimeException: java.lang.NoSuchMethodException: org.wikidata.wdtk.util.DirectoryManager.<init>(java.nio.file.Path, java.lang.Boolean)
+	at org.wikidata.wdtk.util.DirectoryManagerFactory.createDirectoryManager(DirectoryManagerFactory.java:74)
+	at org.wikidata.wdtk.util.DirectoryManagerFactory.createDirectoryManager(DirectoryManagerFactory.java:99)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+
+Please provide a DIFFERENT fix that addresses the root cause of the flakiness.
+
+Rules:
+- Output in exactly the same format as before (//<fix start> ... //<fix end>, etc.).
+- The corrected code MUST compile without errors.
+- Do NOT repeat the same fix -- it did not address the flakiness.
+- Do NOT add try-catch blocks around assertions to suppress failures.
+- Make minimal changes; preserve original test logic unless absolutely necessary.
+- Fix nondeterminism at the source (e.g., ordering, shared state, API usage).
+- Do NOT invent new classes, methods or API that are not explicitly in the code context.
+- If imports must be added, include them in //<import start> ... //<import end>.
+
+
+=== RESPONSE ===
+//<fix start>
+// VICTIM: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException
+public void createDirectoryManagerIoException() throws IOException {
+    DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManager.class);
+    DirectoryManagerFactory.createDirectoryManager(
+            "/nonexisting-directory/123456789/hopefully", true);
+    DirectoryManagerFactory.setDirectoryManagerClass(null);
+}
+
+// POLLUTER: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor
+public void createDirectoryManagerNoConstructor() throws IOException {
+    DirectoryManagerFactory
+            .setDirectoryManagerClass(TestDirectoryManager.class);
+    DirectoryManagerFactory.createDirectoryManager("/", true);
+    DirectoryManagerFactory.setDirectoryManagerClass(null);
+}
+//<fix end>

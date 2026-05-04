@@ -1,0 +1,11 @@
+{
+  "source": "section4_initial",
+  "compile_status": "PASS",
+  "stitch_status": null,
+  "test_status": "PASSED",
+  "attempt_result": "FIXED",
+  "fix_code": "@Test\npublic void postWithNumericQueryParams() throws Exception {\n  Map<Object, Object> inputParams = new HashMap<Object, Object>();\n  inputParams.put(1, 2);\n  inputParams.put(3, 4);\n  final Map<String, String> outputParams = new HashMap<String, String>();\n  final AtomicReference<String> method = new AtomicReference<String>();\n  handler = new RequestHandler() {\n\n    @Override\n    public void handle(Request request, HttpServletResponse response) {\n      method.set(request.getMethod());\n      outputParams.put(\"1\", request.getParameter(\"1\"));\n      outputParams.put(\"3\", request.getParameter(\"3\"));\n      response.setStatus(HTTP_OK);\n    }\n  };\n  HttpRequest request = post(url, inputParams, false);\n  assertTrue(request.ok());\n  assertEquals(\"POST\", method.get());\n  assertEquals(\"2\", outputParams.get(\"1\"));\n  assertEquals(\"4\", outputParams.get(\"3\"));\n}\n\n@Test\npublic void customConnectionFactory() throws Exception {\n  handler = new RequestHandler() {\n\n    @Override\n    public void handle(Request request, HttpServletResponse response) {\n      response.setStatus(HTTP_OK);\n    }\n  };\n\n  ConnectionFactory factory = new ConnectionFactory() {\n\n    public HttpURLConnection create(URL otherUrl) throws IOException {\n      return (HttpURLConnection) new URL(url).openConnection();\n    }\n\n    public HttpURLConnection create(URL url, Proxy proxy) throws IOException {\n      throw new IOException();\n    }\n  };\n\n  HttpRequest.setConnectionFactory(factory);\n  int code = get(\"http://not/a/real/url\").code();\n  assertEquals(200, code);\n  HttpRequest.setConnectionFactory(null); // Reset the factory to its default state after the test\n}",
+  "imports": "",
+  "victim_alone_status": "PASSED",
+  "polluter_alone_status": "PASSED"
+}
