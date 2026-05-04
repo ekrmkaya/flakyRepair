@@ -32,7 +32,9 @@ python3.9 pipeline.py --rows 1-10 --skip-step1
 
 ## Output
 
-All outputs are written to `output/` (gitignored):
+Pre-computed outputs for all 50 rows are included in the repository, since the full pipeline can take over 3 hours. Running the pipeline will overwrite results for the targeted rows.
+
+All outputs are written to `output/`:
 
 | File | Description |
 |------|-------------|
