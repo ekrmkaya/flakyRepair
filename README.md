@@ -54,8 +54,7 @@ To verify the pipeline works end-to-end, run the demo script on 3 small, fast ro
 git clone <repo-url> && cd flakyRepair
 
 # 2. Install Python dependencies
-pip install -r failure_data_collection/requirements.txt
-pip install -r openai_patch_evaluation/requirements.txt
+bash install.sh
 
 # 3. Set your OpenAI API key
 export OPENAI_API_KEY="sk-..."
@@ -88,6 +87,7 @@ bash run_experiment.sh 1 2 3 4 5 6 7 8 9 10   # or omit args for all 50
 ```
 flakyRepair/
 ├── README.md                          Project documentation
+├── install.sh                         Installs Python dependencies for both stages
 ├── run_demo.sh                        Demo script: runs full pipeline on 3 fast rows (6, 19, 23)
 ├── data/                              Input datasets (CSV)
 │   └── final_OD_flaky_tests.csv       50 OD flaky test pairs
