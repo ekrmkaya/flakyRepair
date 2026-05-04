@@ -1,0 +1,25 @@
+================================================================
+EXPERIMENT: rows 6 19 23  (started: Mon May  4 17:22:53 EDT 2026)
+================================================================
+
+--- Cleaning rows: 6 19 23 ---
+  section1_patches/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section4_compilation/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section1_patches_no_repro/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section4_compilation_no_repro/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+Cleanup complete.
+
+================================================================
+SECTION 1: Patch Generation (with_repro)
+================================================================
+  → row 6
+Generating patches for 1 entries...
+
+Traceback (most recent call last):
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section1_generate_patches.py", line 292, in <module>
+    main()
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section1_generate_patches.py", line 265, in main
+    entry = load_entry_for_target(target)
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/test_execution.py", line 179, in load_entry_for_target
+    raise KeyError(f"No flaky_test_data entry for victim: {victim}")
+KeyError: 'No flaky_test_data entry for victim: com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory'

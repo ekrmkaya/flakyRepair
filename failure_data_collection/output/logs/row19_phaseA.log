@@ -15,7 +15,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running de.strullerbaumann.visualee.filter.entity.ClassFilterTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s -- in de.strullerbaumann.visualee.filter.entity.ClassFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s -- in de.strullerbaumann.visualee.filter.entity.ClassFilterTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -24,6 +24,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.226 s
-[INFO] Finished at: 2026-05-03T00:54:37-04:00
+[INFO] Total time:  3.530 s
+[INFO] Finished at: 2026-05-04T17:42:22-04:00
 [INFO] ------------------------------------------------------------------------

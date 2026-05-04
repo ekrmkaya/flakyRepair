@@ -16,8 +16,8 @@
 [INFO] -------------------------------------------------------
 [INFO] Running flakyrepro.ProgrammaticReproducer_row19
 [REPRODUCED] row19: AssertionError: expected:<true> but was:<false>
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.121 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_row19
-[ERROR] flakyrepro.ProgrammaticReproducer_row19.reproduce -- Time elapsed: 0.052 s <<< FAILURE!
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.129 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_row19
+[ERROR] flakyrepro.ProgrammaticReproducer_row19.reproduce -- Time elapsed: 0.064 s <<< FAILURE!
 java.lang.AssertionError: expected:<true> but was:<false>
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -70,8 +70,8 @@ Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.183 s
-[INFO] Finished at: 2026-05-03T00:54:52-04:00
+[INFO] Total time:  3.393 s
+[INFO] Finished at: 2026-05-04T17:42:37-04:00
 [INFO] ------------------------------------------------------------------------
 
 
@@ -90,7 +90,7 @@ Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and
 [INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/src
 [INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/target/generated-sources
 [INFO]  - adding license header on file /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/src/test/java/flakyrepro/ProgrammaticReproducer_row19.java
-[INFO] Scan 64 files header done in 209.784ms.
+[INFO] Scan 64 files header done in 231.592ms.
 [INFO] 
  * uptodate header on 63 files.
  * add header on 1 file.
@@ -113,6 +113,6 @@ Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.753 s
-[INFO] Finished at: 2026-05-03T00:54:46-04:00
+[INFO] Total time:  7.135 s
+[INFO] Finished at: 2026-05-04T17:42:32-04:00
 [INFO] ------------------------------------------------------------------------

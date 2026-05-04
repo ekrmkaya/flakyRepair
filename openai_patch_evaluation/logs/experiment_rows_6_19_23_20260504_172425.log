@@ -1,0 +1,18 @@
+================================================================
+EXPERIMENT: rows 6 19 23  (started: Mon May  4 17:24:25 EDT 2026)
+================================================================
+
+================================================================
+SECTION 1: Patch Generation (with_repro)
+================================================================
+  → row 6
+Generating patches for 1 entries...
+
+Traceback (most recent call last):
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section1_generate_patches.py", line 292, in <module>
+    main()
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section1_generate_patches.py", line 265, in main
+    entry = load_entry_for_target(target)
+  File "/Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/test_execution.py", line 179, in load_entry_for_target
+    raise KeyError(f"No flaky_test_data entry for victim: {victim}")
+KeyError: 'No flaky_test_data entry for victim: com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory'

@@ -21,13 +21,13 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running flakyrepro.ProgrammaticReproducer_row06
-2026-05-03 00:49:56.771:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 00:49:56.808:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:65312
-2026-05-03 00:49:56.829:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 00:49:56.836:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:65313
+2026-05-04 17:42:16.015:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:42:16.052:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:52865
+2026-05-04 17:42:16.074:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:42:16.082:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:52866
 [REPRODUCED] row06: ClassCastException: sun.net.www.protocol.http.HttpURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.579 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_row06
-[ERROR] flakyrepro.ProgrammaticReproducer_row06.reproduce -- Time elapsed: 0.527 s <<< ERROR!
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.556 s <<< FAILURE! -- in flakyrepro.ProgrammaticReproducer_row06
+[ERROR] flakyrepro.ProgrammaticReproducer_row06.reproduce -- Time elapsed: 0.516 s <<< ERROR!
 java.lang.ClassCastException: sun.net.www.protocol.http.HttpURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
 	at com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory(HttpRequestTest.java:1826)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -76,8 +76,8 @@ Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.435 s
-[INFO] Finished at: 2026-05-03T00:49:57-04:00
+[INFO] Total time:  3.540 s
+[INFO] Finished at: 2026-05-04T17:42:16-04:00
 [INFO] ------------------------------------------------------------------------
 
 
@@ -117,6 +117,6 @@ Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.332 s
-[INFO] Finished at: 2026-05-03T00:49:51-04:00
+[INFO] Total time:  3.474 s
+[INFO] Finished at: 2026-05-04T17:42:10-04:00
 [INFO] ------------------------------------------------------------------------

@@ -39,14 +39,6 @@
     "total_tokens": 1360,
     "elapsed_seconds": 8.44
   },
-  "row06": {
-    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory",
-    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
-    "prompt_tokens": 978,
-    "completion_tokens": 275,
-    "total_tokens": 1253,
-    "elapsed_seconds": 10.02
-  },
   "row07": {
     "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.singleVerifier",
     "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
@@ -143,14 +135,6 @@
     "total_tokens": 1007,
     "elapsed_seconds": 6.13
   },
-  "row19": {
-    "victim_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse",
-    "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeTrue",
-    "prompt_tokens": 845,
-    "completion_tokens": 138,
-    "total_tokens": 983,
-    "elapsed_seconds": 3.74
-  },
   "row20": {
     "victim_test_name": "de.strullerbaumann.visualee.filter.entity.PackageFilterTest.testIsOkExcludeFalse",
     "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.PackageFilterTest.testIsOkExcludeTrue",
@@ -174,14 +158,6 @@
     "completion_tokens": 452,
     "total_tokens": 1473,
     "elapsed_seconds": 10.99
-  },
-  "row23": {
-    "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDefaultDirectoryManagerPath",
-    "polluter_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor",
-    "prompt_tokens": 668,
-    "completion_tokens": 212,
-    "total_tokens": 880,
-    "elapsed_seconds": 7.97
   },
   "row24": {
     "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerIoException",
@@ -398,5 +374,29 @@
     "completion_tokens": 226,
     "total_tokens": 1203,
     "elapsed_seconds": 5.31
+  },
+  "row06": {
+    "victim_test_name": "com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory",
+    "polluter_test_name": "com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory",
+    "prompt_tokens": 978,
+    "completion_tokens": 155,
+    "total_tokens": 1133,
+    "elapsed_seconds": 4.52
+  },
+  "row19": {
+    "victim_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse",
+    "polluter_test_name": "de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeTrue",
+    "prompt_tokens": 845,
+    "completion_tokens": 138,
+    "total_tokens": 983,
+    "elapsed_seconds": 4.58
+  },
+  "row23": {
+    "victim_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDefaultDirectoryManagerPath",
+    "polluter_test_name": "org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDirectoryManagerNoConstructor",
+    "prompt_tokens": 668,
+    "completion_tokens": 209,
+    "total_tokens": 877,
+    "elapsed_seconds": 7.32
   }
 }

@@ -21,11 +21,11 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.github.kevinsawicki.http.HttpRequestTest
-2026-05-03 03:38:31.794:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 03:38:31.833:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:51003
-2026-05-03 03:38:31.854:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 03:38:31.861:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:51004
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.548 s -- in com.github.kevinsawicki.http.HttpRequestTest
+2026-05-04 17:47:26.735:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:47:26.771:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:53014
+2026-05-04 17:47:26.793:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:47:26.804:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:53015
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.552 s -- in com.github.kevinsawicki.http.HttpRequestTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -34,6 +34,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.329 s
-[INFO] Finished at: 2026-05-03T03:38:32-04:00
+[INFO] Total time:  3.414 s
+[INFO] Finished at: 2026-05-04T17:47:27-04:00
 [INFO] ------------------------------------------------------------------------

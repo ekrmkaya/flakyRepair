@@ -1,0 +1,608 @@
+================================================================
+EXPERIMENT: rows 19 23  (started: Mon May  4 17:37:30 EDT 2026)
+================================================================
+
+--- Cleaning rows: 19 23 ---
+  section1_patches/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section4_compilation/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section1_patches_no_repro/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+  section4_compilation_no_repro/metrics.json: remaining keys = ['row01', 'row02', 'row03', 'row04', 'row05', 'row07', 'row08', 'row09', 'row10', 'row11', 'row12', 'row13', 'row14', 'row15', 'row16', 'row17', 'row18', 'row20', 'row21', 'row22', 'row24', 'row25', 'row26', 'row27', 'row28', 'row29', 'row30', 'row31', 'row32', 'row33', 'row34', 'row35', 'row36', 'row37', 'row38', 'row39', 'row40', 'row41', 'row42', 'row43', 'row44', 'row45', 'row46', 'row47', 'row48', 'row49', 'row50']
+Cleanup complete.
+
+================================================================
+SECTION 1: Patch Generation (with_repro)
+================================================================
+  → row 19
+Generating patches for 1 entries...
+
+[1/1] Prompting GPT-4 for: de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse
+      Saved -> row19__gpt4_1.txt | tokens: 1035 | time: 4.76s
+
+Row    Victim (short)                                  Prompt   Completion    Total  Time(s)
+-----------------------------------------------------------------------------------------------
+row01  testCloseReason                                   1300          376     1676     10.2
+row02  putWithEscapedMappedQueryParams                   1106          352     1458      9.1
+row03  putWithEscapedVarargsQueryParams                  1084          333     1417     12.5
+row04  putWithMappedQueryParams                          1094          347     1441      9.4
+row05  putWithVarargsQueryParams                         1072          322     1394     13.0
+row07  singleVerifier                                    1007          272     1279      6.3
+row08  basicProxyAuthentication                          1051          296     1347     10.5
+row09  deleteWithEscapedMappedQueryParams                1106          351     1457     10.2
+row10  deleteWithEscapedVarargsQueryParams               1084          329     1413     10.3
+row11  testGenericsListenerDefaultConstructorThrows      1107          261     1368      9.3
+row12  testParametrizedConstructor                       1042          183     1225      6.9
+row13  assertExistExecutorOnS0                           1034          303     1337     11.7
+row14  testLogger                                         834          217     1051      6.0
+row15  assertIsShutdownAlready                            939          289     1228      7.7
+row16  assertGetCurrentShardingTotalCountIfNull           687          195      882     10.0
+row17  assertWithoutEventTraceRdbConfiguration            894          311     1205      6.8
+row18  testIsOkExcludeFalse                               913          146     1059      5.1
+row19  testIsOkExcludeFalse                               897          138     1035      4.8
+row20  testIsOkExcludeFalse                               897          138     1035      6.0
+row21  canHandleFragmentedMessageReceived                1143          523     1666     20.3
+row22  canHandleUnfragmentedMessageReceived              1073          452     1525     11.4
+row24  createDirectoryManagerIoException                  670          147      817      3.5
+row25  rawResponseHandlerOnErrorWithNoSentCommandsS      1207          373     1580      8.7
+row26  getgroups                                         1024          283     1307     11.7
+row27  shouldReturnBodyWhenEnabledAndNoMax               1001          342     1343     13.2
+row28  testLogbackStatusPrinterPrintStreamIsRestore      1066          254     1320      7.8
+row29  testDefaultConfig                                  746          244      990      6.0
+row30  test_max_buf                                       739          199      938      5.2
+row31  deleteWithMappedQueryParams                       1094          347     1441      7.8
+row32  deleteWithVarargsQueryParams                      1072          328     1400     13.1
+row33  getUrlEncodedWithPercent                           997          259     1256     10.8
+row34  getUrlEncodedWithSpace                            1001          261     1262      6.0
+row35  getUrlEncodedWithUnicode                          1002          263     1265     11.6
+row36  getWithEscapedMappedQueryParams                   1106          351     1457     12.1
+row37  getWithEscapedVarargsQueryParams                  1084          318     1402     10.2
+row38  getWithMappedQueryParams                          1094          350     1444      8.2
+row39  headWithEscapedMappedQueryParams                  1106          362     1468      8.0
+row40  headWithEscapedVarargsQueryParams                 1084          318     1402      7.6
+row41  headWithMappedQueryParams                         1094          347     1441     12.2
+row42  headWithVaragsQueryParams                         1072          318     1390      7.1
+row43  postWithEscapedMappedQueryParams                  1106          351     1457     14.1
+row44  postWithEscapedVarargsQueryParams                 1084          326     1410      7.5
+row45  postWithNumericQueryParams                        1094          367     1461      8.3
+row46  verifierAccepts                                    967          222     1189      5.9
+row47  getWithVarargsQueryParams                         1072          314     1386     14.8
+row48  postWithMappedQueryParams                         1094          339     1433     14.3
+row49  postWithVaragsQueryParams                         1072          322     1394     11.4
+row50  testCreateWithIncorrectOrder                      1031          223     1254      8.9
+-----------------------------------------------------------------------------------------------
+TOTAL                                                   49143        14262    63405    453.5
+  → row 23
+Generating patches for 1 entries...
+
+[1/1] Prompting GPT-4 for: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDefaultDirectoryManagerPath
+      Saved -> row23__gpt4_1.txt | tokens: 932 | time: 9.05s
+
+Row    Victim (short)                                  Prompt   Completion    Total  Time(s)
+-----------------------------------------------------------------------------------------------
+row01  testCloseReason                                   1300          376     1676     10.2
+row02  putWithEscapedMappedQueryParams                   1106          352     1458      9.1
+row03  putWithEscapedVarargsQueryParams                  1084          333     1417     12.5
+row04  putWithMappedQueryParams                          1094          347     1441      9.4
+row05  putWithVarargsQueryParams                         1072          322     1394     13.0
+row07  singleVerifier                                    1007          272     1279      6.3
+row08  basicProxyAuthentication                          1051          296     1347     10.5
+row09  deleteWithEscapedMappedQueryParams                1106          351     1457     10.2
+row10  deleteWithEscapedVarargsQueryParams               1084          329     1413     10.3
+row11  testGenericsListenerDefaultConstructorThrows      1107          261     1368      9.3
+row12  testParametrizedConstructor                       1042          183     1225      6.9
+row13  assertExistExecutorOnS0                           1034          303     1337     11.7
+row14  testLogger                                         834          217     1051      6.0
+row15  assertIsShutdownAlready                            939          289     1228      7.7
+row16  assertGetCurrentShardingTotalCountIfNull           687          195      882     10.0
+row17  assertWithoutEventTraceRdbConfiguration            894          311     1205      6.8
+row18  testIsOkExcludeFalse                               913          146     1059      5.1
+row19  testIsOkExcludeFalse                               897          138     1035      4.8
+row20  testIsOkExcludeFalse                               897          138     1035      6.0
+row21  canHandleFragmentedMessageReceived                1143          523     1666     20.3
+row22  canHandleUnfragmentedMessageReceived              1073          452     1525     11.4
+row23  createDefaultDirectoryManagerPath                  720          212      932      9.1
+row24  createDirectoryManagerIoException                  670          147      817      3.5
+row25  rawResponseHandlerOnErrorWithNoSentCommandsS      1207          373     1580      8.7
+row26  getgroups                                         1024          283     1307     11.7
+row27  shouldReturnBodyWhenEnabledAndNoMax               1001          342     1343     13.2
+row28  testLogbackStatusPrinterPrintStreamIsRestore      1066          254     1320      7.8
+row29  testDefaultConfig                                  746          244      990      6.0
+row30  test_max_buf                                       739          199      938      5.2
+row31  deleteWithMappedQueryParams                       1094          347     1441      7.8
+row32  deleteWithVarargsQueryParams                      1072          328     1400     13.1
+row33  getUrlEncodedWithPercent                           997          259     1256     10.8
+row34  getUrlEncodedWithSpace                            1001          261     1262      6.0
+row35  getUrlEncodedWithUnicode                          1002          263     1265     11.6
+row36  getWithEscapedMappedQueryParams                   1106          351     1457     12.1
+row37  getWithEscapedVarargsQueryParams                  1084          318     1402     10.2
+row38  getWithMappedQueryParams                          1094          350     1444      8.2
+row39  headWithEscapedMappedQueryParams                  1106          362     1468      8.0
+row40  headWithEscapedVarargsQueryParams                 1084          318     1402      7.6
+row41  headWithMappedQueryParams                         1094          347     1441     12.2
+row42  headWithVaragsQueryParams                         1072          318     1390      7.1
+row43  postWithEscapedMappedQueryParams                  1106          351     1457     14.1
+row44  postWithEscapedVarargsQueryParams                 1084          326     1410      7.5
+row45  postWithNumericQueryParams                        1094          367     1461      8.3
+row46  verifierAccepts                                    967          222     1189      5.9
+row47  getWithVarargsQueryParams                         1072          314     1386     14.8
+row48  postWithMappedQueryParams                         1094          339     1433     14.3
+row49  postWithVaragsQueryParams                         1072          322     1394     11.4
+row50  testCreateWithIncorrectOrder                      1031          223     1254      8.9
+-----------------------------------------------------------------------------------------------
+TOTAL                                                   49863        14474    64337    462.5
+
+================================================================
+SECTION 2: Parse Patches (with_repro)
+================================================================
+  → row19
+============================================================
+SECTION 2: PATCH PARSING
+============================================================
+Processing 1 patch(es)...
+
+  row19: OK
+
+Parse Results:
+  OK            : 1
+  NO_FIX_BLOCK  : 0
+  EMPTY_OUTPUT  : 0
+
+All patches parsed successfully.
+
+SECTION 2 COMPLETE
+  → row23
+============================================================
+SECTION 2: PATCH PARSING
+============================================================
+Processing 1 patch(es)...
+
+  row23: OK
+
+Parse Results:
+  OK            : 1
+  NO_FIX_BLOCK  : 0
+  EMPTY_OUTPUT  : 0
+
+All patches parsed successfully.
+
+SECTION 2 COMPLETE
+
+================================================================
+SECTION 4: Compilation + Stitching (with_repro)
+================================================================
+  → row19
+============================================================
+SECTION 4: COMPILATION + STITCHING
+============================================================
+Processing 1 row(s)...
+
+  row19 (row19_visualee) ...
+    compile=PASS
+
+-------------------------------------------------------
+row_key  compile  stitched   reason
+-------------------------------------------------------
+row19    PASS     -          OK
+
+PASS (initial)       : 1
+PASS (after stitch)  : 0
+FAIL (all attempts)  : 0
+NA (skipped)         : 0
+
+SECTION 4 COMPLETE
+  → row23
+============================================================
+SECTION 4: COMPILATION + STITCHING
+============================================================
+Processing 1 row(s)...
+
+  row23 (row23_wikidata-toolkit) ...
+    compile=PASS
+
+-------------------------------------------------------
+row_key  compile  stitched   reason
+-------------------------------------------------------
+row23    PASS     -          OK
+
+PASS (initial)       : 1
+PASS (after stitch)  : 0
+FAIL (all attempts)  : 0
+NA (skipped)         : 0
+
+SECTION 4 COMPLETE
+
+================================================================
+SECTION 5: Test Execution (with_repro)
+================================================================
+  → row19
+=================================================================
+SECTION 5: TEST EXECUTION WITH RETRY LOOP
+  MAX_ATTEMPTS=5  SAME_ERROR_LIMIT=3
+=================================================================
+
+Restoring all source files to git state...
+
+Processing 1 row(s)...
+
+  row19 (row19_visualee)  [s4_compile=PASS]
+        [attempt 1] Compiling...
+        [attempt 1] Running OD test...
+        [attempt 1] Test: PASSED
+        [attempt 1] Checking victim alone...
+        [attempt 1] Checking polluter alone...
+    -> FIXED  (attempts=1, stitches=0/0 worked, gpt4_tokens=0)
+
+=====================================================================================
+row      final_status     attempts   stitches   stitch_ok  gpt4_tok   test_sec  
+-------------------------------------------------------------------------------------
+row19    FIXED            1          0          0          0          15.3      
+=====================================================================================
+
+FIXED         : 1
+NOT_FIXED     : 0
+COMPILE_ERROR : 0
+SKIPPED       : 0
+
+SECTION 5 COMPLETE
+  → row23
+=================================================================
+SECTION 5: TEST EXECUTION WITH RETRY LOOP
+  MAX_ATTEMPTS=5  SAME_ERROR_LIMIT=3
+=================================================================
+
+Restoring all source files to git state...
+
+Processing 1 row(s)...
+
+  row23 (row23_wikidata-toolkit)  [s4_compile=PASS]
+        [attempt 1] Compiling...
+        [attempt 1] Running OD test...
+        [attempt 1] Test: PASSED
+        [attempt 1] Checking victim alone...
+        [attempt 1] Checking polluter alone...
+        [attempt 1] WARNING: polluter alone FAILED
+    -> FIXED  (attempts=1, stitches=0/0 worked, gpt4_tokens=0)
+
+=====================================================================================
+row      final_status     attempts   stitches   stitch_ok  gpt4_tok   test_sec  
+-------------------------------------------------------------------------------------
+row23    FIXED            1          0          0          0          12.2      
+=====================================================================================
+
+FIXED         : 1
+NOT_FIXED     : 0
+COMPILE_ERROR : 0
+SKIPPED       : 0
+
+SECTION 5 COMPLETE
+
+================================================================
+SECTION 1: Patch Generation (no_repro)
+================================================================
+  → row 19
+Generating patches for 1 entries [NO-REPRO]...
+
+[1/1] Prompting GPT-4 for: de.strullerbaumann.visualee.filter.entity.ClassFilterTest.testIsOkExcludeFalse
+      Saved -> row19__gpt4_1.txt | tokens: 983 | time: 5.72s
+
+Row    Victim (short)                                  Prompt   Completion    Total  Time(s)
+-----------------------------------------------------------------------------------------------
+row01  testCloseReason                                   1252          376     1628     14.6
+row02  putWithEscapedMappedQueryParams                   1055          363     1418      9.4
+row03  putWithEscapedVarargsQueryParams                  1032          342     1374      7.2
+row04  putWithMappedQueryParams                          1045          350     1395      8.1
+row05  putWithVarargsQueryParams                         1022          338     1360      8.4
+row07  singleVerifier                                     961          272     1233      6.7
+row08  basicProxyAuthentication                          1004          304     1308      8.0
+row09  deleteWithEscapedMappedQueryParams                1055          343     1398      8.0
+row10  deleteWithEscapedVarargsQueryParams               1032          329     1361     11.1
+row11  testGenericsListenerDefaultConstructorThrows      1051          308     1359     10.0
+row12  testParametrizedConstructor                        988          188     1176      6.4
+row13  assertExistExecutorOnS0                            982          307     1289     13.4
+row14  testLogger                                         786          210      996      9.9
+row15  assertIsShutdownAlready                            888          306     1194      7.0
+row16  assertGetCurrentShardingTotalCountIfNull           629          134      763      3.3
+row17  assertWithoutEventTraceRdbConfiguration            837          314     1151      6.6
+row18  testIsOkExcludeFalse                               861          146     1007      6.1
+row19  testIsOkExcludeFalse                               845          138      983      5.7
+row20  testIsOkExcludeFalse                               845          138      983      3.6
+row21  canHandleFragmentedMessageReceived                1092          523     1615     20.0
+row22  canHandleUnfragmentedMessageReceived              1021          452     1473     11.0
+row24  createDirectoryManagerIoException                  618          147      765      3.4
+row25  rawResponseHandlerOnErrorWithNoSentCommandsS      1146          227     1373      5.3
+row26  getgroups                                          975          357     1332     13.5
+row27  shouldReturnBodyWhenEnabledAndNoMax                939          342     1281     13.1
+row28  testLogbackStatusPrinterPrintStreamIsRestore      1006          223     1229      5.0
+row29  testDefaultConfig                                  694          244      938      5.6
+row30  test_max_buf                                       690          196      886      4.7
+row31  deleteWithMappedQueryParams                       1045          363     1408     13.5
+row32  deleteWithVarargsQueryParams                      1022          330     1352     14.2
+row33  getUrlEncodedWithPercent                           949          273     1222      6.4
+row34  getUrlEncodedWithSpace                             953          270     1223      9.7
+row35  getUrlEncodedWithUnicode                           954          267     1221     13.3
+row36  getWithEscapedMappedQueryParams                   1055          343     1398      8.0
+row37  getWithEscapedVarargsQueryParams                  1032          375     1407      9.9
+row38  getWithMappedQueryParams                          1045          366     1411      8.0
+row39  headWithEscapedMappedQueryParams                  1055          362     1417     12.0
+row40  headWithEscapedVarargsQueryParams                 1032          329     1361      7.2
+row41  headWithMappedQueryParams                         1045          347     1392     14.2
+row42  headWithVaragsQueryParams                         1022          337     1359     16.8
+row43  postWithEscapedMappedQueryParams                  1055          352     1407      7.9
+row44  postWithEscapedVarargsQueryParams                 1032          327     1359     13.1
+row45  postWithNumericQueryParams                        1045          365     1410      7.5
+row46  verifierAccepts                                    920          221     1141      6.0
+row47  getWithVarargsQueryParams                         1022          337     1359      7.6
+row48  postWithMappedQueryParams                         1045          355     1400      9.0
+row49  postWithVaragsQueryParams                         1022          338     1360      8.3
+row50  testCreateWithIncorrectOrder                       977          226     1203      5.3
+-----------------------------------------------------------------------------------------------
+TOTAL                                                   46678        14400    61078    433.1
+  → row 23
+Generating patches for 1 entries [NO-REPRO]...
+
+[1/1] Prompting GPT-4 for: org.wikidata.wdtk.util.DirectoryManagerFactoryTest.createDefaultDirectoryManagerPath
+      Saved -> row23__gpt4_1.txt | tokens: 832 | time: 8.03s
+
+Row    Victim (short)                                  Prompt   Completion    Total  Time(s)
+-----------------------------------------------------------------------------------------------
+row01  testCloseReason                                   1252          376     1628     14.6
+row02  putWithEscapedMappedQueryParams                   1055          363     1418      9.4
+row03  putWithEscapedVarargsQueryParams                  1032          342     1374      7.2
+row04  putWithMappedQueryParams                          1045          350     1395      8.1
+row05  putWithVarargsQueryParams                         1022          338     1360      8.4
+row07  singleVerifier                                     961          272     1233      6.7
+row08  basicProxyAuthentication                          1004          304     1308      8.0
+row09  deleteWithEscapedMappedQueryParams                1055          343     1398      8.0
+row10  deleteWithEscapedVarargsQueryParams               1032          329     1361     11.1
+row11  testGenericsListenerDefaultConstructorThrows      1051          308     1359     10.0
+row12  testParametrizedConstructor                        988          188     1176      6.4
+row13  assertExistExecutorOnS0                            982          307     1289     13.4
+row14  testLogger                                         786          210      996      9.9
+row15  assertIsShutdownAlready                            888          306     1194      7.0
+row16  assertGetCurrentShardingTotalCountIfNull           629          134      763      3.3
+row17  assertWithoutEventTraceRdbConfiguration            837          314     1151      6.6
+row18  testIsOkExcludeFalse                               861          146     1007      6.1
+row19  testIsOkExcludeFalse                               845          138      983      5.7
+row20  testIsOkExcludeFalse                               845          138      983      3.6
+row21  canHandleFragmentedMessageReceived                1092          523     1615     20.0
+row22  canHandleUnfragmentedMessageReceived              1021          452     1473     11.0
+row23  createDefaultDirectoryManagerPath                  668          164      832      8.0
+row24  createDirectoryManagerIoException                  618          147      765      3.4
+row25  rawResponseHandlerOnErrorWithNoSentCommandsS      1146          227     1373      5.3
+row26  getgroups                                          975          357     1332     13.5
+row27  shouldReturnBodyWhenEnabledAndNoMax                939          342     1281     13.1
+row28  testLogbackStatusPrinterPrintStreamIsRestore      1006          223     1229      5.0
+row29  testDefaultConfig                                  694          244      938      5.6
+row30  test_max_buf                                       690          196      886      4.7
+row31  deleteWithMappedQueryParams                       1045          363     1408     13.5
+row32  deleteWithVarargsQueryParams                      1022          330     1352     14.2
+row33  getUrlEncodedWithPercent                           949          273     1222      6.4
+row34  getUrlEncodedWithSpace                             953          270     1223      9.7
+row35  getUrlEncodedWithUnicode                           954          267     1221     13.3
+row36  getWithEscapedMappedQueryParams                   1055          343     1398      8.0
+row37  getWithEscapedVarargsQueryParams                  1032          375     1407      9.9
+row38  getWithMappedQueryParams                          1045          366     1411      8.0
+row39  headWithEscapedMappedQueryParams                  1055          362     1417     12.0
+row40  headWithEscapedVarargsQueryParams                 1032          329     1361      7.2
+row41  headWithMappedQueryParams                         1045          347     1392     14.2
+row42  headWithVaragsQueryParams                         1022          337     1359     16.8
+row43  postWithEscapedMappedQueryParams                  1055          352     1407      7.9
+row44  postWithEscapedVarargsQueryParams                 1032          327     1359     13.1
+row45  postWithNumericQueryParams                        1045          365     1410      7.5
+row46  verifierAccepts                                    920          221     1141      6.0
+row47  getWithVarargsQueryParams                         1022          337     1359      7.6
+row48  postWithMappedQueryParams                         1045          355     1400      9.0
+row49  postWithVaragsQueryParams                         1022          338     1360      8.3
+row50  testCreateWithIncorrectOrder                       977          226     1203      5.3
+-----------------------------------------------------------------------------------------------
+TOTAL                                                   47346        14564    61910    441.1
+
+================================================================
+SECTION 2: Parse Patches (no_repro)
+================================================================
+  → row19
+============================================================
+SECTION 2: PATCH PARSING [NO-REPRO]
+============================================================
+Processing 1 patch(es)...
+
+  row19: OK
+
+Parse Results:
+  OK            : 1
+  NO_FIX_BLOCK  : 0
+  EMPTY_OUTPUT  : 0
+
+All patches parsed successfully.
+
+SECTION 2 COMPLETE
+  → row23
+============================================================
+SECTION 2: PATCH PARSING [NO-REPRO]
+============================================================
+Processing 1 patch(es)...
+
+  row23: OK
+
+Parse Results:
+  OK            : 1
+  NO_FIX_BLOCK  : 0
+  EMPTY_OUTPUT  : 0
+
+All patches parsed successfully.
+
+SECTION 2 COMPLETE
+
+================================================================
+SECTION 4: Compilation + Stitching (no_repro)
+================================================================
+  → row19
+============================================================
+SECTION 4: COMPILATION + STITCHING [NO-REPRO]
+============================================================
+Processing 1 row(s)...
+
+  row19 (row19_visualee) ...
+    compile=PASS
+
+-------------------------------------------------------
+row_key  compile  stitched   reason
+-------------------------------------------------------
+row19    PASS     -          OK
+
+PASS (initial)       : 1
+PASS (after stitch)  : 0
+FAIL (all attempts)  : 0
+NA (skipped)         : 0
+
+SECTION 4 COMPLETE
+  → row23
+============================================================
+SECTION 4: COMPILATION + STITCHING [NO-REPRO]
+============================================================
+Processing 1 row(s)...
+
+  row23 (row23_wikidata-toolkit) ...
+    compile=PASS
+
+-------------------------------------------------------
+row_key  compile  stitched   reason
+-------------------------------------------------------
+row23    PASS     -          OK
+
+PASS (initial)       : 1
+PASS (after stitch)  : 0
+FAIL (all attempts)  : 0
+NA (skipped)         : 0
+
+SECTION 4 COMPLETE
+
+================================================================
+SECTION 5: Test Execution (no_repro)
+================================================================
+  → row19
+=================================================================
+SECTION 5: TEST EXECUTION WITH RETRY LOOP [NO-REPRO]
+  MAX_ATTEMPTS=5  SAME_ERROR_LIMIT=3
+=================================================================
+
+Restoring all source files to git state...
+
+Processing 1 row(s)...
+
+  row19 (row19_visualee)  [s4_compile=PASS]
+        [attempt 1] Compiling...
+        [attempt 1] Running OD test...
+        [attempt 1] Test: PASSED
+        [attempt 1] Checking victim alone...
+        [attempt 1] Checking polluter alone...
+    -> FIXED  (attempts=1, stitches=0/0 worked, gpt4_tokens=0)
+
+=====================================================================================
+row      final_status     attempts   stitches   stitch_ok  gpt4_tok   test_sec  
+-------------------------------------------------------------------------------------
+row19    FIXED            1          0          0          0          15.5      
+=====================================================================================
+
+FIXED         : 1
+NOT_FIXED     : 0
+COMPILE_ERROR : 0
+SKIPPED       : 0
+
+SECTION 5 COMPLETE
+  → row23
+=================================================================
+SECTION 5: TEST EXECUTION WITH RETRY LOOP [NO-REPRO]
+  MAX_ATTEMPTS=5  SAME_ERROR_LIMIT=3
+=================================================================
+
+Restoring all source files to git state...
+
+Processing 1 row(s)...
+
+  row23 (row23_wikidata-toolkit)  [s4_compile=PASS]
+        [attempt 1] Compiling...
+        [attempt 1] Running OD test...
+        [attempt 1] Test: PASSED
+        [attempt 1] Checking victim alone...
+        [attempt 1] Checking polluter alone...
+        [attempt 1] WARNING: polluter alone FAILED
+    -> FIXED  (attempts=1, stitches=0/0 worked, gpt4_tokens=0)
+
+=====================================================================================
+row      final_status     attempts   stitches   stitch_ok  gpt4_tok   test_sec  
+-------------------------------------------------------------------------------------
+row23    FIXED            1          0          0          0          12.3      
+=====================================================================================
+
+FIXED         : 1
+NOT_FIXED     : 0
+COMPILE_ERROR : 0
+SKIPPED       : 0
+
+SECTION 5 COMPLETE
+
+================================================================
+SECTION 6: Categorization (both variants)
+================================================================
+  → row19
+============================================================
+SECTION 6: CATEGORIZATION
+============================================================
+Processing 1 target(s) × 2 conditions...
+
+  row19 [with_repro] → Fixed flakiness
+  row19 [no_repro  ] → Fixed flakiness
+
+------------------------------------------------------------
+  Fixed flakiness                               2
+
+Total: 2 | Passed: 2 | Needs review: 0
+
+Validating outputs...
+
+SECTION 6 COMPLETE
+  → row23
+============================================================
+SECTION 6: CATEGORIZATION
+============================================================
+Processing 1 target(s) × 2 conditions...
+
+  row23 [with_repro] → Fixed flakiness
+  row23 [no_repro  ] → Fixed flakiness
+
+------------------------------------------------------------
+  Fixed flakiness                               2
+
+Total: 2 | Passed: 2 | Needs review: 0
+
+Validating outputs...
+
+SECTION 6 COMPLETE
+
+================================================================
+SECTION 7: Assemble Results CSV
+================================================================
+============================================================
+SECTION 7: METRICS ASSEMBLY & CSV OUTPUT
+============================================================
+Wrote /Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section7_results/results.csv  (4 rows)
+Wrote /Users/ekaya/Desktop/testing/flakyRepair/openai_patch_evaluation/section7_results/summary.csv
+
+=====================================================================================
+test_id                cond         status         cat                              tok  elapsed
+-------------------------------------------------------------------------------------
+  row19_visualee       no_repro     FIXED          Fixed flakiness                  983    43.2s
+  row19_visualee       with_repro   FIXED          Fixed flakiness                 1035    40.7s
+  row23_wikidata-toolkit no_repro     FIXED          Fixed flakiness                  832    37.5s
+  row23_wikidata-toolkit with_repro   FIXED          Fixed flakiness                  932    38.1s
+=====================================================================================
+
+[with_repro]  n=2  FIXED=2  COMPILE_ERROR=0  NOT_FIXED=0  total_tokens=1967  total_elapsed=78.8s
+
+[no_repro]  n=2  FIXED=2  COMPILE_ERROR=0  NOT_FIXED=0  total_tokens=1815  total_elapsed=80.7s
+
+SECTION 7 COMPLETE
+
+================================================================
+EXPERIMENT COMPLETE  (finished: Mon May  4 17:40:59 EDT 2026)
+================================================================

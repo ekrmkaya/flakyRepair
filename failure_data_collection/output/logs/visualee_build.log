@@ -1,6 +1,6 @@
 CMD: mvn  clean test-compile -B -q -Drat.skip=true -Dcheckstyle.skip=true -Denforcer.skip=true -Dspotbugs.skip=true -Djacoco.skip=true -Danimal.sniffer.skip=true -Dmaven.antrun.skip=true -Dspotless.check.skip=true -Dspring-javaformat.skip=true -Dmaven.test.failure.ignore=true -Djacoco.agent.argLine= -DargLine= -Dmaven.plugin.skip=true -Dlicense.skip=true -DtrimStackTrace=false 
 RC: 0
-ELAPSED: 11s
+ELAPSED: 12s
 
 STDOUT:
 

@@ -21,11 +21,11 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running flakyrepro.ProgrammaticReproducer_patch_row06_http_request
-2026-05-03 03:38:19.793:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 03:38:19.831:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:50998
-2026-05-03 03:38:19.852:INFO:oejs.Server:jetty-8.1.9.v20130131
-2026-05-03 03:38:19.859:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:50999
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.941 s -- in flakyrepro.ProgrammaticReproducer_patch_row06_http_request
+2026-05-04 17:47:14.547:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:47:14.586:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:53008
+2026-05-04 17:47:14.610:INFO:oejs.Server:jetty-8.1.9.v20130131
+2026-05-04 17:47:14.619:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:53009
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.835 s -- in flakyrepro.ProgrammaticReproducer_patch_row06_http_request
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -34,6 +34,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  4.094 s
-[INFO] Finished at: 2026-05-03T03:38:20-04:00
+[INFO] Total time:  3.819 s
+[INFO] Finished at: 2026-05-04T17:47:15-04:00
 [INFO] ------------------------------------------------------------------------

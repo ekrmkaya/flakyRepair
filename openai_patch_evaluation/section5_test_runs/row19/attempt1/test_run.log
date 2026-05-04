@@ -15,7 +15,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running flakyrepro.ProgrammaticReproducer_patch_row19_visualee
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.116 s -- in flakyrepro.ProgrammaticReproducer_patch_row19_visualee
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.112 s -- in flakyrepro.ProgrammaticReproducer_patch_row19_visualee
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -24,6 +24,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.348 s
-[INFO] Finished at: 2026-05-03T02:15:53-04:00
+[INFO] Total time:  3.712 s
+[INFO] Finished at: 2026-05-04T17:45:14-04:00
 [INFO] ------------------------------------------------------------------------

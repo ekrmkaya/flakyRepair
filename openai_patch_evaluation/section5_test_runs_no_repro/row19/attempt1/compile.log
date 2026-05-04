@@ -11,7 +11,7 @@
 [INFO] --- license:1.6:update-file-header (add-apache-headers) @ visualee ---
 [INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/src
 [INFO] Will search files to update from root /Users/ekaya/Desktop/testing/flakyRepair/repos/visualee/target/generated-sources
-[INFO] Scan 63 files header done in 252.018ms.
+[INFO] Scan 63 files header done in 213.732ms.
 [INFO] All files are up-to-date.
 [INFO] 
 [INFO] --- resources:3.3.1:resources (default-resources) @ visualee ---
@@ -32,6 +32,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.958 s
-[INFO] Finished at: 2026-05-03T03:57:39-04:00
+[INFO] Total time:  6.859 s
+[INFO] Finished at: 2026-05-04T17:47:37-04:00
 [INFO] ------------------------------------------------------------------------

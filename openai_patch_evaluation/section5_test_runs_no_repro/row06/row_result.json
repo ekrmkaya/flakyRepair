@@ -17,13 +17,13 @@
       "stitch_completion_tokens": null,
       "stitch_total_tokens": null,
       "stitch_api_elapsed_seconds": null,
-      "compile_elapsed_seconds": 7.46,
+      "compile_elapsed_seconds": 8.01,
       "stitch_compile_elapsed_seconds": null,
-      "test_elapsed_seconds": 12.3,
+      "test_elapsed_seconds": 11.97,
       "victim_alone_result": "PASSED",
-      "victim_alone_elapsed_seconds": 5.83,
+      "victim_alone_elapsed_seconds": 6.0,
       "polluter_alone_result": "PASSED",
-      "polluter_alone_elapsed_seconds": 5.82
+      "polluter_alone_elapsed_seconds": 5.96
     }
   ]
 }

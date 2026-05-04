@@ -1,6 +1,4 @@
 [INFO] Scanning for projects...
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eluder/coveralls/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eluder/coveralls/maven-metadata.xml (243 B at 527 B/s)
 [INFO] 
 [INFO] --------------------< org.wikidata.wdtk:wdtk-util >---------------------
 [INFO] Building Wikidata Toolkit Utilities 0.9.0
@@ -14,7 +12,7 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running org.wikidata.wdtk.util.DirectoryManagerFactoryTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 s -- in org.wikidata.wdtk.util.DirectoryManagerFactoryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s -- in org.wikidata.wdtk.util.DirectoryManagerFactoryTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -23,6 +21,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.042 s
-[INFO] Finished at: 2026-05-03T00:55:49-04:00
+[INFO] Total time:  2.280 s
+[INFO] Finished at: 2026-05-04T17:42:42-04:00
 [INFO] ------------------------------------------------------------------------

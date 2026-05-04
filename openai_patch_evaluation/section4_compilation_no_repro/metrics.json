@@ -49,16 +49,6 @@
     "final_compile_status": "FAIL",
     "stitched": true
   },
-  "row06": {
-    "compile_elapsed_seconds": 7.58,
-    "stitch_prompt_tokens": null,
-    "stitch_completion_tokens": null,
-    "stitch_total_tokens": null,
-    "stitch_api_elapsed_seconds": null,
-    "stitch_compile_elapsed_seconds": null,
-    "final_compile_status": "PASS",
-    "stitched": false
-  },
   "row07": {
     "compile_elapsed_seconds": 7.85,
     "stitch_prompt_tokens": null,
@@ -179,16 +169,6 @@
     "final_compile_status": "PASS",
     "stitched": false
   },
-  "row19": {
-    "compile_elapsed_seconds": 9.01,
-    "stitch_prompt_tokens": null,
-    "stitch_completion_tokens": null,
-    "stitch_total_tokens": null,
-    "stitch_api_elapsed_seconds": null,
-    "stitch_compile_elapsed_seconds": null,
-    "final_compile_status": "PASS",
-    "stitched": false
-  },
   "row20": {
     "compile_elapsed_seconds": 8.87,
     "stitch_prompt_tokens": null,
@@ -218,16 +198,6 @@
     "stitch_compile_elapsed_seconds": 6.19,
     "final_compile_status": "FAIL",
     "stitched": true
-  },
-  "row23": {
-    "compile_elapsed_seconds": 6.92,
-    "stitch_prompt_tokens": null,
-    "stitch_completion_tokens": null,
-    "stitch_total_tokens": null,
-    "stitch_api_elapsed_seconds": null,
-    "stitch_compile_elapsed_seconds": null,
-    "final_compile_status": "PASS",
-    "stitched": false
   },
   "row24": {
     "compile_elapsed_seconds": 6.8,
@@ -498,5 +468,35 @@
     "stitch_compile_elapsed_seconds": 8.85,
     "final_compile_status": "FAIL",
     "stitched": true
+  },
+  "row06": {
+    "compile_elapsed_seconds": 8.6,
+    "stitch_prompt_tokens": null,
+    "stitch_completion_tokens": null,
+    "stitch_total_tokens": null,
+    "stitch_api_elapsed_seconds": null,
+    "stitch_compile_elapsed_seconds": null,
+    "final_compile_status": "PASS",
+    "stitched": false
+  },
+  "row19": {
+    "compile_elapsed_seconds": 9.46,
+    "stitch_prompt_tokens": null,
+    "stitch_completion_tokens": null,
+    "stitch_total_tokens": null,
+    "stitch_api_elapsed_seconds": null,
+    "stitch_compile_elapsed_seconds": null,
+    "final_compile_status": "PASS",
+    "stitched": false
+  },
+  "row23": {
+    "compile_elapsed_seconds": 6.96,
+    "stitch_prompt_tokens": null,
+    "stitch_completion_tokens": null,
+    "stitch_total_tokens": null,
+    "stitch_api_elapsed_seconds": null,
+    "stitch_compile_elapsed_seconds": null,
+    "final_compile_status": "PASS",
+    "stitched": false
   }
 }

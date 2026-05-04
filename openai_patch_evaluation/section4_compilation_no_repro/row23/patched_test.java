@@ -103,8 +103,8 @@ public class DirectoryManagerFactoryTest {
 
 	@Test
 	public void createDefaultDirectoryManagerPath() throws IOException {
-		Path path = Paths.get(System.getProperty("user.dir"));
 		DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManagerImpl.class);
+		Path path = Paths.get(System.getProperty("user.dir"));
 		DirectoryManager dm = DirectoryManagerFactory.createDirectoryManager(
 				path, true);
 		assertTrue(dm instanceof DirectoryManagerImpl);
@@ -115,8 +115,7 @@ public class DirectoryManagerFactoryTest {
 
 	@Test
 	public void createDirectoryManagerNoConstructor() throws IOException {
-		DirectoryManagerFactory
-				.setDirectoryManagerClass(TestDirectoryManager.class);
+		DirectoryManagerFactory.setDirectoryManagerClass(TestDirectoryManager.class);
 		DirectoryManagerFactory.createDirectoryManager("/", true);
 		DirectoryManagerFactory.setDirectoryManagerClass(DirectoryManagerImpl.class);
 	}
