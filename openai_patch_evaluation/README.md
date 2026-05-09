@@ -6,8 +6,10 @@ Generates GPT-4 patches for OD flaky tests, compiles them, runs OD reproduction 
 
 - Python 3.9+, Java 8+, Maven 3.5+
 - `pip install -r requirements.txt`
-- `export OPENAI_API_KEY="sk-..."`
+- `export OPENAI_API_KEY="sk-..."` — required for generating new patches
 - Stage 1 must be completed first (`failure_data_collection/pipeline.py`)
+
+> **No API key?** Pre-computed results for all 50 rows are included in this repository. To validate them without an API key, use the no-API validation tool in `../no_api_validation/` instead. See the [project README](../README.md#no-api-validation) for details.
 
 ## Usage
 

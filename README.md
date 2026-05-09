@@ -34,7 +34,7 @@ openai_patch_evaluation/section7_results/results.csv
 - **Python 3.9+**
 - **Java 8+** (auto-detected; set `JAVA8_HOME`, `JAVA11_HOME`, etc. if not on macOS default paths)
 - **Maven 3.5+**
-- **OpenAI API key** (`export OPENAI_API_KEY=sk-...`)
+- **OpenAI API key** (`export OPENAI_API_KEY=sk-...`) — only needed for generating new patches. **Not required** for validating pre-computed results (see [No-API Validation](#no-api-validation) below).
 
 ## Pre-computed Results
 
@@ -45,9 +45,29 @@ This repository ships with pre-computed results for all 50 rows (both with_repro
 
 Running the pipeline will overwrite results for the targeted rows.
 
+## No-API Validation
+
+This repository ships with pre-computed patches for all 50 rows. You can **validate these patches without an OpenAI API key** using the no-API validation tool. It compiles each existing patch, runs the OD test, and produces a results CSV — no GPT-4 calls are made.
+
+```bash
+# 1. Clone
+git clone <repo-url> && cd flakyRepair
+
+# 2. Install Python dependencies
+bash install.sh
+
+# 3. Run validation (no API key needed — repos are cloned automatically)
+cd no_api_validation
+python3.9 validate_patches.py                    # all 50 rows
+python3.9 validate_patches.py --rows 6 19 23     # specific rows
+python3.9 validate_patches.py --rows 1-10        # a range
+```
+
+Results are written to `no_api_validation/validation_results/results.csv`. See `no_api_validation/` for details.
+
 ## Quick Demo
 
-To verify the pipeline works end-to-end, run the demo script on 3 small, fast rows (6, 19, 23) that span three different projects (http-request, visualee, wikidata-toolkit):
+To verify the full pipeline works end-to-end (requires an API key), run the demo script on 3 small, fast rows (6, 19, 23) that span three different projects (http-request, visualee, wikidata-toolkit):
 
 ```bash
 # 1. Clone
@@ -91,6 +111,9 @@ flakyRepair/
 ├── run_demo.sh                        Demo script: runs full pipeline on 3 fast rows (6, 19, 23)
 ├── data/                              Input datasets (CSV)
 │   └── final_OD_flaky_tests.csv       50 OD flaky test pairs
+├── no_api_validation/                 Validate pre-computed patches without an API key
+│   ├── validate_patches.py            Validation script (no GPT-4 calls)
+│   └── validation_results/            Output CSV with validation outcomes
 ├── failure_data_collection/           Stage 1: reproduce and extract
 │   ├── README.md                      Stage 1 documentation
 │   ├── pipeline.py                    Orchestrator (steps 1-5)
